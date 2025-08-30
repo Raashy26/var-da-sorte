@@ -1,0 +1,36 @@
+const markdownIt = require("markdown-it");
+const markdownItAttrs = require("markdown-it-attrs");
+const { DateTime } = require("luxon");
+
+module.exports = function (eleventyConfig) {
+  // Copiar ficheiros estáticos
+  eleventyConfig.addPassthroughCopy({ "src/images": "images" });
+  eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
+  eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
+
+  // Markdown personalizado
+  const markdownLib = markdownIt({
+    html: true,
+    breaks: true,
+    linkify: true,
+  }).use(markdownItAttrs);
+
+  eleventyConfig.setLibrary("md", markdownLib);
+
+  // Filtro para datas (corrige o erro do base.njk)
+  eleventyConfig.addFilter("date", (dateObj, format = "dd LLL yyyy") => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(format);
+  });
+
+  return {
+    dir: {
+      input: "src",
+      includes: "_includes",
+      data: "data",
+      output: "_site",
+    },
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    templateFormats: ["html", "md", "njk"],
+  };
+};

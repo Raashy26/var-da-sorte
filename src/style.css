@@ -1,0 +1,72 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: #111;
+}
+
+header {
+  background-color: #008000; /* Verde trevo */
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 4px solid #FFD700; /* dourado */
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #FFD700;
+  border-bottom: 2px solid #FFD700;
+}
+
+main {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #f9f9f9;
+}
+
+.card h2 {
+  color: #008000;
+}
+
+button, .btn {
+  background: #FFD700;
+  color: #111;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover, .btn:hover {
+  background: #daa520;
+}
