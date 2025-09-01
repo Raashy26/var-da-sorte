@@ -22,6 +22,13 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(format);
   });
 
+eleventyConfig.addCollection("apostas", function (collectionApi) {
+  return collectionApi.getFilteredByTag("apostas").sort((a, b) => {
+    return b.date - a.date; // ordem decrescente (mais recente primeiro)
+  });
+});
+
+
   return {
     dir: {
       input: "src",

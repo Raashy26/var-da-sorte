@@ -1,15 +1,22 @@
 ---
-layout: layouts/base.njk
+layout: layouts/page.njk
 title: "Prognósticos Diários - VAR da Sorte"
 ---
 
 <section class="page-header">
   <div class="container">
     <h1>📅 Prognósticos Diários</h1>
-    <p>As nossas apostas recomendadas para hoje, atualizadas diariamente.</p>
+    <p>As nossas apostas recomendadas para hoje e dias anteriores, sempre atualizadas.</p>
   </div>
 </section>
 
 <section class="content container">
-  <p>⚠️ Em breve vais encontrar aqui os prognósticos do dia. Mantém-te atento!</p>
+  <ul class="post-list">
+    {% for post in collections.apostas %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a>
+        <small>({{ post.date | date("dd/MM/yyyy") }})</small>
+      </li>
+    {% endfor %}
+  </ul>
 </section>
