@@ -1,72 +1,268 @@
-body {
-  font-family: 'Arial', sans-serif;
+/* =======================
+   VAR da Sorte - style.css
+   ======================= */
+
+/* Reset básico */
+* {
   margin: 0;
   padding: 0;
-  background: #ffffff;
-  color: #111;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =======================
+   Header / Navegação
+   ======================= */
 header {
-  background-color: #008000; /* Verde trevo */
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  border-bottom: 4px solid #FFD700; /* dourado */
+  background-color: #2d9c6a;
+  padding: 20px 0;
+  color: white;
 }
 
 header h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  margin: 0;
-  font-size: 2.5rem;
+  text-align: center;
+  font-size: 2rem;
+}
+
+nav {
+  text-align: center;
+  margin-top: 10px;
 }
 
 nav ul {
   list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
 }
 
-nav a {
-  text-decoration: none;
-  color: #fff;
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
   font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
 }
 
-nav a:hover {
-  color: #FFD700;
-  border-bottom: 2px solid #FFD700;
+nav ul li a:hover {
+  background-color: #217b53;
 }
 
-main {
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
+/* =======================
+   Hero Section
+   ======================= */
+.hero {
+  background-color: #eafaf1;
+  padding: 80px 0;
+  text-align: center;
 }
 
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
+.hero h1 {
+  font-size: 2.5rem;
   margin-bottom: 20px;
-  background: #f9f9f9;
+  color: #2d9c6a;
 }
 
-.card h2 {
-  color: #008000;
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
-button, .btn {
-  background: #FFD700;
-  color: #111;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 8px;
   font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-button:hover, .btn:hover {
-  background: #daa520;
+.btn-primary {
+  background-color: #2d9c6a;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #217b53;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #d4af37;
+  color: #000;
+}
+
+.btn-secondary:hover {
+  background-color: #b5942d;
+  transform: translateY(-2px);
+}
+
+/* =======================
+   Partners Section
+   ======================= */
+.partners {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.partners h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2d9c6a;
+  font-size: 2rem;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partner-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.partner-card img {
+  max-width: 120px;
+  margin-bottom: 15px;
+}
+
+.partner-card p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* =======================
+   Daily Preview Section
+   ======================= */
+.daily-preview {
+  padding: 60px 0;
+  background-color: #ffffff;
+}
+
+.daily-preview h2 {
+  text-align: center;
+  color: #2d9c6a;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+}
+
+.game-card {
+  background-color: #eafaf1;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.game-card h3 {
+  color: #2d9c6a;
+  margin-bottom: 10px;
+}
+
+/* =======================
+   Challenges Section
+   ======================= */
+.challenges {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.challenges h2 {
+  color: #2d9c6a;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.challenges p {
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+}
+
+/* =======================
+   Ebook Teaser Section
+   ======================= */
+.ebook-teaser {
+  padding: 60px 20px;
+  background-color: #eafaf1;
+  text-align: center;
+}
+
+.ebook-teaser h2 {
+  color: #2d9c6a;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.ebook-teaser p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* =======================
+   Footer
+   ======================= */
+footer {
+  background-color: #2d9c6a;
+  color: white;
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 60px;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* =======================
+   Responsividade
+   ======================= */
+@media (max-width: 768px) {
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .games-grid, .partners-grid {
+    grid-template-columns: 1fr;
+  }
 }

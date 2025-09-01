@@ -7,35 +7,62 @@ title: "VAR da Sorte - Apostas Inteligentes"
   <div class="container">
     <h1>Bem-vindo ao VAR da Sorte 🎲</h1>
     <p>O teu guia diário para apostas desportivas mais inteligentes e seguras.</p>
-    <a href="/apostas/" class="btn">Ver Prognósticos de Hoje</a>
+    <a href="/apostas/" class="btn btn-primary">Ver Prognósticos de Hoje</a>
   </div>
 </section>
 
-<section class="features">
-  <div class="container grid">
-    <div class="card">
-      <h2>📊 Estatísticas</h2>
-      <p>Análises detalhadas para cada jogo com base em dados reais.</p>
-    </div>
-    <div class="card">
-      <h2>⚽ Jogos do Dia</h2>
-      <p>Recomendações atualizadas com base em ligas e equipas mais fortes.</p>
-    </div>
-    <div class="card">
-      <h2>💡 Dicas</h2>
-      <p>Sugestões estratégicas para apostar com responsabilidade.</p>
-    </div>
-  </div>
-</section>
-
-<section class="quick-links">
+<section class="partners">
   <div class="container">
-    <h2>Explora o VAR da Sorte</h2>
-    <ul>
-      <li><a href="/aposta/">📅 Prognósticos Diários</a></li>
-      <li><a href="/analise/">📊 Análises de Jogos</a></li>
-      <li><a href="/desafio/">🔥 Desafios de Apostas</a></li>
-      <li><a href="/sobre/">ℹ️ Sobre o Projeto</a></li>
-    </ul>
+    <h2>Parceiros & Códigos Promocionais</h2>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <img src="/images/betano-logo.png" alt="Betano">
+        <p>Código: VAR10</p>
+        <a href="#" class="btn btn-secondary">Regista-te Aqui</a>
+      </div>
+      <div class="partner-card">
+        <img src="/images/bwin-logo.png" alt="Bwin">
+        <p>Código: SORTE5</p>
+        <a href="#" class="btn btn-secondary">Regista-te Aqui</a>
+      </div>
+      <div class="partner-card">
+        <img src="/images/betclic-logo.png" alt="Betclic">
+        <p>Código: LUCKY7</p>
+        <a href="#" class="btn btn-secondary">Regista-te Aqui</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="daily-preview">
+  <div class="container">
+    <h2>Jogos do Dia</h2>
+    <div class="games-grid">
+      {% for aposta in collections.apostas | reverse | slice(0,3) %}
+      <div class="game-card">
+        <h3>{{ aposta.data.title }}</h3>
+        <p>{{ aposta.data.description | safe }}</p>
+        <p><strong>Odds:</strong> {{ aposta.data.odds }}</p>
+      </div>
+      {% else %}
+      <p>Em breve os primeiros prognósticos aparecerão aqui! Mantém-te atento.</p>
+      {% endfor %}
+    </div>
+    <a href="/apostas/" class="btn btn-primary">Ver Todas as Apostas</a>
+  </div>
+</section>
+
+<section class="challenges">
+  <div class="container">
+    <h2>Os Meus Desafios ⚡</h2>
+    <p>Desafios diários que transformam pequenas quantias em grandes lucros. Acompanha a evolução dos desafios e aprende com cada jogada.</p>
+    <a href="/desafios/" class="btn btn-primary">Ver Desafios</a>
+  </div>
+</section>
+
+<section class="ebook-teaser">
+  <div class="container">
+    <h2>Queres aprender a NUNCA mais perderes uma banca?</h2>
+    <p>Em breve vou lançar o meu e-book exclusivo sobre gestão de banca, estratégias de aposta e como lucrar PARA SEMPRE com apostas desportivas. Fica atento e não percas!</p>
   </div>
 </section>
