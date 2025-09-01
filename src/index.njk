@@ -38,22 +38,20 @@ title: "VAR da Sorte - Apostas Inteligentes"
   <div class="container">
     <h2>Jogos do Dia</h2>
 
-    {% if jogosDoDia.length > 0 %}
-    <div class="games-scroll">
-      {% for jogo in jogosDoDia | slice(0,10) %}
-      <div class="game-card">
-        <h3>{{ jogo.home }} vs {{ jogo.away }}</h3>
-        <p><em>{{ jogo.competition }}</em></p>
-        <p>
-          <strong>1:</strong> {{ jogo.odds.home }} | 
-          <strong>X:</strong> {{ jogo.odds.draw }} | 
-          <strong>2:</strong> {{ jogo.odds.away }}
-        </p>
+    {% if jogosDoDia and jogosDoDia | length %}
+      <div class="games-scroll">
+        {% for jogo in jogosDoDia | slice(0,10) %}
+        <div class="game-card">
+          <h3>{{ jogo.home }} vs {{ jogo.away }}</h3>
+          <p><em>{{ jogo.competition }}</em></p>
+          <p>
+            <strong>1:</strong> {{ jogo.odds.home }} | 
+            <strong>X:</strong> {{ jogo.odds.draw }} | 
+            <strong>2:</strong> {{ jogo.odds.away }}
+          </p>
+        </div>
+        {% endfor %}
       </div>
-      {% else %}
-      <p>Em breve os primeiros prognósticos aparecerão aqui! Mantém-te atento.</p>
-      {% endfor %}
-    </div>
     {% else %}
       <p>Sem jogos disponíveis no momento.</p>
     {% endif %}
@@ -61,7 +59,6 @@ title: "VAR da Sorte - Apostas Inteligentes"
     <a href="/apostas/" class="btn btn-primary">Ver Todas as Apostas</a>
   </div>
 </section>
-
 
 <section class="challenges">
   <div class="container">
