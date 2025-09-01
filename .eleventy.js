@@ -8,6 +8,22 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
 
+module.exports = function(eleventyConfig) {
+  // Copiar imagens e assets para o output
+  eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/css");
+
+  return {
+    dir: {
+      input: "src",
+      includes: "_includes",
+      data: "_data",
+      output: "_site"
+    }
+  };
+};
+
+
   // Markdown personalizado
   const markdownLib = markdownIt({
     html: true,

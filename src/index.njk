@@ -37,20 +37,31 @@ title: "VAR da Sorte - Apostas Inteligentes"
 <section class="daily-preview">
   <div class="container">
     <h2>Jogos do Dia</h2>
-    <div class="games-grid">
-      {% for aposta in collections.apostas | reverse | slice(0,3) %}
+
+    {% if jogosDoDia.length > 0 %}
+    <div class="games-scroll">
+      {% for jogo in jogosDoDia | slice(0,10) %}
       <div class="game-card">
-        <h3>{{ aposta.data.title }}</h3>
-        <p>{{ aposta.data.description | safe }}</p>
-        <p><strong>Odds:</strong> {{ aposta.data.odds }}</p>
+        <h3>{{ jogo.home }} vs {{ jogo.away }}</h3>
+        <p><em>{{ jogo.competition }}</em></p>
+        <p>
+          <strong>1:</strong> {{ jogo.odds.home }} | 
+          <strong>X:</strong> {{ jogo.odds.draw }} | 
+          <strong>2:</strong> {{ jogo.odds.away }}
+        </p>
       </div>
       {% else %}
       <p>Em breve os primeiros prognósticos aparecerão aqui! Mantém-te atento.</p>
       {% endfor %}
     </div>
+    {% else %}
+      <p>Sem jogos disponíveis no momento.</p>
+    {% endif %}
+
     <a href="/apostas/" class="btn btn-primary">Ver Todas as Apostas</a>
   </div>
 </section>
+
 
 <section class="challenges">
   <div class="container">
