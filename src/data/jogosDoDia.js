@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 
 module.exports = async function () {
-  const apiKey = "fa07e5a83c500c77b2b45c04ae70cc46"; // tua API Key
+  const apiKey = "fa07e5a83c500c77b2b45c04ae70cc46";
   const url = `https://api.the-odds-api.com/v4/sports/soccer_epl/odds/?regions=eu&markets=h2h&oddsFormat=decimal&apiKey=${apiKey}`;
 
   try {
