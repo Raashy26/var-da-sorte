@@ -25,22 +25,45 @@ module.exports = async function () {
       return [];
     }
 
-    return data.response.slice(0, 10).map((match) => {
-      // Extrair odds de 1X2 do primeiro bookmaker disponível
+    // 🔥 Eliminar duplicados (mesmo fixture.id)
+    const uniqueFixtures = [];
+    const seen = new Set();
+
+    for (const match of data.response) {
+      if (!seen.has(match.fixture.id)) {
+        seen.add(match.fixture.id);
+        uniqueFixtures.push(match);
+      }
+    }
+
+    return uniqueFixtures.slice(0, 10).map((match) => {
       let home = "-", draw = "-", away = "-";
 
-      const matchWinnerBet = match?.odds?.[0]?.bookmakers?.[0]?.bets?.find(b => b.name === "Match Winner");
+      const matchWinnerBet = match?.odds?.[0]?.bookmakers?.[0]?.bets?.find(
+        (b) => b.name === "Match Winner"
+      );
+
       if (matchWinnerBet && matchWinnerBet.values) {
-        home = matchWinnerBet.values.find(v => ["Home", "1"].includes(v.value))?.odd || "-";
-        draw = matchWinnerBet.values.find(v => ["Draw", "X"].includes(v.value))?.odd || "-";
-        away = matchWinnerBet.values.find(v => ["Away", "2"].includes(v.value))?.odd || "-";
+        home =
+          matchWinnerBet.values.find((v) =>
+            ["Home", "1"].includes(v.value)
+          )?.odd || "-";
+        draw =
+          matchWinnerBet.values.find((v) =>
+            ["Draw", "X"].includes(v.value)
+          )?.odd || "-";
+        away =
+          matchWinnerBet.values.find((v) =>
+            ["Away", "2"].includes(v.value)
+          )?.odd || "-";
       }
 
       return {
+        id: match.fixture.id,
         home: match.teams.home.name,
         away: match.teams.away.name,
         competition: match.league.name,
-        date: new Date(match.fixture.date), // ✅ Objeto Date para Eleventy
+        date: new Date(match.fixture.date), // ✅ corrigido para Date
         odds: { home, draw, away },
       };
     });
