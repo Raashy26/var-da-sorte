@@ -12,12 +12,11 @@ module.exports = async function () {
 
   try {
     const res = await fetch(
-  `https://api.football-data.org/v4/matches?dateFrom=${today}&dateTo=${today}`,
-  {
-    headers: { "X-Auth-Token": API_KEY },
-  }
-);
-
+      `https://api.football-data.org/v4/matches?dateFrom=${today}&dateTo=${today}`,
+      {
+        headers: { "X-Auth-Token": API_KEY },
+      }
+    );
 
     const data = await res.json();
 
@@ -28,12 +27,8 @@ module.exports = async function () {
     return data.matches.map((match) => ({
       home: match.homeTeam.name,
       away: match.awayTeam.name,
-      competition: "Premier League",
-      odds: {
-        home: match.odds?.homeWin || "-",
-        draw: match.odds?.draw || "-",
-        away: match.odds?.awayWin || "-",
-      },
+      competition: match.competition.name,
+      utcDate: match.utcDate, // hora do jogo em UTC
     }));
   } catch (err) {
     console.error("❌ Erro ao buscar jogos:", err);

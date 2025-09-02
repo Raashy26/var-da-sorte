@@ -41,15 +41,12 @@ title: "VAR da Sorte - Apostas Inteligentes"
     {% if jogosDoDia and jogosDoDia | length %}
       <div class="games-scroll">
         {% for jogo in jogosDoDia | slice(0,10) %}
-        <div class="game-card">
-          <h3>{{ jogo.home }} vs {{ jogo.away }}</h3>
-          <p><em>{{ jogo.competition }}</em></p>
-          <p>
-            <strong>1:</strong> {{ jogo.odds.home }} | 
-            <strong>X:</strong> {{ jogo.odds.draw }} | 
-            <strong>2:</strong> {{ jogo.odds.away }}
-          </p>
-        </div>
+       <div class="game-card">
+  <h3>{{ jogo.home }} vs {{ jogo.away }}</h3>
+  <p><em>{{ jogo.competition }}</em></p>
+  <p>Hora: {{ jogo.utcDate | date("HH:mm") }}</p>
+</div>
+
         {% endfor %}
       </div>
     {% else %}
