@@ -3,7 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>A Solução! - VAR da Sorte | VAR da Sorte</title>
+  <title>A Solução! - VAR da Sorte</title>
+  <meta name="description" content="Prognósticos, apostas desportivas e análises diárias de futebol." />
+
+  <!-- SEO Open Graph -->
+  <meta property="og:title" content="A Solução! - VAR da Sorte" />
+  <meta property="og:description" content="Prognósticos e apostas desportivas diárias." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vardasorte.pt" />
+  <meta property="og:image" content="/images/cover.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A Solução! - VAR da Sorte" />
+  <meta name="twitter:description" content="Apostas desportivas, análises e prognósticos de futebol." />
+  <meta name="twitter:image" content="/images/cover.png" />
+
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
@@ -16,11 +31,29 @@
       <ul>
         <li><a href="/">Início</a></li>
         <li><a href="/aposta/">Apostas Diárias</a></li>
-        <li><a href="/analise/">Análises</a></li>
         <li><a href="/desafio/">Desafios</a></li>
         <li><a href="/ebook/">A Solução!</a></li>
         <li><a href="/sobre/">Sobre</a></li>
         <li><a href="/contacto/">Contacto</a></li>
+
+
+<body data-theme="light">
+
+<button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+
+<script>
+  const btn = document.getElementById("themeToggle");
+  const body = document.body;
+
+  btn.addEventListener("click", () => {
+    const currentTheme = body.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    body.setAttribute("data-theme", newTheme);
+    btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+  });
+</script>
+
+
       </ul>
     </nav>
   </header>
@@ -78,14 +111,69 @@
   </div>
 </section>
 
+<style>
+/* Fundo vermelho na secção final do e-book */
+.ebook-cta {
+  background-color: #e63946; /* vermelho */
+  color: #ffffff;           /* texto em branco para contraste */
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.ebook-cta h2 {
+  color: #ffffff; /* garante que o título fica branco */
+}
+
+.ebook-cta .btn-ebook-large {
+  background-color: #ffffff;  /* botão branco */
+  color: #e63946;             /* texto vermelho */
+  font-weight: bold;
+}
+
+.ebook-cta .btn-ebook-large:hover {
+  background-color: #f1f1f1;  /* cinza claro no hover */
+  color: #c62839;             /* vermelho mais escuro */
+}
+
+/* Forçar cards de ebook a manter fundo e texto fixos */
+.feature-card {
+  background-color: #eafaf1 !important; /* fundo claro */
+  color: #000000 !important;            /* texto preto */
+}
+
+.feature-card * {
+  color: #000000 !important; /* força títulos, parágrafos e links a preto */
+}
+
+.testimonial-card {
+  background-color: #eafaf1 !important; /* fundo claro */
+  color: #000000 !important;            /* texto preto */
+}
+
+.testimonial-card * {
+  color: #000000 !important; /* força títulos, parágrafos e links a preto */
+}
+
+
+</style>
+
+
   </main>
 
-<footer>
-  <p>&copy; VAR da Sorte. Todos os direitos reservados🍀</p>
-  <p style="color:#d4af37; font-weight:bold;">⚠️ Jogo seguro e responsável. Este site é apenas informativo e educativo, não oferecendo garantias de ganhos.</p>
-  <p style="font-weight:bold;">Se conhecer alguém com problemas de jogo, recomendamos que procure ajuda profissional.</p>
-
-</footer>
+  <footer>
+    <p>&copy;VAR da Sorte. Todos os direitos reservados 🍀</p>
+    <nav>
+      <a href="/sobre/">Sobre</a> |
+      <a href="/contacto/">Contacto</a> |
+      <a href="/privacidade/">Política de Privacidade</a>
+    </nav>
+    <p style="color:#d4af37; font-weight:bold; margin-top:1rem;">
+      ⚠️ Jogue de forma responsável. Este site é apenas informativo e educativo, não oferece garantias de ganhos.
+    </p>
+    <p style="font-weight:bold;">
+      Se conhecer alguém com problemas de jogo, procure ajuda profissional.
+    </p>
+  </footer>
 
 </body>
 </html>

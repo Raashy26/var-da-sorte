@@ -133,7 +133,7 @@ nav ul li a:hover {
 }
 
 .partner-card {
-  background-color: #ffffff;
+  background-color: #eafaf1;
   padding: 20px;
   border-radius: 12px;
   text-align: center;
@@ -430,7 +430,6 @@ footer p {
   }
 }
 
-
 /* =======================
    E-book Page Styles
    ======================= */
@@ -561,4 +560,83 @@ footer p {
   .ebook-cta h2 {
     font-size: 1.6rem;
   }
+}
+
+/* =======================
+   Paleta base Light e Dark
+   ======================= */
+:root {
+  --bg: #ffffff;   /* branco puro */
+  --text: #000000; /* preto forte */
+  --primary: #2d9c6a;
+  --gold: #d4af37;
+  --card-bg: #f9f9f9; /* leve cinza p/ destacar cards */
+}
+
+[data-theme="dark"] {
+  --bg: #000000;   /* preto puro */
+  --text: #ffffff; /* branco puro */
+  --primary: #2d9c6a;
+  --card-bg: #1a1a1a; /* cinza escuro para cards */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.match-card {
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+/* =======================
+   Backgrounds adaptáveis por tema
+   ======================= */
+.hero, 
+.daily-preview, 
+.partners, 
+.ebook-teaser, 
+.ebook-features, 
+.ebook-testimonials, 
+.ebook-cta, 
+.challenges {
+  background-color: var(--bg);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.game-card, 
+.game-card-small,
+.partner-card,
+.analysis-card,
+.feature-card,
+.testimonial-card,
+.analyses-sidebar {
+  background-color: var(--card-bg);
+  color: var(--text);
+}
+
+/* Se houver algum verde específico (hero da página ebook ou cabeçalho), mantemos */
+header, .hero-ebook, nav ul li a {
+  background-color: var(--primary);
+  color: #fff; /* branco sempre visível sobre verde */
+}
+
+/* Exceção: botão verde mantém texto branco */
+.challenge-card .btn-details {
+  background-color: #2d9c6a; /* verde que já tinhas */
+  color: #ffffff !important; /* texto branco */
+}
+
+/* Exceção: botão verde dentro dos bet-cards */
+.bet-card .btn-details,
+.bet-card .btn-primary {
+  background-color: #2d9c6a !important; /* verde */
+  color: #ffffff !important;            /* texto branco */
 }

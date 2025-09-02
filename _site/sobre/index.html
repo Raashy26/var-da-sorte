@@ -3,7 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sobre Nós - VAR da Sorte | VAR da Sorte</title>
+  <title>Sobre Nós - VAR da Sorte</title>
+  <meta name="description" content="Conhece o VAR da Sorte, o teu guia diário de apostas inteligentes. Estratégias, parcerias e dicas para apostas seguras." />
+
+  <!-- SEO Open Graph -->
+  <meta property="og:title" content="Sobre Nós - VAR da Sorte" />
+  <meta property="og:description" content="Conhece o VAR da Sorte, o teu guia diário de apostas inteligentes. Estratégias, parcerias e dicas para apostas seguras." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vardasorte.pt" />
+  <meta property="og:image" content="/images/cover.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sobre Nós - VAR da Sorte" />
+  <meta name="twitter:description" content="Conhece o VAR da Sorte, o teu guia diário de apostas inteligentes. Estratégias, parcerias e dicas para apostas seguras." />
+  <meta name="twitter:image" content="/images/cover.png" />
+
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
@@ -16,11 +31,29 @@
       <ul>
         <li><a href="/">Início</a></li>
         <li><a href="/aposta/">Apostas Diárias</a></li>
-        <li><a href="/analise/">Análises</a></li>
         <li><a href="/desafio/">Desafios</a></li>
         <li><a href="/ebook/">A Solução!</a></li>
         <li><a href="/sobre/">Sobre</a></li>
         <li><a href="/contacto/">Contacto</a></li>
+
+
+<body data-theme="light">
+
+<button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+
+<script>
+  const btn = document.getElementById("themeToggle");
+  const body = document.body;
+
+  btn.addEventListener("click", () => {
+    const currentTheme = body.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    body.setAttribute("data-theme", newTheme);
+    btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+  });
+</script>
+
+
       </ul>
     </nav>
   </header>
@@ -82,12 +115,20 @@
 
   </main>
 
-<footer>
-  <p>&copy; VAR da Sorte. Todos os direitos reservados🍀</p>
-  <p style="color:#d4af37; font-weight:bold;">⚠️ Jogo seguro e responsável. Este site é apenas informativo e educativo, não oferecendo garantias de ganhos.</p>
-  <p style="font-weight:bold;">Se conhecer alguém com problemas de jogo, recomendamos que procure ajuda profissional.</p>
-
-</footer>
+  <footer>
+    <p>&copy;VAR da Sorte. Todos os direitos reservados 🍀</p>
+    <nav>
+      <a href="/sobre/">Sobre</a> |
+      <a href="/contacto/">Contacto</a> |
+      <a href="/privacidade/">Política de Privacidade</a>
+    </nav>
+    <p style="color:#d4af37; font-weight:bold; margin-top:1rem;">
+      ⚠️ Jogue de forma responsável. Este site é apenas informativo e educativo, não oferece garantias de ganhos.
+    </p>
+    <p style="font-weight:bold;">
+      Se conhecer alguém com problemas de jogo, procure ajuda profissional.
+    </p>
+  </footer>
 
 </body>
 </html>

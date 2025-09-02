@@ -81,12 +81,12 @@ title: "Desafios de Apostas - VAR da Sorte"
   background-color: #eafaf1;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(9, 109, 31, 0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .challenge-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 .challenge-card h3 {
   color: #2d9c6a;
@@ -107,6 +107,17 @@ title: "Desafios de Apostas - VAR da Sorte"
     grid-template-columns: 1fr;
   }
 }
+
+/* Forçar cards de desafios a manter fundo e texto fixos */
+.challenge-card {
+  background-color: #eafaf1 !important; /* fundo claro */
+  color: #000000 !important;            /* texto preto */
+}
+
+.challenge-card * {
+  color: #000000 !important; /* força títulos, parágrafos e links a preto */
+}
+
 </style>
 
 <script>
