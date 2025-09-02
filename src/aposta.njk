@@ -6,21 +6,117 @@ title: "Prognósticos Diários - VAR da Sorte"
 <section class="page-header">
   <div class="container">
     <h1>📅 Prognósticos Diários</h1>
-    <p>As nossas apostas recomendadas para hoje, atualizadas diariamente.</p>
+    <p>As nossas apostas recomendadas para hoje, atualizadas diariamente com base em análises e estatísticas.</p>
   </div>
 </section>
 
-<section class="content container">
+<section class="filters container">
+  <div class="filter-buttons">
+    <button class="btn btn-secondary filter-btn" data-filter="all">Todas</button>
+    <button class="btn btn-secondary filter-btn" data-filter="favorites">Favoritas ⭐</button>
+    <button class="btn btn-secondary filter-btn" data-filter="high-odds">Odds Altas 🔥</button>
+  </div>
+</section>
+
+<section class="daily-bets container">
   {% if collections.apostas | length > 0 %}
-    <ul class="post-list">
+    <div class="bets-grid">
       {% for post in collections.apostas %}
-        <li>
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-          <small>({{ post.date | date("dd/MM/yyyy") }})</small>
-        </li>
+      <div class="bet-card" data-odds="{{ post.data.odds | default(0) }}">
+        <div class="bet-header">
+          <h3>{{ post.data.home }} vs {{ post.data.away }}</h3>
+          <span class="competition">{{ post.data.competition }}</span>
+        </div>
+        <div class="bet-details">
+          <p><strong>Data/Hora:</strong> {{ post.date | date("dd/MM/yyyy HH:mm") }}</p>
+          <p><strong>Tipo de Aposta:</strong> {{ post.data.tip | default("1X2") }}</p>
+          <p><strong>Odds:</strong>
+            1: {{ post.data.odds.home | default("-") }} |
+            X: {{ post.data.odds.draw | default("-") }} |
+            2: {{ post.data.odds.away | default("-") }}
+          </p>
+        </div>
+        <a href="{{ post.url }}" class="btn btn-primary btn-details">Ver Detalhes</a>
+      </div>
       {% endfor %}
-    </ul>
+    </div>
   {% else %}
     <p>⚠️ Em breve vais encontrar aqui os prognósticos do dia. Mantém-te atento!</p>
   {% endif %}
 </section>
+
+<section class="cta container">
+  <div style="text-align:center; margin-top:40px;">
+    <a href="/desafio/" class="btn btn-primary btn-lg">Participa nos Desafios Diários ⚡</a>
+  </div>
+</section>
+
+<!-- =======================
+     Styles específicos da página
+======================= -->
+<style>
+.filters {
+  margin: 40px 0 20px;
+  text-align: center;
+}
+.filter-buttons button {
+  margin: 0 10px 10px 0;
+}
+.bets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+.bet-card {
+  background-color: #eafaf1;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.bet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.bet-header h3 {
+  color: #2d9c6a;
+  margin-bottom: 5px;
+}
+.competition {
+  font-size: 0.9rem;
+  color: #217b53;
+}
+.bet-details p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+.btn-details {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .bets-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<!-- =======================
+     Script para filtros simples
+======================= -->
+<script>
+const filterButtons = document.querySelectorAll(".filter-btn");
+const betCards = document.querySelectorAll(".bet-card");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const filter = btn.dataset.filter;
+    betCards.forEach(card => {
+      card.style.display = "block";
+      if(filter === "favorites" && !card.dataset.favorite) card.style.display = "none";
+      if(filter === "high-odds" && parseFloat(card.dataset.odds) < 2.0) card.style.display = "none";
+    });
+  });
+});
+</script>

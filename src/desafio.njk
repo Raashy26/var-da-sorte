@@ -6,15 +6,122 @@ title: "Desafios de Apostas - VAR da Sorte"
 <section class="page-header">
   <div class="container">
     <h1>🔥 Desafios de Apostas</h1>
-    <p>Três desafios especiais para testares novas estratégias de apostas.</p>
+    <p>Três desafios especiais que podes acompanhar diariamente para testar estratégias e maximizar lucros.</p>
   </div>
 </section>
 
-<section class="content container">
-  <ul>
-    <li>⚡ <strong>Desafio do Comeback</strong> → Apostar em viradas.</li>
-    <li>⚡ <strong>Desafio dos Empates</strong> → Selecionar jogos propensos a empate.</li>
-    <li>⚡ <strong>Desafio Ambas Marcam / +2.5</strong> → Criar múltipla com odd 4+.</li>
-  </ul>
-  <p>⚠️ Em breve vais encontrar aqui os desafios diários com as nossas escolhas.</p>
+<section class="filters container">
+  <div class="filter-buttons">
+    <button class="btn btn-secondary filter-btn" data-filter="all">Todos</button>
+    <button class="btn btn-secondary filter-btn" data-filter="comeback">Desafio do Comeback ⚡</button>
+    <button class="btn btn-secondary filter-btn" data-filter="draw">Desafio dos Empates ⚡</button>
+    <button class="btn btn-secondary filter-btn" data-filter="over25">Ambas Marcam / +2.5 ⚡</button>
+  </div>
 </section>
+
+<section class="daily-challenges container">
+  {% set desafios = [
+    {
+      type: "comeback",
+      title: "Desafio do Comeback",
+      description: "Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.",
+      odds: "Variável",
+      link: "/desafios/comeback"
+    },
+    {
+      type: "draw",
+      title: "Desafio dos Empates",
+      description: "Escolher jogos propensos a empate, individuais e múltiplas.",
+      odds: "Variável",
+      link: "/desafios/draw"
+    },
+    {
+      type: "over25",
+      title: "Desafio Ambas Marcam / +2.5",
+      description: "Criar múltipla com odd total ≥4.",
+      odds: "≥4",
+      link: "/desafios/over25"
+    }
+  ] %}
+
+  <div class="challenges-grid">
+    {% for desafio in desafios %}
+    <div class="challenge-card" data-type="{{ desafio.type }}">
+      <h3>{{ desafio.title }}</h3>
+      <p>{{ desafio.description }}</p>
+      <p><strong>Odd mínima:</strong> {{ desafio.odds }}</p>
+      <a href="{{ desafio.link }}" class="btn btn-primary btn-details">Ver Detalhes</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="cta container">
+  <div style="text-align:center; margin-top:40px;">
+    <a href="/aposta/" class="btn btn-primary btn-lg">Ver Apostas Diárias 📅</a>
+  </div>
+</section>
+
+<style>
+.filters {
+  margin: 40px 0 20px;
+  text-align: center;
+}
+.filter-buttons button {
+  margin: 0 10px 10px 0;
+}
+
+.challenges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.challenge-card {
+  background-color: #eafaf1;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.challenge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+.challenge-card h3 {
+  color: #2d9c6a;
+  margin-bottom: 10px;
+}
+.challenge-card p {
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+.btn-details {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .challenges-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<script>
+const filterButtons = document.querySelectorAll(".filter-btn");
+const challengeCards = document.querySelectorAll(".challenge-card");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const filter = btn.dataset.filter;
+    challengeCards.forEach(card => {
+      card.style.display = "block";
+      if(filter !== "all" && card.dataset.type !== filter) {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+</script>

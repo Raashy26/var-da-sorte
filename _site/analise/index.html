@@ -30,13 +30,74 @@
 <section class="page-header">
   <div class="container">
     <h1>📊 Análises de Jogos</h1>
-    <p>Análises detalhadas com base em estatísticas e forma das equipas.</p>
+    <p>Análises detalhadas com base em estatísticas, forma das equipas e jogos mais valiosos do dia.</p>
   </div>
 </section>
 
-<section class="content container">
-  <p>⚠️ Em breve vais encontrar aqui análises aprofundadas dos principais jogos do dia.</p>
+<section class="game-analyses container">
+  
+    <p>⚠️ Em breve vais encontrar análises detalhadas dos jogos mais valiosos do dia. Mantém-te atento!</p>
+  
 </section>
+
+<style>
+.analyses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.analysis-card {
+  background-color: #f0f9f4;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.analysis-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.analysis-card h3, .analysis-card .club-name {
+  color: #2d9c6a;
+  font-weight: bold;
+}
+
+.game-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.vs {
+  color: #217b53;
+  font-weight: bold;
+}
+
+.competition {
+  font-size: 0.85rem;
+  color: #217b53;
+  margin-bottom: 10px;
+}
+
+.stats p {
+  font-size: 0.85rem;
+  margin: 5px 0;
+}
+
+.btn-details {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+</style>
+
+<script>
+// Futuro: aqui podemos adicionar filtros por competição ou destaques
+</script>
 
   </main>
 
