@@ -1,30 +1,37 @@
-const fetch = require("node-fetch");
 
-module.exports = async function () {
-  const apiKey = "fa07e5a83c500c77b2b45c04ae70cc46";
-  const url = `https://api.the-odds-api.com/v4/sports/soccer_epl/odds/?regions=eu&markets=h2h&oddsFormat=decimal&apiKey=${apiKey}`;
+// src/data/jogosDoDia.js
+import fetch from "node-fetch";
+
+export default async function () {
+  const API_KEY = processfa07e5a83c500c77b2b45c04ae70cc46.FOOTBALL_API_KEY; // mete a tua key no .env
+  const today = new Date().toISOString().split("T")[0];
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
-    const data = await response.json();
+    const res = await fetch(
+      `https://api.football-data.org/v4/matches?competitions=PL&dateFrom=${today}&dateTo=${today}`,
+      {
+        headers: { "X-Auth-Token": API_KEY },
+      }
+    );
 
-    // Normalizar dados
-    return data.map((match) => {
-      const market = match.bookmakers[0]?.markets[0]?.outcomes || [];
-      return {
-        home: match.home_team,
-        away: match.away_team,
-        competition: match.sport_title,
-        odds: {
-          home: market.find((o) => o.name === match.home_team)?.price || "-",
-          draw: market.find((o) => o.name === "Draw")?.price || "-",
-          away: market.find((o) => o.name === match.away_team)?.price || "-",
-        },
-      };
-    });
+    const data = await res.json();
+
+    if (!data.matches || !data.matches.length) {
+      return [];
+    }
+
+    return data.matches.map((match) => ({
+      home: match.homeTeam.name,
+      away: match.awayTeam.name,
+      competition: "Premier League",
+      odds: {
+        home: match.odds?.homeWin || "-",
+        draw: match.odds?.draw || "-",
+        away: match.odds?.awayWin || "-",
+      },
+    }));
   } catch (err) {
-    console.error("Erro ao buscar Odds API:", err);
+    console.error("Erro ao buscar jogos:", err);
     return [];
   }
-};
+}
