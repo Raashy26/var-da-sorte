@@ -42,6 +42,13 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Filtro map
+eleventyConfig.addFilter("map", function(array, key) {
+  if (!Array.isArray(array)) return [];
+  return array.map(item => item[key]);
+});
+
+
   // =========================
   // Coleções
   // =========================
