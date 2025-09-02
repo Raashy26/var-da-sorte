@@ -17,31 +17,33 @@ module.exports = async function () {
 
   try {
     const res = await fetch(
-      `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`,
+      `https://v3.football.api-sports.io/fixtures?from=${dateFrom}&to=${dateTo}&timezone=Europe/Lisbon`,
       {
-        headers: { "X-Auth-Token": API_KEY },
+        headers: {
+          "x-apisports-key": API_KEY,
+        },
       }
     );
 
     const data = await res.json();
 
-    if (!data.matches || !data.matches.length) {
+    if (!data.response || !data.response.length) {
       console.warn("⚠️ Sem jogos encontrados para os próximos dias.");
       return [];
     }
 
-    // Mapear os primeiros 10 jogos
-    return data.matches
+    // Mapear até 10 jogos
+    return data.response
       .slice(0, 10)
-      .map((match) => ({
-        home: match.homeTeam.name,
-        away: match.awayTeam.name,
-        competition: match.competition?.name || "Competição Desconhecida",
-        utcDate: match.utcDate,
+      .map((fixture) => ({
+        home: fixture.teams.home.name,
+        away: fixture.teams.away.name,
+        competition: fixture.league.name || "Competição Desconhecida",
+        date: fixture.fixture.date,
         odds: {
-          home: match.odds?.homeWin || "-",
-          draw: match.odds?.draw || "-",
-          away: match.odds?.awayWin || "-",
+          home: fixture.odds?.[0]?.bookmakers?.[0]?.bets?.[0]?.values?.[0]?.odd || "-",
+          draw: fixture.odds?.[0]?.bookmakers?.[0]?.bets?.[0]?.values?.[1]?.odd || "-",
+          away: fixture.odds?.[0]?.bookmakers?.[0]?.bets?.[0]?.values?.[2]?.odd || "-",
         },
       }));
   } catch (err) {
