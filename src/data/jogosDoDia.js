@@ -1,9 +1,8 @@
 
-// src/data/jogosDoDia.js
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
-export default async function () {
-  const API_KEY = processfa07e5a83c500c77b2b45c04ae70cc46.FOOTBALL_API_KEY; // mete a tua key no .env
+module.exports = async function () {
+  const API_KEY = processfa07e5a83c500c77b2b45c04ae70cc46.FOOTBALL_API_KEY; // mete no .env
   const today = new Date().toISOString().split("T")[0];
 
   try {
@@ -34,4 +33,4 @@ export default async function () {
     console.error("Erro ao buscar jogos:", err);
     return [];
   }
-}
+};
