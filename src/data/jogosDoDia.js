@@ -11,14 +11,10 @@ module.exports = async function () {
   const today = new Date().toISOString().split("T")[0];
 
   try {
-    // =====================
-    // 1. Buscar Fixtures
-    // =====================
+    // 1. Fixtures
     const resFixtures = await fetch(
       `https://v3.football.api-sports.io/fixtures?date=${today}`,
-      {
-        headers: { "x-apisports-key": API_KEY },
-      }
+      { headers: { "x-apisports-key": API_KEY } }
     );
     const fixturesData = await resFixtures.json();
 
@@ -27,22 +23,21 @@ module.exports = async function () {
       return [];
     }
 
-    // Eliminar duplicados por fixture.id
+    // 🔑 eliminar duplicados pelo par (home+away+hora)
     const seen = new Set();
     const fixtures = fixturesData.response.filter((f) => {
-      if (seen.has(f.fixture.id)) return false;
-      seen.add(f.fixture.id);
+      const key = `${f.teams.home.name}-${f.teams.away.name}-${new Date(
+        f.fixture.date
+      ).toISOString()}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
       return true;
     });
 
-    // =====================
-    // 2. Buscar Odds
-    // =====================
+    // 2. Odds
     const resOdds = await fetch(
       `https://v3.football.api-sports.io/odds?date=${today}`,
-      {
-        headers: { "x-apisports-key": API_KEY },
-      }
+      { headers: { "x-apisports-key": API_KEY } }
     );
     const oddsData = await resOdds.json();
 
@@ -73,17 +68,19 @@ module.exports = async function () {
       }
     }
 
-    // =====================
-    // 3. Juntar Fixtures + Odds
-    // =====================
+    // 3. Merge Fixtures + Odds
     const jogos = fixtures.slice(0, 10).map((match) => {
       return {
         id: match.fixture.id,
         home: match.teams.home.name,
         away: match.teams.away.name,
         competition: match.league.name,
-        date: new Date(match.fixture.date), // ✅ agora sempre com hora certa
-        odds: oddsByFixture[match.fixture.id] || { home: "-", draw: "-", away: "-" },
+        date: new Date(match.fixture.date),
+        odds: oddsByFixture[match.fixture.id] || {
+          home: "-",
+          draw: "-",
+          away: "-",
+        },
       };
     });
 
