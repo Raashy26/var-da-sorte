@@ -1,8 +1,9 @@
 
 const fetch = require("node-fetch");
+const API_KEY = fa07e5a83c500c77b2b45c04ae70cc46;
 
 module.exports = async function () {
-  const API_KEY = processfa07e5a83c500c77b2b45c04ae70cc46.FOOTBALL_API_KEY; // mete no .env
+  const API_KEY = process.env.FOOTBALL_API_KEY; // mete no .env
   const today = new Date().toISOString().split("T")[0];
 
   try {
