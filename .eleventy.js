@@ -1,30 +1,20 @@
 const markdownIt = require("markdown-it");
 const markdownItAttrs = require("markdown-it-attrs");
 const { DateTime } = require("luxon");
+const jogosDoDia = require("./src/data/jogosDoDia.js");
+require("dotenv").config();
 
 module.exports = function (eleventyConfig) {
+  // =========================
   // Copiar ficheiros estáticos
+  // =========================
   eleventyConfig.addPassthroughCopy({ "src/images": "images" });
   eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
 
-module.exports = function(eleventyConfig) {
-  // Copiar imagens e assets para o output
-  eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy("src/css");
-
-  return {
-    dir: {
-      input: "src",
-      includes: "_includes",
-      data: "_data",
-      output: "_site"
-    }
-  };
-};
-
-
+  // =========================
   // Markdown personalizado
+  // =========================
   const markdownLib = markdownIt({
     html: true,
     breaks: true,
@@ -33,18 +23,38 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary("md", markdownLib);
 
-  // Filtro para datas (corrige o erro do base.njk)
+  // =========================
+  // Filtro para datas
+  // =========================
   eleventyConfig.addFilter("date", (dateObj, format = "dd LLL yyyy") => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(format);
   });
 
-eleventyConfig.addCollection("apostas", function (collectionApi) {
-  return collectionApi.getFilteredByTag("apostas").sort((a, b) => {
-    return b.date - a.date; // ordem decrescente (mais recente primeiro)
+  // =========================
+  // Coleções
+  // =========================
+  eleventyConfig.addCollection("apostas", function (collectionApi) {
+    return collectionApi.getFilteredByTag("apostas").sort((a, b) => {
+      return b.date - a.date; // ordem decrescente (mais recente primeiro)
+    });
   });
-});
 
+  // =========================
+  // Dados globais - Jogos do dia
+  // =========================
+  eleventyConfig.addGlobalData("jogosDoDia", async () => {
+    try {
+      const jogos = await jogosDoDia();
+      return jogos.slice(0, 10); // limita a 10 jogos
+    } catch (err) {
+      console.error("❌ Erro ao carregar jogos do dia:", err);
+      return [];
+    }
+  });
 
+  // =========================
+  // Configurações do Eleventy
+  // =========================
   return {
     dir: {
       input: "src",
