@@ -640,3 +640,32 @@ header, .hero-ebook, nav ul li a {
   background-color: #2d9c6a !important; /* verde */
   color: #ffffff !important;            /* texto branco */
 }
+
+/* Botão Dark/Light Mode */
+.theme-toggle {
+  background-color: #000000;   /* verde escuro igual aos botões principais */
+  color: #ffffff;             /* texto branco */
+  border: none;
+  border-radius: 8px;         /* cantos arredondados */
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 15px;          /* afastar do menu */
+}
+
+/* Hover bonito */
+.theme-toggle:hover {
+  background-color: #3d413f;  /* verde um pouco mais escuro */
+  transform: translateY(-2px);
+}
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin: 10px auto;
+    display: block;
+  }
+}
+
