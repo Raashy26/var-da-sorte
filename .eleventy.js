@@ -67,3 +67,17 @@ module.exports = function (eleventyConfig) {
     templateFormats: ["html", "md", "njk"],
   };
 };
+
+
+// No teu .eleventy.js
+eleventyConfig.addFilter("unique", function(array, key) {
+  if (!Array.isArray(array)) return array;
+  const seen = new Set();
+  return array.filter(item => {
+    const val = key ? item[key] : item;
+    if (seen.has(val)) return false;
+    seen.add(val);
+    return true;
+  });
+});
+
