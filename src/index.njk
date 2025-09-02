@@ -49,7 +49,7 @@ title: "VAR da Sorte - Apostas Inteligentes"
               <span class="club-name">{{ jogo.away }}</span>
             </div>
             <p class="competition">{{ jogo.competition }}</p>
-            <p>Hora: {{ jogo.date | date("HH:mm") }}</p>
+            <p>Hora: {{ jogo.utcDate | date("HH:mm") }}</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> {{ jogo.odds.home }}</span>
               <span class="odd"><strong>X:</strong> {{ jogo.odds.draw }}</span>
