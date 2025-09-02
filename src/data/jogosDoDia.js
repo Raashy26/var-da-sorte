@@ -12,11 +12,12 @@ module.exports = async function () {
 
   try {
     const res = await fetch(
-      `https://api.football-data.org/v4/matches?competitions=PL&dateFrom=${today}&dateTo=${today}`,
-      {
-        headers: { "X-Auth-Token": API_KEY },
-      }
-    );
+  `https://api.football-data.org/v4/matches?dateFrom=${today}&dateTo=${today}`,
+  {
+    headers: { "X-Auth-Token": API_KEY },
+  }
+);
+
 
     const data = await res.json();
 
