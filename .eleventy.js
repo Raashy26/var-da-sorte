@@ -56,18 +56,26 @@ eleventyConfig.addFilter("map", function(array, key) {
     return collectionApi.getFilteredByTag("apostas").sort((a, b) => b.date - a.date);
   });
 
-  // =========================
-  // Dados globais - Jogos do dia
-  // =========================
-  eleventyConfig.addGlobalData("jogosDoDia", async () => {
-    try {
-      const jogos = await jogosDoDia();
-      return jogos.slice(0, 10); // limita a 10 jogos
-    } catch (err) {
-      console.error("❌ Erro ao carregar jogos do dia:", err);
-      return [];
-    }
-  });
+// =========================
+// Dados globais - Jogos do dia
+// =========================
+eleventyConfig.addGlobalData("jogosDoDia", async () => {
+  try {
+    const jogos = await jogosDoDia();
+
+    // ⚡ Garantir que a data é um objeto Date
+    const jogosComData = jogos.map(jogo => ({
+      ...jogo,
+      date: new Date(jogo.utcDate) // substitui utcDate por objeto Date
+    }));
+
+    return jogosComData.slice(0, 10); // limita a 10 jogos
+  } catch (err) {
+    console.error("❌ Erro ao carregar jogos do dia:", err);
+    return [];
+  }
+});
+
 
   // =========================
   // Configurações do Eleventy
