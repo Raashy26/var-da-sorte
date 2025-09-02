@@ -24,19 +24,29 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setLibrary("md", markdownLib);
 
   // =========================
-  // Filtro para datas
+  // Filtros
   // =========================
   eleventyConfig.addFilter("date", (dateObj, format = "dd LLL yyyy") => {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(format);
+  });
+
+  // Filtro unique
+  eleventyConfig.addFilter("unique", function(array, key) {
+    if (!Array.isArray(array)) return array;
+    const seen = new Set();
+    return array.filter(item => {
+      const val = key ? item[key] : item;
+      if (seen.has(val)) return false;
+      seen.add(val);
+      return true;
+    });
   });
 
   // =========================
   // Coleções
   // =========================
   eleventyConfig.addCollection("apostas", function (collectionApi) {
-    return collectionApi.getFilteredByTag("apostas").sort((a, b) => {
-      return b.date - a.date; // ordem decrescente (mais recente primeiro)
-    });
+    return collectionApi.getFilteredByTag("apostas").sort((a, b) => b.date - a.date);
   });
 
   // =========================
@@ -67,17 +77,3 @@ module.exports = function (eleventyConfig) {
     templateFormats: ["html", "md", "njk"],
   };
 };
-
-
-// No teu .eleventy.js
-eleventyConfig.addFilter("unique", function(array, key) {
-  if (!Array.isArray(array)) return array;
-  const seen = new Set();
-  return array.filter(item => {
-    const val = key ? item[key] : item;
-    if (seen.has(val)) return false;
-    seen.add(val);
-    return true;
-  });
-});
-
