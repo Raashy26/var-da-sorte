@@ -8,38 +8,41 @@ module.exports = async function () {
     return [];
   }
 
-  // Data de hoje
-  const today = new Date();
-  const dateFrom = today.toISOString().split("T")[0];
-  const dateTo = dateFrom; // só hoje
+  const today = new Date().toISOString().split("T")[0];
 
   try {
     const res = await fetch(
-      `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`,
+      `https://v3.football.api-sports.io/fixtures?date=${today}`,
       {
-        headers: { "X-Auth-Token": API_KEY },
+        headers: { "x-apisports-key": API_KEY },
       }
     );
 
     const data = await res.json();
 
-    if (!data.matches || !data.matches.length) {
-      console.warn("⚠️ Sem jogos hoje.");
+    if (!data.response || !data.response.length) {
+      console.warn("⚠️ Sem jogos encontrados para hoje.");
       return [];
     }
 
-    // Mapear até 10 jogos
-    return data.matches.slice(0, 10).map((match) => ({
-      home: match.homeTeam.name,
-      away: match.awayTeam.name,
-      competition: match.competition?.name || "Competição Desconhecida",
-      date: match.utcDate,
-      odds: {
-        home: match.odds?.homeWin || "-",
-        draw: match.odds?.draw || "-",
-        away: match.odds?.awayWin || "-",
-      },
-    }));
+    return data.response.slice(0, 20).map((match) => {
+      const oddsObj = match.odds ? match.odds[0].bookmakers[0].bets.find(b => b.name === "Match Winner") : {};
+      const home = oddsObj?.values?.find(v => v.value === "Home")?.odd || "-";
+      const draw = oddsObj?.values?.find(v => v.value === "Draw")?.odd || "-";
+      const away = oddsObj?.values?.find(v => v.value === "Away")?.odd || "-";
+
+      const oddsTotal =
+        home !== "-" && draw !== "-" && away !== "-" ? parseFloat(home) + parseFloat(draw) + parseFloat(away) : 0;
+
+      return {
+        home: match.teams.home.name,
+        away: match.teams.away.name,
+        competition: match.league.name,
+        utcDate: match.fixture.date,
+        odds: { home, draw, away },
+        oddsTotal,
+      };
+    });
   } catch (err) {
     console.error("❌ Erro ao buscar jogos:", err);
     return [];

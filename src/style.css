@@ -240,8 +240,6 @@ nav ul li a:hover {
   color: #000000;
 }
 
-
-
 .games-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -325,6 +323,96 @@ footer p {
 }
 
 /* =======================
+   Analises Section
+   ======================= */
+.analyses-container {
+  padding: 60px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.analyses-grid-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.analyses-grid-main {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.analysis-card {
+  background-color: #eafaf1;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.analysis-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.top-game {
+  border: 2px solid #2d9c6a;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #ff5722;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.game-date {
+  font-size: 0.9rem;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+.stats {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.btn-details {
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* Sidebar */
+.analyses-sidebar {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  max-height: fit-content;
+}
+
+.analyses-sidebar h3 {
+  color: #2d9c6a;
+  margin-bottom: 15px;
+}
+
+.analyses-sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.analyses-sidebar ul li {
+  padding: 5px 0;
+}
+
+/* =======================
    Responsividade
    ======================= */
 @media (max-width: 768px) {
@@ -335,5 +423,142 @@ footer p {
 
   .games-grid, .partners-grid {
     grid-template-columns: 1fr;
+  }
+
+  .analyses-grid-wrapper {
+    flex-direction: column;
+  }
+}
+
+
+/* =======================
+   E-book Page Styles
+   ======================= */
+.hero-ebook {
+  background-color: #2d9c6a;
+  color: #fff;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.hero-ebook h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.hero-ebook p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-ebook {
+  font-size: 1.2rem;
+  padding: 15px 35px;
+}
+
+.ebook-features {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+}
+
+.ebook-features h2 {
+  text-align: center;
+  color: #2d9c6a;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.feature-card h3 {
+  color: #2d9c6a;
+  margin-bottom: 15px;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+}
+
+.ebook-testimonials {
+  padding: 60px 20px;
+  background-color: #eafaf1;
+}
+
+.ebook-testimonials h2 {
+  text-align: center;
+  color: #2d9c6a;
+  margin-bottom: 40px;
+  font-size: 2rem;
+}
+
+.testimonial-card {
+  max-width: 800px;
+  margin: 0 auto 25px auto;
+  background-color: #ffffff;
+  padding: 20px;
+  border-left: 5px solid #2d9c6a;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  font-style: italic;
+}
+
+.ebook-cta {
+  background-color: #ff5722;
+  color: #ffffff;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.ebook-cta h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+.btn-ebook-large {
+  font-size: 1.3rem;
+  padding: 15px 40px;
+  background-color: #ffffff;
+  color: #ff5722;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.btn-ebook-large:hover {
+  background-color: #f1f1f1;
+  color: #ff5722;
+  transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hero-ebook h1 {
+    font-size: 2rem;
+  }
+
+  .ebook-cta h2 {
+    font-size: 1.6rem;
   }
 }
