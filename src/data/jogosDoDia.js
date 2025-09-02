@@ -8,44 +8,38 @@ module.exports = async function () {
     return [];
   }
 
-  // Datas: hoje até 7 dias à frente
+  // Data de hoje
   const today = new Date();
   const dateFrom = today.toISOString().split("T")[0];
-  const future = new Date();
-  future.setDate(today.getDate() + 7);
-  const dateTo = future.toISOString().split("T")[0];
+  const dateTo = dateFrom; // só hoje
 
   try {
     const res = await fetch(
-      `https://v3.football.api-sports.io/fixtures?from=${dateFrom}&to=${dateTo}&timezone=Europe/Lisbon`,
+      `https://api.football-data.org/v4/matches?dateFrom=${dateFrom}&dateTo=${dateTo}`,
       {
-        headers: {
-          "x-apisports-key": API_KEY,
-        },
+        headers: { "X-Auth-Token": API_KEY },
       }
     );
 
     const data = await res.json();
 
-    if (!data.response || !data.response.length) {
-      console.warn("⚠️ Sem jogos encontrados para os próximos dias.");
+    if (!data.matches || !data.matches.length) {
+      console.warn("⚠️ Sem jogos hoje.");
       return [];
     }
 
     // Mapear até 10 jogos
-    return data.response
-      .slice(0, 10)
-      .map((fixture) => ({
-        home: fixture.teams.home.name,
-        away: fixture.teams.away.name,
-        competition: fixture.league.name || "Competição Desconhecida",
-        date: fixture.fixture.date,
-        odds: {
-          home: fixture.odds?.[0]?.bookmakers?.[0]?.bets?.[0]?.values?.[0]?.odd || "-",
-          draw: fixture.odds?.[0]?.bookmakers?.[0]?.bets?.[0]?.values?.[1]?.odd || "-",
-          away: fixture.odds?.[0]?.bookmakers?.[0]?.bets?.[0]?.values?.[2]?.odd || "-",
-        },
-      }));
+    return data.matches.slice(0, 10).map((match) => ({
+      home: match.homeTeam.name,
+      away: match.awayTeam.name,
+      competition: match.competition?.name || "Competição Desconhecida",
+      date: match.utcDate,
+      odds: {
+        home: match.odds?.homeWin || "-",
+        draw: match.odds?.draw || "-",
+        away: match.odds?.awayWin || "-",
+      },
+    }));
   } catch (err) {
     console.error("❌ Erro ao buscar jogos:", err);
     return [];
