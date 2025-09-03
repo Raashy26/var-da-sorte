@@ -123,3 +123,13 @@ filterButtons.forEach(btn => {
   });
 });
 </script>
+
+{# --- JSON-LD para Aposta --- #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "{{ title or 'VAR da Sorte' }}",
+  "url": "{{ site.url }}{{ page.url }}"
+}
+</script>

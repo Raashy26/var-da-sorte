@@ -86,3 +86,23 @@ title: "VAR da Sorte - Apostas Inteligentes"
     <p>Em breve vou lançar o meu e-book exclusivo sobre gestão de banca, estratégias de aposta e como lucrar PARA SEMPRE com apostas desportivas. Fica atento e não percas!</p>
   </div>
 </section>
+
+{# --- JSON-LD para a Home --- #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}{{ site.logo }}"
+}
+</script>
