@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="post-desafio container">
+  <header style="text-align:center; margin-bottom:20px;">
+    <h1>{{ title }}</h1>
+    <p class="post-meta">
+      ⚡ Desafio publicado em {{ date | date("dd/MM/yyyy") }}
+    </p>
+  </header>
+
+  <section class="post-content">
+    {{ content | safe }}
+  </section>
+
+  <div style="text-align:center; margin-top:40px;">
+    <a href="/desafio/" class="btn btn-secondary">⬅️ Voltar aos Desafios</a>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title }}",
+  "datePublished": "{{ date | date('yyyy-LL-dd') }}",
+  "dateModified": "{{ date | date('yyyy-LL-dd') }}",
+  "author": { "@type": "Organization", "name": "{{ site.name }}" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "logo": { "@type": "ImageObject", "url": "{{ site.url }}{{ site.logo }}" }
+  },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.url }}{{ page.url }}" }
+}
+</script>
+
+<style>
+.post-desafio h1 { color:#c92d2d; margin-bottom:10px; }
+.post-meta { color:#555; font-size:0.9rem; }
+.post-content { margin-top:20px; line-height:1.6; }
+</style>
