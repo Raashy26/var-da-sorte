@@ -692,3 +692,58 @@ header, .hero-ebook, nav ul li a {
   }
 }
 
+/* Partner cards (parcerias) */
+.partner-card {
+  background-color: #eafaf1 !important; /* verde clarinho */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(9, 109, 31, 0.05);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #000000 !important; /* texto sempre preto */
+}
+
+.partner-card * {
+  color: #000000 !important;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Game cards (Jogos do Dia) */
+.game-card-small {
+  background-color: #eafaf1 !important; /* verde clarinho */
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(9, 109, 31, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: #000000 !important;
+}
+
+.game-card-small * {
+  color: #000000 !important;
+}
+
+.game-card-small:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Botões dentro destes cards */
+.partner-card .btn-secondary,
+.game-card-small .btn-primary {
+  background-color: #2d9c6a !important; /* verde escuro */
+  color: #ffffff !important;            /* texto branco */
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.partner-card .btn-secondary:hover,
+.game-card-small .btn-primary:hover {
+  background-color: #218c5a !important; /* verde mais escuro */
+}

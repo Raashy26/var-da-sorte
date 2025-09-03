@@ -4,10 +4,10 @@ title: "Prognósticos Diários - VAR da Sorte"
 ---
 
 <section class="page-header">
-  <div class="container"><div style="text-align:center; margin-top:40px;">
+  <div class="container" style="text-align:center; margin-top:40px;">
     <h1>📅 Prognósticos Diários</h1>
     <p>As nossas apostas recomendadas para hoje, atualizadas diariamente com base em análises e estatísticas.</p>
-  </div></div>
+  </div>
 </section>
 
 <section class="filters container">
@@ -19,10 +19,13 @@ title: "Prognósticos Diários - VAR da Sorte"
 </section>
 
 <section class="daily-bets container">
-  {% if collections.apostas | length > 0 %}
+  {% set hoje = "now" | date("yyyy-MM-dd") %}
+  {% set apostasHoje = collections.apostas | selectattr("date", "stringstartswith", hoje) | list %}
+  
+  {% if apostasHoje | length > 0 %}
     <div class="bets-grid">
-      {% for post in collections.apostas %}
-      <div class="bet-card" data-odds="{{ post.data.odds | default(0) }}">
+      {% for post in apostasHoje %}
+      <div class="bet-card" data-odds="{{ post.data.odds | default(0) }}" data-favorite="{{ post.data.favorite | default(false) }}">
         <div class="bet-header">
           <h3>{{ post.data.home }} vs {{ post.data.away }}</h3>
           <span class="competition">{{ post.data.competition }}</span>
@@ -41,8 +44,22 @@ title: "Prognósticos Diários - VAR da Sorte"
       {% endfor %}
     </div>
   {% else %}
-    <p>⚠️ Em breve vais encontrar aqui os prognósticos do dia. Mantém-te atento!</p>
+    <p style="text-align:center; margin-top:20px;">⚠️ Em breve vais encontrar aqui os prognósticos do dia. Mantém-te atento!</p>
   {% endif %}
+</section>
+
+<section class="historical-bets container" style="margin-top:50px;">
+  <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 30 dias</h2>
+  <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; margin-top:20px;">
+    {% set hojeData = "now" | date("yyyy-MM-dd") %}
+    {% for i in range(1,31) %}
+      {% set dia = hojeData | date_modify("-" ~ i ~ " days") | date("yyyy-MM-dd") %}
+      {% set apostasDia = collections.apostas | selectattr("date", "stringstartswith", dia) | list %}
+      {% if apostasDia | length > 0 %}
+        <a href="/aposta/{{ dia }}/" class="btn btn-secondary" style="display:block; text-align:center;">{{ dia | date("dd/MM") }}</a>
+      {% endif %}
+    {% endfor %}
+  </div>
 </section>
 
 <section class="cta container">
@@ -51,28 +68,21 @@ title: "Prognósticos Diários - VAR da Sorte"
   </div>
 </section>
 
-<!-- =======================
-     Styles específicos da página
-======================= -->
 <style>
-.filters {
-  margin: 40px 0 20px;
-  text-align: center;
-}
-.filter-buttons button {
-  margin: 0 10px 10px 0;
-}
-.bets-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+/* Cards e histórico */
+.bets-grid, .history-grid {
+  margin-top: 20px;
 }
 .bet-card {
-  background-color: #eafaf1;
+  background-color: #eafaf1 !important;
+  color: #000000 !important;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
+}
+.bet-card * {
+  color: #000000 !important;
 }
 .bet-card:hover {
   transform: translateY(-5px);
@@ -80,43 +90,51 @@ title: "Prognósticos Diários - VAR da Sorte"
 }
 .bet-header h3 {
   color: #2d9c6a;
-  margin-bottom: 5px;
+  margin-bottom:5px;
 }
 .competition {
-  font-size: 0.9rem;
-  color: #217b53;
+  font-size:0.9rem;
+  color:#217b53;
 }
 .bet-details p {
-  font-size: 0.9rem;
-  margin: 5px 0;
+  font-size:0.9rem;
+  margin:5px 0;
 }
-.btn-details {
-  display: block;
-  margin-top: 10px;
-  text-align: center;
+.btn-details, .history-grid .btn-secondary {
+  background-color: #2d9c6a !important;
+  color:#ffffff !important;
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  font-weight:bold;
+  text-align:center;
+  transition: background-color 0.3s;
 }
-@media (max-width: 768px) {
-  .bets-grid {
-    grid-template-columns: 1fr;
+.btn-details:hover, .history-grid .btn-secondary:hover {
+  background-color: #218c5a !important;
+}
+
+/* Filtros */
+.filters {
+  margin:40px 0 20px;
+  text-align:center;
+}
+.filter-buttons button {
+  margin:0 10px 10px 0;
+}
+
+@media(max-width:768px){
+  .bets-grid{
+    grid-template-columns:1fr;
+  }
+  .history-grid {
+    grid-template-columns:1fr 1fr;
   }
 }
-
-/* Forçar cards de bets a manter fundo e texto fixos */
-.bet-card {
-  background-color: #eafaf1 !important; /* fundo claro */
-  color: #000000 !important;            /* texto preto */
-}
-
-.bet-card * {
-  color: #000000 !important; /* força títulos, parágrafos e links a preto */
-}
-
 </style>
 
-<!-- =======================
-     Script para filtros simples
-======================= -->
 <script>
+/* Filtros simples */
 const filterButtons = document.querySelectorAll(".filter-btn");
 const betCards = document.querySelectorAll(".bet-card");
 
