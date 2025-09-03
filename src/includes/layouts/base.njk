@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="{{ site.lang or 'pt' }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title or "VAR da Sorte" }}</title>
-  <meta name="description" content="{{ description or 'Prognósticos, apostas desportivas e análises diárias de futebol.' }}" />
 
-  <!-- SEO Open Graph -->
-  <meta property="og:title" content="{{ title or 'VAR da Sorte' }}" />
-  <meta property="og:description" content="{{ description or 'Prognósticos e apostas desportivas diárias.' }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vardasorte.pt" />
-  <meta property="og:image" content="/images/cover.png" />
+  {# --- Defaults dinâmicos --- #}
+  {% set siteUrl = site.url or "https://vardasorte.pt" %}
+  {% set pageTitle = title or site.name %}
+  {% set pageDesc = description or site.description %}
+  {% set pageOgImage = ogImage or site.ogImage or "/images/cover.png" %}
+  {% set canonicalUrl = siteUrl + page.url %}
+  {% if noindex %}{% set robotsMeta = "noindex,nofollow" %}{% else %}{% set robotsMeta = "index,follow" %}{% endif %}
+
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  <meta name="keywords" content="{{ keywords or site.keywords }}">
+  <meta name="author" content="{{ author or site.author }}">
+  <link rel="canonical" href="{{ canonicalUrl }}">
+
+  <meta name="robots" content="{{ robotsMeta }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ pageDesc }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:url" content="{{ canonicalUrl }}">
+  <meta property="og:image" content="{{ pageOgImage }}">
+  <meta property="og:locale" content="{{ site.lang or 'pt_PT' }}">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ title or 'VAR da Sorte' }}" />
-  <meta name="twitter:description" content="{{ description or 'Apostas desportivas, análises e prognósticos de futebol.' }}" />
-  <meta name="twitter:image" content="/images/cover.png" />
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{ pageDesc }}">
+  <meta name="twitter:image" content="{{ pageOgImage }}">
+  <meta name="twitter:site" content="{{ site.twitter }}">
 
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body data-theme="light">
 
   <header>
     <h1>⚽🍀 VAR da Sorte</h1>
@@ -56,6 +72,7 @@
 
       </ul>
     </nav>
+
   </header>
 
   <main>
@@ -63,7 +80,7 @@
   </main>
 
   <footer>
-    <p>&copy;VAR da Sorte. Todos os direitos reservados 🍀</p>
+    <p>&copy; VAR da Sorte. Todos os direitos reservados 🍀</p>
     <nav>
       <a href="/sobre/">Sobre</a> |
       <a href="/contacto/">Contacto</a> |
@@ -77,5 +94,17 @@
     </p>
   </footer>
 
+  <script>
+    const btn = document.getElementById("themeToggle");
+    const body = document.body;
+
+    btn.addEventListener("click", () => {
+      const currentTheme = body.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      body.setAttribute("data-theme", newTheme);
+      btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+    });
+  </script>
 </body>
 </html>
+  

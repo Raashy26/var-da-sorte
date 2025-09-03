@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Política de Privacidade e Termos de Uso - VAR da Sorte</title>
-  <meta name="description" content="Política de Privacidade e Termos de Uso do VAR da Sorte: saiba como protegemos os seus dados e quais as regras para utilização do site." />
 
-  <!-- SEO Open Graph -->
-  <meta property="og:title" content="Política de Privacidade e Termos de Uso - VAR da Sorte" />
-  <meta property="og:description" content="Política de Privacidade e Termos de Uso do VAR da Sorte: saiba como protegemos os seus dados e quais as regras para utilização do site." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vardasorte.pt" />
-  <meta property="og:image" content="/images/cover.png" />
+  
+  
+  
+  
+  
+  
+  
+
+  <title>Política de Privacidade e Termos de Uso - VAR da Sorte</title>
+  <meta name="description" content="Política de Privacidade e Termos de Uso do VAR da Sorte: saiba como protegemos os seus dados e quais as regras para utilização do site.">
+  <meta name="keywords" content="apostas desportivas, prognósticos, futebol, análises, tips, apostas online">
+  <meta name="author" content="VAR da Sorte">
+  <link rel="canonical" href="https://vardasorte.netlify.app/privacidade/">
+
+  <meta name="robots" content="index,follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Política de Privacidade e Termos de Uso - VAR da Sorte">
+  <meta property="og:description" content="Política de Privacidade e Termos de Uso do VAR da Sorte: saiba como protegemos os seus dados e quais as regras para utilização do site.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vardasorte.netlify.app/privacidade/">
+  <meta property="og:image" content="/images/cover.png">
+  <meta property="og:locale" content="pt-PT">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Política de Privacidade e Termos de Uso - VAR da Sorte" />
-  <meta name="twitter:description" content="Política de Privacidade e Termos de Uso do VAR da Sorte: saiba como protegemos os seus dados e quais as regras para utilização do site." />
-  <meta name="twitter:image" content="/images/cover.png" />
+  <meta name="twitter:title" content="Política de Privacidade e Termos de Uso - VAR da Sorte">
+  <meta name="twitter:description" content="Política de Privacidade e Termos de Uso do VAR da Sorte: saiba como protegemos os seus dados e quais as regras para utilização do site.">
+  <meta name="twitter:image" content="/images/cover.png">
+  <meta name="twitter:site" content="@vardasorte">
 
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body data-theme="light">
 
   <header>
     <h1>⚽🍀 VAR da Sorte</h1>
@@ -56,6 +72,7 @@
 
       </ul>
     </nav>
+
   </header>
 
   <main>
@@ -144,7 +161,7 @@
   </main>
 
   <footer>
-    <p>&copy;VAR da Sorte. Todos os direitos reservados 🍀</p>
+    <p>&copy; VAR da Sorte. Todos os direitos reservados 🍀</p>
     <nav>
       <a href="/sobre/">Sobre</a> |
       <a href="/contacto/">Contacto</a> |
@@ -158,5 +175,17 @@
     </p>
   </footer>
 
+  <script>
+    const btn = document.getElementById("themeToggle");
+    const body = document.body;
+
+    btn.addEventListener("click", () => {
+      const currentTheme = body.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      body.setAttribute("data-theme", newTheme);
+      btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+    });
+  </script>
 </body>
 </html>
+  

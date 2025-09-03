@@ -3,6 +3,12 @@
   "name": "VAR da Sorte",
   "brand": "VAR da Sorte",
   "twitter": "@vardasorte",
+
+  "description": "Prognósticos, apostas desportivas e análises diárias de futebol.",
   "ogImage": "/images/cover.png",
-  "logo": "/images/logo.png"
+  "logo": "/images/logo.png",
+
+  "author": "VAR da Sorte",
+  "lang": "pt-PT",
+  "keywords": "apostas desportivas, prognósticos, futebol, análises, tips, apostas online"
 }
