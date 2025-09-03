@@ -19,9 +19,9 @@ title: "Prognósticos Diários - VAR da Sorte"
 </section>
 
 <section class="daily-bets container">
-  {% set hoje = "now" | date("yyyy-MM-dd") %}
-  {% set apostasHoje = collections.apostas | selectattr("date", "stringstartswith", hoje) | list %}
-  
+  {% set hojeData = "now" | date("yyyy-MM-dd") %}
+  {% set apostasHoje = collections.apostas | selectattr("date", "stringstartswith", hojeData) | list %}
+
   {% if apostasHoje | length > 0 %}
     <div class="bets-grid">
       {% for post in apostasHoje %}
@@ -55,16 +55,22 @@ title: "Prognósticos Diários - VAR da Sorte"
     {% for post in collections.apostas %}
       {% set dataStr = post.date | date("yyyy-MM-dd") %}
       {% if apostasPorData[dataStr] is not defined %}
-        {% set apostasPorData = apostasPorData | merge({ (dataStr): [post] }) %}
+        {% set apostasPorData = apostasPorData | combine({ dataStr: [post] }) %}
       {% else %}
-        {% set apostasPorData = apostasPorData | merge({ (dataStr): apostasPorData[dataStr] + [post] }) %}
+        {% set apostasPorData = apostasPorData | combine({ dataStr: apostasPorData[dataStr] + [post] }) %}
       {% endif %}
     {% endfor %}
 
-    {% set datasOrdenadas = apostasPorData | dictsort(false) | reverse %}
-    {% for item in datasOrdenadas | slice(0,30) %}
-      {% set dia = item[0] %}
-      <a href="/aposta/{{ dia }}/" class="btn btn-secondary" style="display:block; text-align:center;">{{ dia | date("dd/MM") }}</a>
+    {% set datasUltimos30 = [] %}
+    {% for i in range(1,31) %}
+      {% set dia = hojeData | date_modify("-" ~ i ~ " days") | date("yyyy-MM-dd") %}
+      {% set datasUltimos30 = datasUltimos30 + [dia] %}
+    {% endfor %}
+
+    {% for dia in datasUltimos30 %}
+      {% if apostasPorData[dia] is defined %}
+        <a href="/aposta/{{ dia }}/" class="btn btn-secondary" style="display:block; text-align:center;">{{ dia | date("dd/MM") }}</a>
+      {% endif %}
     {% endfor %}
   </div>
 </section>
