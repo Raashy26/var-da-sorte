@@ -596,6 +596,29 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
+/* Texto escuro por padrão */
+.privacy-content p,
+.privacy-content h2,
+.privacy-content a {
+  color: #000000;
+}
+
+/* Links já verdes, mantemos contraste */
+.privacy-content a {
+  color: #2d9c6a;
+}
+
+/* Dark mode */
+body[data-theme="dark"] .privacy-content p {
+  color: #ffffff;
+}
+
+/* Links em dark mode */
+body[data-theme="dark"] .privacy-content a {
+  color: #81e6d9; /* verde/azulado para contraste em dark */
+}
+
+
 /* =======================
    Backgrounds adaptáveis por tema
    ======================= */
