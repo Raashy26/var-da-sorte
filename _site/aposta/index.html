@@ -61,10 +61,10 @@
   <main>
     
 <section class="page-header">
-  <div class="container"><div style="text-align:center; margin-top:40px;">
+  <div class="container" style="text-align:center; margin-top:40px;">
     <h1>📅 Prognósticos Diários</h1>
     <p>As nossas apostas recomendadas para hoje, atualizadas diariamente com base em análises e estatísticas.</p>
-  </div></div>
+  </div>
 </section>
 
 <section class="filters container">
@@ -77,21 +77,24 @@
 
 <section class="daily-bets container">
   
+  
+
+  
     <div class="bets-grid">
       
-      <div class="bet-card" data-odds="0">
+      <div class="bet-card" data-odds="0" data-favorite="false">
         <div class="bet-header">
-          <h3> vs </h3>
-          <span class="competition"></span>
+          <h3>Apostas - 1 Setembro 2025</h3>
+          <span class="competition">Apostas do dia</span>
         </div>
         <div class="bet-details">
-          <p><strong>Data/Hora:</strong> 01/09/2025 00:00</p>
-          <p><strong>Tipo de Aposta:</strong> 1X2</p>
-          <p><strong>Odds:</strong>
-            1: - |
-            X: - |
-            2: -
-          </p>
+          
+          <p>• Benfica vs Porto → Over 2.5</p>
+          
+          <p>• Sporting vs Braga → Ambas marcam</p>
+          
+          <p>• Arsenal vs Chelsea → +1.5 golos</p>
+          
         </div>
         <a href="/apostas/2025-09-01/" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
@@ -100,78 +103,71 @@
   
 </section>
 
+<section class="historical-bets container" style="margin-top:50px;">
+  <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 30 dias</h2>
+  <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; margin-top:20px;">
+    
+      
+      
+        <a href="/apostas/2025-09-01/" class="btn btn-secondary" style="display:block; text-align:center;">
+          01/09
+        </a>
+      
+    
+  </div>
+</section>
+
 <section class="cta container">
   <div style="text-align:center; margin-top:40px;">
     <a href="/desafio/" class="btn btn-primary btn-lg">Participa nos Desafios Diários ⚡</a>
   </div>
 </section>
 
-<!-- =======================
-     Styles específicos da página
-======================= -->
 <style>
-.filters {
-  margin: 40px 0 20px;
-  text-align: center;
-}
-.filter-buttons button {
-  margin: 0 10px 10px 0;
-}
-.bets-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
+/* Cards e histórico */
+.bets-grid, .history-grid { margin-top: 20px; }
+
 .bet-card {
-  background-color: #eafaf1;
+  background-color: #eafaf1 !important;
+  color: #000000 !important;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.bet-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+.bet-card * { color: #000000 !important; }
+.bet-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+
+.bet-header h3 { color: #2d9c6a; margin-bottom:5px; }
+.competition { font-size:0.9rem; color:#217b53; }
+.bet-details p { font-size:0.9rem; margin:5px 0; }
+
+.btn-details, .history-grid .btn-secondary {
+  background-color: #2d9c6a !important;
+  color:#ffffff !important;
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  font-weight:bold;
+  text-align:center;
+  transition: background-color 0.3s;
 }
-.bet-header h3 {
-  color: #2d9c6a;
-  margin-bottom: 5px;
-}
-.competition {
-  font-size: 0.9rem;
-  color: #217b53;
-}
-.bet-details p {
-  font-size: 0.9rem;
-  margin: 5px 0;
-}
-.btn-details {
-  display: block;
-  margin-top: 10px;
-  text-align: center;
-}
-@media (max-width: 768px) {
-  .bets-grid {
-    grid-template-columns: 1fr;
-  }
+.btn-details:hover, .history-grid .btn-secondary:hover {
+  background-color: #218c5a !important;
 }
 
-/* Forçar cards de bets a manter fundo e texto fixos */
-.bet-card {
-  background-color: #eafaf1 !important; /* fundo claro */
-  color: #000000 !important;            /* texto preto */
-}
+/* Filtros */
+.filters { margin:40px 0 20px; text-align:center; }
+.filter-buttons button { margin:0 10px 10px 0; }
 
-.bet-card * {
-  color: #000000 !important; /* força títulos, parágrafos e links a preto */
+@media(max-width:768px){
+  .bets-grid{ grid-template-columns:1fr; }
+  .history-grid { grid-template-columns:1fr 1fr; }
 }
-
 </style>
 
-<!-- =======================
-     Script para filtros simples
-======================= -->
 <script>
+/* Filtros simples */
 const filterButtons = document.querySelectorAll(".filter-btn");
 const betCards = document.querySelectorAll(".bet-card");
 

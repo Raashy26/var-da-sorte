@@ -4,10 +4,10 @@ title: "Desafios de Apostas - VAR da Sorte"
 ---
 
 <section class="page-header">
-  <div class="container"><div style="text-align:center; margin-top:40px;">
+  <div class="container" style="text-align:center; margin-top:40px;">
     <h1>🔥 Desafios de Apostas</h1>
     <p>Três desafios especiais que podes acompanhar diariamente para testar estratégias e maximizar lucros.</p>
-  </div></div>
+  </div>
 </section>
 
 <section class="filters container">
@@ -21,37 +21,31 @@ title: "Desafios de Apostas - VAR da Sorte"
 
 <section class="daily-challenges container">
   {% set desafios = [
-    {
-      type: "comeback",
-      title: "Desafio do Comeback",
-      description: "Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.",
-      odds: "Variável",
-      link: "/desafios/comeback"
-    },
-    {
-      type: "draw",
-      title: "Desafio dos Empates",
-      description: "Escolher jogos propensos a empate, individuais e múltiplas.",
-      odds: "Variável",
-      link: "/desafios/draw"
-    },
-    {
-      type: "over25",
-      title: "Desafio Ambas Marcam / +2.5",
-      description: "Criar múltipla com odd total ≥4.",
-      odds: "≥4",
-      link: "/desafios/over25"
-    }
+    { "type": "comeback", "title": "Desafio do Comeback", "description": "Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.", "odds": "Variável", "link": "/desafios/comeback" },
+    { "type": "draw", "title": "Desafio dos Empates", "description": "Escolher jogos propensos a empate, individuais e múltiplas.", "odds": "Variável", "link": "/desafios/draw" },
+    { "type": "over25", "title": "Desafio Ambas Marcam / +2.5", "description": "Criar múltipla com odd total ≥4.", "odds": "≥4", "link": "/desafios/over25" }
   ] %}
 
   <div class="challenges-grid">
     {% for desafio in desafios %}
-    <div class="challenge-card" data-type="{{ desafio.type }}">
-      <h3>{{ desafio.title }}</h3>
-      <p>{{ desafio.description }}</p>
-      <p><strong>Odd mínima:</strong> {{ desafio.odds }}</p>
-      <a href="{{ desafio.link }}" class="btn btn-primary btn-details">Ver Detalhes</a>
-    </div>
+      <div class="challenge-card" data-type="{{ desafio.type }}">
+        <h3>{{ desafio.title }}</h3>
+        <p>{{ desafio.description }}</p>
+        <p><strong>Odd mínima:</strong> {{ desafio.odds }}</p>
+        <a href="{{ desafio.link }}" class="btn btn-primary btn-details">Ver Detalhes</a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="historical-challenges container" style="margin-top:50px;">
+  <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 7 dias</h2>
+  {% set ultimos7 = ["2025-09-03","2025-09-02","2025-09-01","2025-08-31","2025-08-30","2025-08-29","2025-08-28"] %}
+  <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:15px; margin-top:20px;">
+    {% for dia in ultimos7 %}
+      <a href="/desafios/{{ dia }}/" class="btn btn-secondary" style="display:block; text-align:center;">
+        {{ dia[8:10] }}/{{ dia[5:7] }}
+      </a>
     {% endfor %}
   </div>
 </section>
@@ -63,13 +57,8 @@ title: "Desafios de Apostas - VAR da Sorte"
 </section>
 
 <style>
-.filters {
-  margin: 40px 0 20px;
-  text-align: center;
-}
-.filter-buttons button {
-  margin: 0 10px 10px 0;
-}
+.filters { margin: 40px 0 20px; text-align: center; }
+.filter-buttons button { margin: 0 10px 10px 0; }
 
 .challenges-grid {
   display: grid;
@@ -78,46 +67,39 @@ title: "Desafios de Apostas - VAR da Sorte"
 }
 
 .challenge-card {
-  background-color: #eafaf1;
+  background-color: #eafaf1 !important;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(9, 109, 31, 0.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .challenge-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-.challenge-card h3 {
-  color: #2d9c6a;
-  margin-bottom: 10px;
-}
-.challenge-card p {
-  font-size: 0.9rem;
-  margin: 5px 0;
-}
-.btn-details {
+.challenge-card h3 { color: #2d9c6a; margin-bottom: 10px; }
+.challenge-card p { font-size: 0.9rem; margin: 5px 0; }
+
+.btn-details, .history-grid .btn-secondary {
   display: block;
   margin-top: 10px;
   text-align: center;
+  background-color: #2d9c6a !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.btn-details:hover, .history-grid .btn-secondary:hover {
+  background-color: #218c5a !important;
 }
 
 @media (max-width: 768px) {
-  .challenges-grid {
-    grid-template-columns: 1fr;
-  }
+  .challenges-grid { grid-template-columns: 1fr; }
+  .history-grid { grid-template-columns: 1fr 1fr; }
 }
-
-/* Forçar cards de desafios a manter fundo e texto fixos */
-.challenge-card {
-  background-color: #eafaf1 !important; /* fundo claro */
-  color: #000000 !important;            /* texto preto */
-}
-
-.challenge-card * {
-  color: #000000 !important; /* força títulos, parágrafos e links a preto */
-}
-
 </style>
 
 <script>
