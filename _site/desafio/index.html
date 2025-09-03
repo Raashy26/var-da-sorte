@@ -61,10 +61,10 @@
   <main>
     
 <section class="page-header">
-  <div class="container"><div style="text-align:center; margin-top:40px;">
+  <div class="container" style="text-align:center; margin-top:40px;">
     <h1>🔥 Desafios de Apostas</h1>
     <p>Três desafios especiais que podes acompanhar diariamente para testar estratégias e maximizar lucros.</p>
-  </div></div>
+  </div>
 </section>
 
 <section class="filters container">
@@ -81,26 +81,64 @@
 
   <div class="challenges-grid">
     
-    <div class="challenge-card" data-type="comeback">
-      <h3>Desafio do Comeback</h3>
-      <p>Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.</p>
-      <p><strong>Odd mínima:</strong> Variável</p>
-      <a href="/desafios/comeback" class="btn btn-primary btn-details">Ver Detalhes</a>
-    </div>
+      <div class="challenge-card" data-type="comeback">
+        <h3>Desafio do Comeback</h3>
+        <p>Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.</p>
+        <p><strong>Odd mínima:</strong> Variável</p>
+        <a href="/desafios/comeback" class="btn btn-primary btn-details">Ver Detalhes</a>
+      </div>
     
-    <div class="challenge-card" data-type="draw">
-      <h3>Desafio dos Empates</h3>
-      <p>Escolher jogos propensos a empate, individuais e múltiplas.</p>
-      <p><strong>Odd mínima:</strong> Variável</p>
-      <a href="/desafios/draw" class="btn btn-primary btn-details">Ver Detalhes</a>
-    </div>
+      <div class="challenge-card" data-type="draw">
+        <h3>Desafio dos Empates</h3>
+        <p>Escolher jogos propensos a empate, individuais e múltiplas.</p>
+        <p><strong>Odd mínima:</strong> Variável</p>
+        <a href="/desafios/draw" class="btn btn-primary btn-details">Ver Detalhes</a>
+      </div>
     
-    <div class="challenge-card" data-type="over25">
-      <h3>Desafio Ambas Marcam / +2.5</h3>
-      <p>Criar múltipla com odd total ≥4.</p>
-      <p><strong>Odd mínima:</strong> ≥4</p>
-      <a href="/desafios/over25" class="btn btn-primary btn-details">Ver Detalhes</a>
-    </div>
+      <div class="challenge-card" data-type="over25">
+        <h3>Desafio Ambas Marcam / +2.5</h3>
+        <p>Criar múltipla com odd total ≥4.</p>
+        <p><strong>Odd mínima:</strong> ≥4</p>
+        <a href="/desafios/over25" class="btn btn-primary btn-details">Ver Detalhes</a>
+      </div>
+    
+  </div>
+</section>
+
+<section class="historical-challenges container" style="margin-top:50px;">
+  <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 7 dias</h2>
+
+  
+
+  <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:15px; margin-top:20px;">
+    
+      <a href="/desafios/2025-09-03/" class="btn btn-secondary" style="display:block; text-align:center;">
+        03/09
+      </a>
+    
+      <a href="/desafios/2025-09-02/" class="btn btn-secondary" style="display:block; text-align:center;">
+        02/09
+      </a>
+    
+      <a href="/desafios/2025-09-01/" class="btn btn-secondary" style="display:block; text-align:center;">
+        01/09
+      </a>
+    
+      <a href="/desafios/2025-08-31/" class="btn btn-secondary" style="display:block; text-align:center;">
+        31/08
+      </a>
+    
+      <a href="/desafios/2025-08-30/" class="btn btn-secondary" style="display:block; text-align:center;">
+        30/08
+      </a>
+    
+      <a href="/desafios/2025-08-29/" class="btn btn-secondary" style="display:block; text-align:center;">
+        29/08
+      </a>
+    
+      <a href="/desafios/2025-08-28/" class="btn btn-secondary" style="display:block; text-align:center;">
+        28/08
+      </a>
     
   </div>
 </section>
@@ -112,13 +150,8 @@
 </section>
 
 <style>
-.filters {
-  margin: 40px 0 20px;
-  text-align: center;
-}
-.filter-buttons button {
-  margin: 0 10px 10px 0;
-}
+.filters { margin: 40px 0 20px; text-align: center; }
+.filter-buttons button { margin: 0 10px 10px 0; }
 
 .challenges-grid {
   display: grid;
@@ -127,46 +160,39 @@
 }
 
 .challenge-card {
-  background-color: #eafaf1;
+  background-color: #eafaf1 !important;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(9, 109, 31, 0.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .challenge-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
-.challenge-card h3 {
-  color: #2d9c6a;
-  margin-bottom: 10px;
-}
-.challenge-card p {
-  font-size: 0.9rem;
-  margin: 5px 0;
-}
-.btn-details {
+.challenge-card h3 { color: #2d9c6a; margin-bottom: 10px; }
+.challenge-card p { font-size: 0.9rem; margin: 5px 0; }
+
+.btn-details, .history-grid .btn-secondary {
   display: block;
   margin-top: 10px;
   text-align: center;
+  background-color: #2d9c6a !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.btn-details:hover, .history-grid .btn-secondary:hover {
+  background-color: #218c5a !important;
 }
 
 @media (max-width: 768px) {
-  .challenges-grid {
-    grid-template-columns: 1fr;
-  }
+  .challenges-grid { grid-template-columns: 1fr; }
+  .history-grid { grid-template-columns: 1fr 1fr; }
 }
-
-/* Forçar cards de desafios a manter fundo e texto fixos */
-.challenge-card {
-  background-color: #eafaf1 !important; /* fundo claro */
-  color: #000000 !important;            /* texto preto */
-}
-
-.challenge-card * {
-  color: #000000 !important; /* força títulos, parágrafos e links a preto */
-}
-
 </style>
 
 <script>
@@ -185,6 +211,7 @@ filterButtons.forEach(btn => {
   });
 });
 </script>
+
 
   </main>
 

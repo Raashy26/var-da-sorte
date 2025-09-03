@@ -40,11 +40,21 @@ title: "Desafios de Apostas - VAR da Sorte"
 
 <section class="historical-challenges container" style="margin-top:50px;">
   <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 7 dias</h2>
-  {% set ultimos7 = ["2025-09-03","2025-09-02","2025-09-01","2025-08-31","2025-08-30","2025-08-29","2025-08-28"] %}
+
+  {% set ultimos7 = [
+    { "slug": "2025-09-03", "display": "03/09" },
+    { "slug": "2025-09-02", "display": "02/09" },
+    { "slug": "2025-09-01", "display": "01/09" },
+    { "slug": "2025-08-31", "display": "31/08" },
+    { "slug": "2025-08-30", "display": "30/08" },
+    { "slug": "2025-08-29", "display": "29/08" },
+    { "slug": "2025-08-28", "display": "28/08" }
+  ] %}
+
   <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:15px; margin-top:20px;">
     {% for dia in ultimos7 %}
-      <a href="/desafios/{{ dia }}/" class="btn btn-secondary" style="display:block; text-align:center;">
-        {{ dia[8:10] }}/{{ dia[5:7] }}
+      <a href="/desafios/{{ dia.slug }}/" class="btn btn-secondary" style="display:block; text-align:center;">
+        {{ dia.display }}
       </a>
     {% endfor %}
   </div>
@@ -118,3 +128,4 @@ filterButtons.forEach(btn => {
   });
 });
 </script>
+
