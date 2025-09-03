@@ -596,6 +596,11 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
 }
 
+/* =======================
+   Página Privacidade & Termos
+   ======================= */
+
+
 /* Texto escuro por padrão */
 .privacy-content p,
 .privacy-content h2,
@@ -617,6 +622,29 @@ body[data-theme="dark"] .privacy-content p {
 body[data-theme="dark"] .privacy-content a {
   color: #81e6d9; /* verde/azulado para contraste em dark */
 }
+
+/* Texto escuro por padrão */
+.terms-content p,
+.terms-content h2,
+.terms-content a {
+  color: #000000;
+}
+
+/* Links já verdes, mantemos contraste */
+.terms-content a {
+  color: #2d9c6a;
+}
+
+/* Dark mode */
+body[data-theme="dark"] .terms-content p {
+  color: #ffffff;
+}
+
+/* Links em dark mode */
+body[data-theme="dark"] .terms-content a {
+  color: #81e6d9; /* verde/azulado para contraste em dark */
+}
+
 
 
 /* =======================
