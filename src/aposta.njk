@@ -19,25 +19,21 @@ title: "Prognósticos Diários - VAR da Sorte"
 </section>
 
 <section class="daily-bets container">
-  {% set hoje = collections.apostas[0].date | date("yyyy-MM-dd") if collections.apostas | length > 0 else "" %}
-  {% set apostasHoje = collections.apostas | selectattr("date", "stringstartswith", hoje) | list %}
+  {# 👉 mostra sempre o post mais recente da coleção 'apostas' #}
+  {% set apostaHoje = collections.apostas | first %}
 
-  {% if apostasHoje | length > 0 %}
+  {% if apostaHoje %}
     <div class="bets-grid">
-      {% for post in apostasHoje %}
-      <div class="bet-card" data-odds="{{ post.data.odds | default(0) }}" data-favorite="{{ post.data.favorite | default(false) }}">
+      <div class="bet-card" data-odds="{{ apostaHoje.data.odds | default(0) }}" data-favorite="{{ apostaHoje.data.favorite | default(false) }}">
         <div class="bet-header">
-          <h3>{{ post.data.title }}</h3>
+          <h3>Apostas - {{ apostaHoje.date | date("d 'de' LLLL 'de' yyyy") }}</h3>
           <span class="competition">Apostas do dia</span>
         </div>
         <div class="bet-details">
-          {% for jogo in post.data.jogos %}
-          <p>• {{ jogo }}</p>
-          {% endfor %}
+          <p>As melhores apostas para hoje, escolhidas com base em análises e estatísticas.</p>
         </div>
-        <a href="{{ post.url }}" class="btn btn-primary btn-details">Ver Detalhes</a>
+        <a href="{{ apostaHoje.url }}" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
-      {% endfor %}
     </div>
   {% else %}
     <p style="text-align:center; margin-top:20px;">⚠️ Em breve vais encontrar aqui os prognósticos do dia. Mantém-te atento!</p>
@@ -49,7 +45,7 @@ title: "Prognósticos Diários - VAR da Sorte"
   <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; margin-top:20px;">
     {% for post in collections.apostas %}
       {% set diffDays = ((collections.apostas[0].date - post.date) / (1000*60*60*24)) | round %}
-      {% if diffDays >= 0 and diffDays < 30 %}
+      {% if diffDays > 0 and diffDays < 30 %}
         <a href="{{ post.url }}" class="btn btn-secondary" style="display:block; text-align:center;">
           {{ post.date | date("dd/MM") }}
         </a>

@@ -1,24 +1,40 @@
 ---
 layout: layouts/base.njk
 ---
-
 <article class="post-desafio container">
   <header style="text-align:center; margin-bottom:20px;">
     <h1>{{ title }}</h1>
     <p class="post-meta">
       ⚡ Desafio publicado em {{ date | date("dd/MM/yyyy") }}
     </p>
+    <p>📌 Aqui encontrarás os detalhes deste desafio diário, selecionado para maximizar lucros e aprender com cada aposta.</p>
   </header>
 
   <section class="post-content">
     {{ content | safe }}
   </section>
 
+  {# --- Histórico filtrado por tipo de desafio --- #}
+  {% if desafioTipo %}
+  <section class="historical-challenges" style="margin-top:40px;">
+    <h2 style="text-align:center; color:#2d9c6a;">📖 Histórico - Últimos 7 dias</h2>
+    <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:15px; margin-top:20px;">
+      {% set ultimos7 = collections.desafios | selectattr("data.desafioTipo", "equalto", desafioTipo) | slice(0,7) %}
+      {% for post in ultimos7 %}
+        <a href="{{ post.url }}" class="btn btn-secondary" style="display:block; text-align:center;">
+          {{ post.date | date("dd/MM") }}
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <div style="text-align:center; margin-top:40px;">
     <a href="/desafio/" class="btn btn-secondary">⬅️ Voltar aos Desafios</a>
   </div>
 </article>
 
+{# --- JSON-LD Article --- #}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -40,4 +56,18 @@ layout: layouts/base.njk
 .post-desafio h1 { color:#c92d2d; margin-bottom:10px; }
 .post-meta { color:#555; font-size:0.9rem; }
 .post-content { margin-top:20px; line-height:1.6; }
+
+.history-grid .btn-secondary {
+  background-color: #2d9c6a !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+.history-grid .btn-secondary:hover {
+  background-color: #218c5a !important;
+}
 </style>

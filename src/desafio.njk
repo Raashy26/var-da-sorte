@@ -21,9 +21,27 @@ title: "Desafios de Apostas - VAR da Sorte"
 
 <section class="daily-challenges container">
   {% set desafios = [
-    { "type": "comeback", "title": "Desafio do Comeback", "description": "Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.", "odds": "Variável", "link": "/desafios/comeback" },
-    { "type": "draw", "title": "Desafio dos Empates", "description": "Escolher jogos propensos a empate, individuais e múltiplas.", "odds": "Variável", "link": "/desafios/draw" },
-    { "type": "over25", "title": "Desafio Ambas Marcam / +2.5", "description": "Criar múltipla com odd total ≥4.", "odds": "≥4", "link": "/desafios/over25" }
+    {
+      "type": "comeback",
+      "title": "Desafio do Comeback",
+      "description": "Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.",
+      "odds": "Variável",
+      "link": (collections.desafios_comeback[0].url if collections.desafios_comeback | length > 0 else "/desafios/comeback")
+    },
+    {
+      "type": "draw",
+      "title": "Desafio dos Empates",
+      "description": "Escolher jogos propensos a empate, individuais e múltiplas.",
+      "odds": "Variável",
+      "link": (collections.desafios_draw[0].url if collections.desafios_draw | length > 0 else "/desafios/draw")
+    },
+    {
+      "type": "over25",
+      "title": "Desafio Ambas Marcam / +2.5",
+      "description": "Criar múltipla com odd total ≥4.",
+      "odds": "≥4",
+      "link": (collections.desafios_over25[0].url if collections.desafios_over25 | length > 0 else "/desafios/over25")
+    }
   ] %}
 
   <div class="challenges-grid">
@@ -34,28 +52,6 @@ title: "Desafios de Apostas - VAR da Sorte"
         <p><strong>Odd mínima:</strong> {{ desafio.odds }}</p>
         <a href="{{ desafio.link }}" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="historical-challenges container" style="margin-top:50px;">
-  <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 7 dias</h2>
-
-  {% set ultimos7 = [
-    { "slug": "2025-09-03", "display": "03/09" },
-    { "slug": "2025-09-02", "display": "02/09" },
-    { "slug": "2025-09-01", "display": "01/09" },
-    { "slug": "2025-08-31", "display": "31/08" },
-    { "slug": "2025-08-30", "display": "30/08" },
-    { "slug": "2025-08-29", "display": "29/08" },
-    { "slug": "2025-08-28", "display": "28/08" }
-  ] %}
-
-  <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:15px; margin-top:20px;">
-    {% for dia in ultimos7 %}
-      <a href="/desafios/{{ dia.slug }}/" class="btn btn-secondary" style="display:block; text-align:center;">
-        {{ dia.display }}
-      </a>
     {% endfor %}
   </div>
 </section>
@@ -90,7 +86,7 @@ title: "Desafios de Apostas - VAR da Sorte"
 .challenge-card h3 { color: #2d9c6a; margin-bottom: 10px; }
 .challenge-card p { font-size: 0.9rem; margin: 5px 0; }
 
-.btn-details, .history-grid .btn-secondary {
+.btn-details {
   display: block;
   margin-top: 10px;
   text-align: center;
@@ -102,13 +98,12 @@ title: "Desafios de Apostas - VAR da Sorte"
   font-weight: bold;
   transition: background-color 0.3s;
 }
-.btn-details:hover, .history-grid .btn-secondary:hover {
+.btn-details:hover {
   background-color: #218c5a !important;
 }
 
 @media (max-width: 768px) {
   .challenges-grid { grid-template-columns: 1fr; }
-  .history-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 

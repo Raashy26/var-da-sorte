@@ -30,7 +30,6 @@ module.exports = function (eleventyConfig) {
     return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(format);
   });
 
-  // Filtro unique
   eleventyConfig.addFilter("unique", function(array, key) {
     if (!Array.isArray(array)) return array;
     const seen = new Set();
@@ -42,40 +41,49 @@ module.exports = function (eleventyConfig) {
     });
   });
 
-  // Filtro map
-eleventyConfig.addFilter("map", function(array, key) {
-  if (!Array.isArray(array)) return [];
-  return array.map(item => item[key]);
-});
-
+  eleventyConfig.addFilter("map", function(array, key) {
+    if (!Array.isArray(array)) return [];
+    return array.map(item => item[key]);
+  });
 
   // =========================
   // Coleções
   // =========================
+
+  // Apostas diárias
   eleventyConfig.addCollection("apostas", function (collectionApi) {
     return collectionApi.getFilteredByTag("apostas").sort((a, b) => b.date - a.date);
   });
 
-// =========================
-// Dados globais - Jogos do dia
-// =========================
-eleventyConfig.addGlobalData("jogosDoDia", async () => {
-  try {
-    const jogos = await jogosDoDia();
+  // Desafios por tipo
+  const desafioTipos = ["comeback", "draw", "over25"];
+  desafioTipos.forEach(tipo => {
+    eleventyConfig.addCollection(`desafios_${tipo}`, collection =>
+      collection.getFilteredByGlob(`src/desafios/${tipo}/*.md`).sort((a, b) => b.date - a.date)
+    );
+  });
 
-    // ⚡ Garantir que a data é um objeto Date
-    const jogosComData = jogos.map(jogo => ({
-      ...jogo,
-      date: new Date(jogo.utcDate) // substitui utcDate por objeto Date
-    }));
+  // Todos os desafios juntos
+  eleventyConfig.addCollection("desafios", collection =>
+    collection.getFilteredByGlob("src/desafios/*/*.md").sort((a, b) => b.date - a.date)
+  );
 
-    return jogosComData.slice(0, 10); // limita a 10 jogos
-  } catch (err) {
-    console.error("❌ Erro ao carregar jogos do dia:", err);
-    return [];
-  }
-});
-
+  // =========================
+  // Dados globais - Jogos do dia
+  // =========================
+  eleventyConfig.addGlobalData("jogosDoDia", async () => {
+    try {
+      const jogos = await jogosDoDia();
+      const jogosComData = jogos.map(jogo => ({
+        ...jogo,
+        date: new Date(jogo.utcDate)
+      }));
+      return jogosComData.slice(0, 10);
+    } catch (err) {
+      console.error("❌ Erro ao carregar jogos do dia:", err);
+      return [];
+    }
+  });
 
   // =========================
   // Configurações do Eleventy
