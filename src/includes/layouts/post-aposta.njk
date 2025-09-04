@@ -8,6 +8,7 @@ layout: layouts/base.njk
     <p class="post-meta">
       📅 Publicado a {{ date | date("dd/MM/yyyy") }}
     </p>
+      <p>📌 Aqui encontrarás os detalhes das apostas diárias, selecionado para maximizar lucros e aprender com cada aposta.</p>
   </header>
 
   <section class="post-content">
@@ -40,4 +41,16 @@ layout: layouts/base.njk
 .post-aposta h1 { color:#2d9c6a; margin-bottom:10px; }
 .post-meta { color:#555; font-size:0.9rem; }
 .post-content { margin-top:20px; line-height:1.6; }
+
+
+
+/* Garante que o footer fica sempre no fim */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
 </style>

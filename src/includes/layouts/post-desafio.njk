@@ -14,13 +14,23 @@ layout: layouts/base.njk
     {{ content | safe }}
   </section>
 
-  {# --- Histórico filtrado por tipo de desafio --- #}
-  {% if desafioTipo %}
+  {# --- Histórico automático por tipo de desafio --- #}
+  {% if "desafio_comeback" in tags %}
+    {% set historico = collections.desafios_comeback | slice(0,7) %}
+    {% set titulo = "📖 Histórico - Comeback (Últimos 7 dias)" %}
+  {% elseif "desafio_draw" in tags %}
+    {% set historico = collections.desafios_draw | slice(0,7) %}
+    {% set titulo = "📖 Histórico - Empates (Últimos 7 dias)" %}
+  {% elseif "desafio_over25" in tags %}
+    {% set historico = collections.desafios_over25 | slice(0,7) %}
+    {% set titulo = "📖 Histórico - Ambas Marcam / +2.5 (Últimos 7 dias)" %}
+  {% endif %}
+
+  {% if historico %}
   <section class="historical-challenges" style="margin-top:40px;">
-    <h2 style="text-align:center; color:#2d9c6a;">📖 Histórico - Últimos 7 dias</h2>
+    <h2 style="text-align:center; color:#2d9c6a;">{{ titulo }}</h2>
     <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:15px; margin-top:20px;">
-      {% set ultimos7 = collections.desafios | selectattr("data.desafioTipo", "equalto", desafioTipo) | slice(0,7) %}
-      {% for post in ultimos7 %}
+      {% for post in historico %}
         <a href="{{ post.url }}" class="btn btn-secondary" style="display:block; text-align:center;">
           {{ post.date | date("dd/MM") }}
         </a>
@@ -69,5 +79,15 @@ layout: layouts/base.njk
 }
 .history-grid .btn-secondary:hover {
   background-color: #218c5a !important;
+}
+
+/* Garante que o footer fica sempre no fim */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
 }
 </style>
