@@ -1,8 +1,9 @@
 {
-  "url": "https://vardasorte.netlify.app",
+  "url": "https://vardasorte.com",
   "name": "VAR da Sorte",
   "brand": "VAR da Sorte",
-  "twitter": "@vardasorte",
+  "telegram": "https://t.me/vardasorte",
+  "instagram": "@vardasorte",
 
   "description": "Prognósticos, apostas desportivas e análises diárias de futebol.",
   "ogImage": "/images/cover.png",
