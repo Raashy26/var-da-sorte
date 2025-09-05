@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vardasorte.netlify.app/sitemap.xml
+Sitemap: https://www.vardasorte.com/sitemap.xml
