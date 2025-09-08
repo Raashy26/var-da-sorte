@@ -38,8 +38,57 @@
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+  #cookie-banner {
+    display: none; /* invisível por padrão */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #2d9c6a;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.95rem;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  #cookie-banner.hidden {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  #cookie-banner button {
+    background: #fff;
+    color: #2d9c6a;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHXVBE4BMW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GHXVBE4BMW');
+  </script>
 </head>
+
 <body data-theme="light">
+
+  <div id="cookie-banner">
+    Este site usa cookies para análise e experiência personalizada.
+    <button onclick="acceptCookies()">Aceitar Cookies</button>
+  </div>
 
   <header>
     <li><a href="/"><h1>⚽🍀 VAR da Sorte</h1></a></li>
@@ -52,27 +101,23 @@
         <li><a href="/sobre/">Sobre</a></li>
         <li><a href="/contacto/">Contacto</a></li>
 
+        <body data-theme="light">
 
-<body data-theme="light">
+        <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
 
-<button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+        <script>
+          const btn = document.getElementById("themeToggle");
+          const body = document.body;
 
-<script>
-  const btn = document.getElementById("themeToggle");
-  const body = document.body;
-
-  btn.addEventListener("click", () => {
-    const currentTheme = body.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    body.setAttribute("data-theme", newTheme);
-    btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
-  });
-</script>
-
-
+          btn.addEventListener("click", () => {
+            const currentTheme = body.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            body.setAttribute("data-theme", newTheme);
+            btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+          });
+        </script>
       </ul>
     </nav>
-
   </header>
 
   <main>
@@ -102,21 +147,21 @@
         <h3>Desafio do Comeback</h3>
         <p>Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.</p>
         <p><strong>Odd mínima:</strong> Variável</p>
-        <a href="/desafios/comeback/2025-09-07/" class="btn btn-primary btn-details">Ver Detalhes</a>
+        <a href="/desafios/comeback/2025-09-08/" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
     
       <div class="challenge-card" data-type="draw">
         <h3>Desafio dos Empates</h3>
         <p>Escolher jogos propensos a empate, individuais e múltiplas.</p>
         <p><strong>Odd mínima:</strong> Variável</p>
-        <a href="/desafios/draw/2025-09-07/" class="btn btn-primary btn-details">Ver Detalhes</a>
+        <a href="/desafios/draw/2025-09-08/" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
     
       <div class="challenge-card" data-type="over25">
         <h3>Desafio Ambas Marcam / +2.5</h3>
         <p>Criar múltipla com odd total ≥4.</p>
         <p><strong>Odd mínima:</strong> ≥4</p>
-        <a href="/desafios/over25/2025-09-07/" class="btn btn-primary btn-details">Ver Detalhes</a>
+        <a href="/desafios/over25/2025-09-08/" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
     
   </div>
@@ -251,17 +296,39 @@ filterButtons.forEach(btn => {
     </p>
   </footer>
 
+  <!-- Cookie Consent Script -->
   <script>
-    const btn = document.getElementById("themeToggle");
-    const body = document.body;
+    const banner = document.getElementById('cookie-banner');
+    const accepted = localStorage.getItem('cookiesAccepted');
 
-    btn.addEventListener("click", () => {
-      const currentTheme = body.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      body.setAttribute("data-theme", newTheme);
-      btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
-    });
+    if (!accepted) {
+      banner.style.display = 'block';
+    } else {
+      loadGA();
+    }
+
+    function acceptCookies() {
+      localStorage.setItem('cookiesAccepted', 'true');
+      banner.classList.add('hidden');
+      setTimeout(() => banner.style.display = 'none', 600);
+      loadGA();
+    }
+
+    function loadGA() {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-GHXVBE4BMW';
+      document.head.appendChild(script1);
+
+      const script2 = document.createElement('script');
+      script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GHXVBE4BMW');
+      `;
+      document.head.appendChild(script2);
+    }
   </script>
 </body>
 </html>
-  

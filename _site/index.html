@@ -38,8 +38,57 @@
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+  #cookie-banner {
+    display: none; /* invisível por padrão */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #2d9c6a;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.95rem;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  #cookie-banner.hidden {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  #cookie-banner button {
+    background: #fff;
+    color: #2d9c6a;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHXVBE4BMW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GHXVBE4BMW');
+  </script>
 </head>
+
 <body data-theme="light">
+
+  <div id="cookie-banner">
+    Este site usa cookies para análise e experiência personalizada.
+    <button onclick="acceptCookies()">Aceitar Cookies</button>
+  </div>
 
   <header>
     <li><a href="/"><h1>⚽🍀 VAR da Sorte</h1></a></li>
@@ -52,27 +101,23 @@
         <li><a href="/sobre/">Sobre</a></li>
         <li><a href="/contacto/">Contacto</a></li>
 
+        <body data-theme="light">
 
-<body data-theme="light">
+        <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
 
-<button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+        <script>
+          const btn = document.getElementById("themeToggle");
+          const body = document.body;
 
-<script>
-  const btn = document.getElementById("themeToggle");
-  const body = document.body;
-
-  btn.addEventListener("click", () => {
-    const currentTheme = body.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    body.setAttribute("data-theme", newTheme);
-    btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
-  });
-</script>
-
-
+          btn.addEventListener("click", () => {
+            const currentTheme = body.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            body.setAttribute("data-theme", newTheme);
+            btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+          });
+        </script>
       </ul>
     </nav>
-
   </header>
 
   <main>
@@ -119,11 +164,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">San Jose Earthquakes II</span>
+              <span class="club-name">FAS</span>
               <span class="vs">vs</span>
-              <span class="club-name">Portland Timbers II</span>
+              <span class="club-name">Firpo</span>
             </div>
-            <p class="competition">MLS Next Pro</p>
+            <p class="competition">Primera Division</p>
             <p>Hora: 00:00</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -134,71 +179,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">Atlante FC</span>
+              <span class="club-name">San Diego Wave W</span>
               <span class="vs">vs</span>
-              <span class="club-name">Correcaminos Uat</span>
+              <span class="club-name">Houston Dash W</span>
             </div>
-            <p class="competition">Liga de Expansión MX</p>
-            <p>Hora: 00:00</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> -</span>
-              <span class="odd"><strong>X:</strong> -</span>
-              <span class="odd"><strong>2:</strong> -</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">Gavilanes FC Matamoros</span>
-              <span class="vs">vs</span>
-              <span class="club-name">Zitacuaro</span>
-            </div>
-            <p class="competition">Liga Premier Serie A</p>
-            <p>Hora: 00:00</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> -</span>
-              <span class="odd"><strong>X:</strong> -</span>
-              <span class="odd"><strong>2:</strong> -</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">Houston Dynamo</span>
-              <span class="vs">vs</span>
-              <span class="club-name">Los Angeles Galaxy</span>
-            </div>
-            <p class="competition">Major League Soccer</p>
-            <p>Hora: 00:30</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> 1.68</span>
-              <span class="odd"><strong>X:</strong> 3.90</span>
-              <span class="odd"><strong>2:</strong> 4.60</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">Chicago Fire</span>
-              <span class="vs">vs</span>
-              <span class="club-name">New England Revolution</span>
-            </div>
-            <p class="competition">Major League Soccer</p>
-            <p>Hora: 00:30</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> 1.72</span>
-              <span class="odd"><strong>X:</strong> 4.10</span>
-              <span class="odd"><strong>2:</strong> 4.10</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">St. Louis City</span>
-              <span class="vs">vs</span>
-              <span class="club-name">FC Dallas</span>
-            </div>
-            <p class="competition">Major League Soccer</p>
+            <p class="competition">NWSL Women</p>
             <p>Hora: 00:30</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -209,11 +194,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">FC Tulsa</span>
+              <span class="club-name">Carlos A. Mannucci</span>
               <span class="vs">vs</span>
-              <span class="club-name">Birmingham Legion</span>
+              <span class="club-name">Bentín Tacna Heroica</span>
             </div>
-            <p class="competition">USL Championship</p>
+            <p class="competition">Segunda División</p>
             <p>Hora: 00:30</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -224,41 +209,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">San Antonio</span>
+              <span class="club-name">Tigres UANL W</span>
               <span class="vs">vs</span>
-              <span class="club-name">New Mexico United</span>
+              <span class="club-name">Monterrey W</span>
             </div>
-            <p class="competition">USL Championship</p>
-            <p>Hora: 00:30</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> -</span>
-              <span class="odd"><strong>X:</strong> -</span>
-              <span class="odd"><strong>2:</strong> -</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">North Texas</span>
-              <span class="vs">vs</span>
-              <span class="club-name">LA Galaxy II</span>
-            </div>
-            <p class="competition">MLS Next Pro</p>
-            <p>Hora: 00:30</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> -</span>
-              <span class="odd"><strong>X:</strong> -</span>
-              <span class="odd"><strong>2:</strong> -</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">Colorado Springs</span>
-              <span class="vs">vs</span>
-              <span class="club-name">Monterey Bay</span>
-            </div>
-            <p class="competition">USL Championship</p>
+            <p class="competition">Liga MX Femenil</p>
             <p>Hora: 01:00</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -269,11 +224,101 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">San Jose Earthquakes II</span>
+              <span class="club-name">Tijuana W</span>
               <span class="vs">vs</span>
-              <span class="club-name">Portland Timbers II</span>
+              <span class="club-name">Santos Laguna W</span>
             </div>
-            <p class="competition">MLS Next Pro</p>
+            <p class="competition">Liga MX Femenil</p>
+            <p>Hora: 01:00</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">Fortaleza FC</span>
+              <span class="vs">vs</span>
+              <span class="club-name">La Equidad</span>
+            </div>
+            <p class="competition">Primera A</p>
+            <p>Hora: 01:30</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">Spezia U19</span>
+              <span class="vs">vs</span>
+              <span class="club-name">Crotone U19</span>
+            </div>
+            <p class="competition">Coppa Italia Primavera</p>
+            <p>Hora: 09:00</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">Polissya II</span>
+              <span class="vs">vs</span>
+              <span class="club-name">Atlet</span>
+            </div>
+            <p class="competition">Druha Liga</p>
+            <p>Hora: 09:30</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">Incheon Red Angels</span>
+              <span class="vs">vs</span>
+              <span class="club-name">Seoul</span>
+            </div>
+            <p class="competition">WK-League</p>
+            <p>Hora: 10:00</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">Hwacheon KSPO</span>
+              <span class="vs">vs</span>
+              <span class="club-name">Gyeongju</span>
+            </div>
+            <p class="competition">WK-League</p>
+            <p>Hora: 10:00</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">FAS</span>
+              <span class="vs">vs</span>
+              <span class="club-name">Firpo</span>
+            </div>
+            <p class="competition">Primera Division</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -284,11 +329,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">Atlante FC</span>
+              <span class="club-name">San Diego Wave W</span>
               <span class="vs">vs</span>
-              <span class="club-name">Correcaminos Uat</span>
+              <span class="club-name">Houston Dash W</span>
             </div>
-            <p class="competition">Liga de Expansión MX</p>
+            <p class="competition">NWSL Women</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -299,11 +344,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">Gavilanes FC Matamoros</span>
+              <span class="club-name">Carlos A. Mannucci</span>
               <span class="vs">vs</span>
-              <span class="club-name">Zitacuaro</span>
+              <span class="club-name">Bentín Tacna Heroica</span>
             </div>
-            <p class="competition">Liga Premier Serie A</p>
+            <p class="competition">Segunda División</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -314,41 +359,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">Houston Dynamo</span>
+              <span class="club-name">Tigres UANL W</span>
               <span class="vs">vs</span>
-              <span class="club-name">Los Angeles Galaxy</span>
+              <span class="club-name">Monterrey W</span>
             </div>
-            <p class="competition">Major League Soccer</p>
-            <p>Hora: Invalid DateTime</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> 1.68</span>
-              <span class="odd"><strong>X:</strong> 3.90</span>
-              <span class="odd"><strong>2:</strong> 4.60</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">Chicago Fire</span>
-              <span class="vs">vs</span>
-              <span class="club-name">New England Revolution</span>
-            </div>
-            <p class="competition">Major League Soccer</p>
-            <p>Hora: Invalid DateTime</p>
-            <div class="odds">
-              <span class="odd"><strong>1:</strong> 1.72</span>
-              <span class="odd"><strong>X:</strong> 4.10</span>
-              <span class="odd"><strong>2:</strong> 4.10</span>
-            </div>
-          </div>
-          
-          <div class="game-card-small">
-            <div class="game-top">
-              <span class="club-name">St. Louis City</span>
-              <span class="vs">vs</span>
-              <span class="club-name">FC Dallas</span>
-            </div>
-            <p class="competition">Major League Soccer</p>
+            <p class="competition">Liga MX Femenil</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -359,11 +374,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">FC Tulsa</span>
+              <span class="club-name">Tijuana W</span>
               <span class="vs">vs</span>
-              <span class="club-name">Birmingham Legion</span>
+              <span class="club-name">Santos Laguna W</span>
             </div>
-            <p class="competition">USL Championship</p>
+            <p class="competition">Liga MX Femenil</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -374,11 +389,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">San Antonio</span>
+              <span class="club-name">Fortaleza FC</span>
               <span class="vs">vs</span>
-              <span class="club-name">New Mexico United</span>
+              <span class="club-name">La Equidad</span>
             </div>
-            <p class="competition">USL Championship</p>
+            <p class="competition">Primera A</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -389,11 +404,11 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">North Texas</span>
+              <span class="club-name">Spezia U19</span>
               <span class="vs">vs</span>
-              <span class="club-name">LA Galaxy II</span>
+              <span class="club-name">Crotone U19</span>
             </div>
-            <p class="competition">MLS Next Pro</p>
+            <p class="competition">Coppa Italia Primavera</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -404,11 +419,41 @@
           
           <div class="game-card-small">
             <div class="game-top">
-              <span class="club-name">Colorado Springs</span>
+              <span class="club-name">Polissya II</span>
               <span class="vs">vs</span>
-              <span class="club-name">Monterey Bay</span>
+              <span class="club-name">Atlet</span>
             </div>
-            <p class="competition">USL Championship</p>
+            <p class="competition">Druha Liga</p>
+            <p>Hora: Invalid DateTime</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">Incheon Red Angels</span>
+              <span class="vs">vs</span>
+              <span class="club-name">Seoul</span>
+            </div>
+            <p class="competition">WK-League</p>
+            <p>Hora: Invalid DateTime</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> -</span>
+              <span class="odd"><strong>X:</strong> -</span>
+              <span class="odd"><strong>2:</strong> -</span>
+            </div>
+          </div>
+          
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">Hwacheon KSPO</span>
+              <span class="vs">vs</span>
+              <span class="club-name">Gyeongju</span>
+            </div>
+            <p class="competition">WK-League</p>
             <p>Hora: Invalid DateTime</p>
             <div class="odds">
               <span class="odd"><strong>1:</strong> -</span>
@@ -480,17 +525,39 @@
     </p>
   </footer>
 
+  <!-- Cookie Consent Script -->
   <script>
-    const btn = document.getElementById("themeToggle");
-    const body = document.body;
+    const banner = document.getElementById('cookie-banner');
+    const accepted = localStorage.getItem('cookiesAccepted');
 
-    btn.addEventListener("click", () => {
-      const currentTheme = body.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      body.setAttribute("data-theme", newTheme);
-      btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
-    });
+    if (!accepted) {
+      banner.style.display = 'block';
+    } else {
+      loadGA();
+    }
+
+    function acceptCookies() {
+      localStorage.setItem('cookiesAccepted', 'true');
+      banner.classList.add('hidden');
+      setTimeout(() => banner.style.display = 'none', 600);
+      loadGA();
+    }
+
+    function loadGA() {
+      const script1 = document.createElement('script');
+      script1.async = true;
+      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-GHXVBE4BMW';
+      document.head.appendChild(script1);
+
+      const script2 = document.createElement('script');
+      script2.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GHXVBE4BMW');
+      `;
+      document.head.appendChild(script2);
+    }
   </script>
 </body>
 </html>
-  
