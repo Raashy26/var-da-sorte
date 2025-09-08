@@ -17,7 +17,6 @@
   <meta name="keywords" content="apostas desportivas, prognósticos, futebol, análises, tips, apostas online">
   <meta name="author" content="VAR da Sorte">
   <link rel="canonical" href="https://www.vardasorte.com/apostas/2025-09-06/">
-
   <meta name="robots" content="index,follow">
 
   <!-- Open Graph -->
@@ -40,51 +39,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 
   <style>
-  #cookie-banner {
-    display: none; /* invisível por padrão */
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #2d9c6a;
-    color: #fff;
-    text-align: center;
-    padding: 15px;
-    font-size: 0.95rem;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  #cookie-banner.hidden {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-
-  #cookie-banner button {
-    background: #fff;
-    color: #2d9c6a;
-    border: none;
-    border-radius: 5px;
-    padding: 6px 12px;
-    font-weight: bold;
-    margin-left: 10px;
-    cursor: pointer;
-  }
+    #cookie-banner {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #2d9c6a;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.95rem;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    #cookie-banner.hidden {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    #cookie-banner button {
+      background: #fff;
+      color: #2d9c6a;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 12px;
+      font-weight: bold;
+      margin-left: 10px;
+      cursor: pointer;
+    }
   </style>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHXVBE4BMW"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-GHXVBE4BMW');
-  </script>
 </head>
 
 <body data-theme="light">
 
+  <!-- Cookie Banner -->
   <div id="cookie-banner">
     Este site usa cookies para análise e experiência personalizada.
     <button onclick="acceptCookies()">Aceitar Cookies</button>
@@ -213,8 +201,9 @@ main {
     </p>
   </footer>
 
-  <!-- Cookie Consent Script -->
+  <!-- Scripts -->
   <script>
+    // Cookie Consent + Google Ads
     const banner = document.getElementById('cookie-banner');
     const accepted = localStorage.getItem('cookiesAccepted');
 
