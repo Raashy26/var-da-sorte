@@ -309,40 +309,52 @@ filterButtons.forEach(btn => {
     </p>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Cookie Consent + Google Ads
-    const banner = document.getElementById('cookie-banner');
-    const accepted = localStorage.getItem('cookiesAccepted');
+<!-- Scripts -->
+<script>
+  // Cookie Consent + Google Analytics + Google AdSense
+  const banner = document.getElementById('cookie-banner');
+  const accepted = localStorage.getItem('cookiesAccepted');
 
-    if (!accepted) {
-      banner.style.display = 'block';
-    } else {
-      loadGA();
-    }
+  if (!accepted) {
+    banner.style.display = 'block';
+  } else {
+    loadGA();
+    loadAds();
+  }
 
-    function acceptCookies() {
-      localStorage.setItem('cookiesAccepted', 'true');
-      banner.classList.add('hidden');
-      setTimeout(() => banner.style.display = 'none', 600);
-      loadGA();
-    }
+  function acceptCookies() {
+    localStorage.setItem('cookiesAccepted', 'true');
+    banner.classList.add('hidden');
+    setTimeout(() => banner.style.display = 'none', 600);
+    loadGA();
+    loadAds(); // Carrega AdSense após consentimento
+  }
 
-    function loadGA() {
-      const script1 = document.createElement('script');
-      script1.async = true;
-      script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-GHXVBE4BMW';
-      document.head.appendChild(script1);
+  function loadGA() {
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-GHXVBE4BMW';
+    document.head.appendChild(script1);
 
-      const script2 = document.createElement('script');
-      script2.innerHTML = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-GHXVBE4BMW');
-      `;
-      document.head.appendChild(script2);
-    }
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GHXVBE4BMW');
+    `;
+    document.head.appendChild(script2);
+  }
+
+  function loadAds() {
+    const adScript = document.createElement('script');
+    adScript.async = true;
+    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2274264207496685";
+    adScript.crossOrigin = "anonymous";
+    document.head.appendChild(adScript);
+  }
+</script>
+
   </script>
 </body>
 </html>
