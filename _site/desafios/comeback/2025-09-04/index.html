@@ -38,6 +38,10 @@
   <link rel="icon" href="/images/favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 
+  <!-- Google AdSense (necessário no head para validação) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2274264207496685"
+     crossorigin="anonymous"></script>
+
   <style>
     #cookie-banner {
       display: none;
@@ -68,6 +72,8 @@
       cursor: pointer;
     }
   </style>
+
+
 </head>
 
 <body data-theme="light">
@@ -243,13 +249,6 @@ main {
     document.head.appendChild(script2);
   }
 
-  function loadAds() {
-    const adScript = document.createElement('script');
-    adScript.async = true;
-    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2274264207496685";
-    adScript.crossOrigin = "anonymous";
-    document.head.appendChild(adScript);
-  }
 </script>
 
   </script>
