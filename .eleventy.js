@@ -100,3 +100,9 @@ module.exports = function (eleventyConfig) {
     templateFormats: ["html", "md", "njk"],
   };
 };
+
+
+module.exports = function(eleventyConfig) {
+  // Copia toda a pasta public para a raiz do _site
+  eleventyConfig.addPassthroughCopy("public");
+};
