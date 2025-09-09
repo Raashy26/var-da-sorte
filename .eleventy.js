@@ -12,6 +12,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
 
+
+module.exports = function(eleventyConfig) {
+  // Copia toda a pasta public para a raiz do _site
+  eleventyConfig.addPassthroughCopy("public");
+};
+
+
   // =========================
   // Markdown personalizado
   // =========================
@@ -101,8 +108,3 @@ module.exports = function (eleventyConfig) {
   };
 };
 
-
-module.exports = function(eleventyConfig) {
-  // Copia toda a pasta public para a raiz do _site
-  eleventyConfig.addPassthroughCopy("public");
-};
