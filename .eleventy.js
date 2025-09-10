@@ -11,12 +11,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/images": "images" });
   eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
-
-
-module.exports = function(eleventyConfig) {
-  // Copia toda a pasta public para a raiz do _site
-  eleventyConfig.addPassthroughCopy("public");
-};
+  eleventyConfig.addPassthroughCopy("public"); // 👈 aqui a tua verificação Google
+  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" }); // Netlify CMS
 
 
   // =========================
