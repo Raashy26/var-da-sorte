@@ -12,8 +12,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
   eleventyConfig.addPassthroughCopy("public"); // 👈 aqui a tua verificação Google
-  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" }); // Netlify CMS
-
 
   // =========================
   // Markdown personalizado
@@ -52,13 +50,10 @@ module.exports = function (eleventyConfig) {
   // =========================
   // Coleções
   // =========================
-
-  // Apostas diárias
   eleventyConfig.addCollection("apostas", function (collectionApi) {
     return collectionApi.getFilteredByTag("apostas").sort((a, b) => b.date - a.date);
   });
 
-  // Desafios por tipo
   const desafioTipos = ["comeback", "draw", "over25"];
   desafioTipos.forEach(tipo => {
     eleventyConfig.addCollection(`desafios_${tipo}`, collection =>
@@ -66,7 +61,6 @@ module.exports = function (eleventyConfig) {
     );
   });
 
-  // Todos os desafios juntos
   eleventyConfig.addCollection("desafios", collection =>
     collection.getFilteredByGlob("src/desafios/*/*.md").sort((a, b) => b.date - a.date)
   );
@@ -103,4 +97,3 @@ module.exports = function (eleventyConfig) {
     templateFormats: ["html", "md", "njk"],
   };
 };
-
