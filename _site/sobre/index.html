@@ -84,35 +84,88 @@
     <button onclick="acceptCookies()">Aceitar Cookies</button>
   </div>
 
-  <header>
-    <li><a href="/"><h1>⚽🍀 VAR da Sorte</h1></a></li>
-    <nav>
-      <ul>
-        <li><a href="/">Início</a></li>
-        <li><a href="/aposta/">Apostas Diárias</a></li>
-        <li><a href="/desafio/">Desafios</a></li>
-        <li><a href="/ebook/">A Solução!</a></li>
-        <li><a href="/sobre/">Sobre</a></li>
-        <li><a href="/contacto/">Contacto</a></li>
+<header style="
+  width:100%;
+  background: linear-gradient(135deg, #2d9c6a, #55c57a);
+  color:#fff;
+  padding: 40px 20px;
+  text-align:center;
+  position:relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  overflow:hidden;
+">
 
-        <body data-theme="light">
+  <!-- Título com brilho minimalista -->
+  <h1 style="
+    font-family:'Bebas Neue', sans-serif;
+    font-size:3rem;
+    display:inline-block;
+    position:relative;
+    z-index:1;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+  ">
+    ⚽🍀 VAR da Sorte
+  </h1>
 
-        <button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+  <!-- Pequeno slogan -->
+  <p style="margin-top:10px; font-size:1.2rem; font-weight:500;">
+    🎯 Acompanhe as apostas e desafios diários e maximize sua estratégia!
+  </p>
 
-        <script>
-          const btn = document.getElementById("themeToggle");
-          const body = document.body;
+  <!-- Navegação -->
+  <nav style="margin-top:25px;">
+    <ul style="
+      list-style:none;
+      padding:0;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:20px;
+      font-weight:bold;
+    ">
+      <li><a href="/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Início</a></li>
+      <li><a href="/aposta/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Apostas Diárias</a></li>
+      <li><a href="/desafio/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Desafios</a></li>
+      <li><a href="/ebook/" style="color:#fff; text-decoration:none; transition: all 0.3s;">A Solução!</a></li>
+      <li><a href="/sobre/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Sobre</a></li>
+      <li><a href="/contacto/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Contacto</a></li>
+    </ul>
+  </nav>
 
-          btn.addEventListener("click", () => {
-            const currentTheme = body.getAttribute("data-theme");
-            const newTheme = currentTheme === "dark" ? "light" : "dark";
-            body.setAttribute("data-theme", newTheme);
-            btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
-          });
-        </script>
-      </ul>
-    </nav>
-  </header>
+  <!-- Botão Dark/Light -->
+  <button id="themeToggle" style="
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:#fff;
+    color:#2d9c6a;
+    border:none;
+    border-radius:5px;
+    padding:6px 12px;
+    font-weight:bold;
+    cursor:pointer;
+    transition: all 0.3s;
+  ">🌙 Dark</button>
+
+  <style>
+    header nav a:hover {
+      color: #ffd700;
+      transform: scale(1.05);
+    }
+  </style>
+
+  <script>
+    const btn = document.getElementById("themeToggle");
+    const body = document.body;
+    btn.addEventListener("click", () => {
+      const currentTheme = body.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      body.setAttribute("data-theme", newTheme);
+      btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
+    });
+  </script>
+</header>
+    
 
   <main>
     
@@ -171,20 +224,68 @@
 
   </main>
 
-  <footer>
-    <p>&copy; VAR da Sorte. Todos os direitos reservados 🍀</p>
-    <nav>
-      <a href="/sobre/">Sobre</a> |
-      <a href="/contacto/">Contacto</a> |
-      <a href="/privacidade/">Política & Termos</a>
-    </nav>
-    <p style="color:#d4af37; font-weight:bold; margin-top:1rem;">
-      ⚠️ Jogue de forma responsável. Este site é apenas informativo e educativo, não oferece garantias de ganhos.
-    </p>
-    <p style="font-weight:bold;">
-      Se conhecer alguém com problemas de jogo, procure ajuda profissional.
-    </p>
-  </footer>
+<footer style="
+  width:100%;
+  background: linear-gradient(135deg, #2d9c6a, #55c57a);
+  color:#fff;
+  padding:40px 20px;
+  text-align:center;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+">
+
+  <!-- Logo ou nome do site -->
+  <h2 style="font-family:'Bebas Neue', sans-serif; font-size:2rem; margin-bottom:15px;">
+    ⚽🍀 VAR da Sorte
+  </h2>
+
+  <!-- Links do footer -->
+  <nav style="margin-bottom:20px;">
+    <a href="/sobre/" style="color:#fff; text-decoration:none; margin:0 10px; transition: color 0.3s;">Sobre</a> |
+    <a href="/contacto/" style="color:#fff; text-decoration:none; margin:0 10px; transition: color 0.3s;">Contacto</a> |
+    <a href="/privacidade/" style="color:#fff; text-decoration:none; margin:0 10px; transition: color 0.3s;">Política & Termos</a>
+  </nav>
+
+  <!-- Mensagem de responsabilidade -->
+  <p style="color:#d4af37; font-weight:bold; margin:15px 0 5px;">
+    ⚠️ Jogue de forma responsável. Este site é apenas informativo e educativo, não oferece garantias de ganhos.
+  </p>
+  <p style="font-weight:bold; margin-bottom:20px;">
+    Se conhecer alguém com problemas de jogo, procure ajuda profissional.
+  </p>
+
+  <!-- Redes sociais ou ícones (opcional, para engajamento) -->
+  <div style="margin-top:15px;">
+    <a href="https://t.me/VARdaSorte" target="_blank" style="color:#fff; margin:0 10px; font-size:1.2rem; text-decoration:none;">📱 Telegram</a>
+    <a href="https://www.instagram.com/VARdaSorte" target="_blank" style="color:#fff; margin:0 10px; font-size:1.2rem; text-decoration:none;">📸 Instagram</a>
+    <a href="https://www.facebook.com/VARdaSorte" target="_blank" style="color:#fff; margin:0 10px; font-size:1.2rem; text-decoration:none;">👍 Facebook</a>
+  </div>
+
+  <!-- Pequena linha decorativa -->
+  <div style="width:80px; height:3px; background:rgba(255,255,255,0.4); margin:25px auto 0; border-radius:2px; position:relative; overflow:hidden;">
+    <span style="
+      display:block;
+      width:50%;
+      height:100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      animation: shine 3s infinite;
+    "></span>
+  </div>
+
+  <!-- Animação CSS -->
+  <style>
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    footer a:hover {
+      color:#ffd700;
+    }
+  </style>
+
+</footer>
+
 
 <!-- Scripts -->
 <script>
