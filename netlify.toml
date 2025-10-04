@@ -3,6 +3,8 @@
   to = "/google8efc3026f90f0fd0.html"
   status = 200
 
+  [[redirects]]
   from = "/sw.js"
   to = "/sw.js"
   status = 200
+  
