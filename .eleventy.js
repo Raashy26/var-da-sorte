@@ -12,6 +12,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/scripts": "scripts" });
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
   eleventyConfig.addPassthroughCopy({ "public/google8efc3026f90f0fd0.html": "google8efc3026f90f0fd0.html" });
+  eleventyConfig.addPassthroughCopy("sw.js");
 
 
   // =========================
