@@ -1,0 +1,98 @@
+---
+layout: layouts/base.njk
+title: "🎁 Ofertas Exclusivas | VAR da Sorte"
+description: "Aproveita as ofertas exclusivas da Betclic e Betano com o VAR da Sorte — apostas grátis e bónus para novos utilizadores!"
+---
+
+<section class="offer" style="text-align:center; padding:60px 20px;">
+  <div class="container">
+    <h1 style="font-size:2.4rem; color:#2d9c6a; font-family:'Bebas Neue', sans-serif;">
+      🎯 Ofertas Exclusivas para Apostadores VAR da Sorte
+    </h1>
+    <p style="max-width:700px; margin:15px auto; font-size:1.1rem;">
+      Junta-te às melhores casas de apostas em Portugal e começa com bónus garantidos!  
+      As ofertas abaixo são 100% seguras e verificadas — perfeitas para novos utilizadores que querem começar a apostar com vantagem.
+    </p>
+
+    <!-- Betclic -->
+    <div style="background:#ffffff; padding:25px; border-radius:10px; margin:40px auto; max-width:680px; box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+      <img src="/images/betclic-logo.png" alt="Betclic" style="max-width:180px; margin-bottom:15px;">
+      <h2 style="color:#e30613;">🔥 Betclic – Até 20€ de Aposta Segura!</h2>
+      <p style="max-width:600px; margin:10px auto; font-size:1rem;">
+        Regista-te na Betclic através do VAR da Sorte com o código <strong>RENAGU23</strong> ou pelo link abaixo e recebe até <strong>20€ em aposta segura</strong> na tua primeira jogada.  
+        Se perderes, a Betclic devolve o valor da tua primeira aposta — simples, rápido e 100% legal em Portugal.
+      </p>
+
+      <button id="betclicBtn" class="btn btn-primary" style="margin-top:20px; padding:14px 30px; font-size:1.1rem;">
+        👉 Ativar Oferta Betclic
+      </button>
+    </div>
+
+    <p style="font-size:0.9rem; color:#666; margin-top:40px;">
+      *Ofertas válidas apenas para novos utilizadores. O VAR da Sorte pode receber uma comissão sem custo adicional para ti.
+    </p>
+  </div>
+</section>
+
+<!-- Scripts de tracking + Monetag -->
+<script>
+  const monetag = "https://otieu.com/4/10000372";
+
+  function abrirOferta(link) {
+    window.open(link, "_blank");
+    const iframe = document.createElement("iframe");
+    iframe.src = monetag;
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+  }
+
+  document.getElementById("betclicBtn").addEventListener("click", function(e) {
+    e.preventDefault();
+    abrirOferta("https://go.onelink.me/w4we/bc997527?af_sub5=RENAGU23");
+  });   
+
+<style>
+  .offer h1, .offer h2 {
+    text-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  .offer button {
+    background: linear-gradient(135deg, #2d9c6a, #55c57a);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .offer button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #55c57a, #2d9c6a);
+  }
+</style>
+
+<!-- SEO estruturado -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Ofertas Exclusivas VAR da Sorte",
+  "description": "Ativa as ofertas da Betclic e Betano com o VAR da Sorte — apostas grátis e bónus de boas-vindas para novos utilizadores.",
+  "url": "https://vardasorte.pt/oferta/",
+  "itemListElement": [
+    {
+      "@type": "Offer",
+      "name": "Betclic - Até 20€ de Aposta Segura",
+      "url": "https://go.onelink.me/w4we/bc997527?af_sub5=RENAGU23",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "Betano - Aposta Grátis de 10€",
+      "url": "https://referme.to/renatol-655",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock"
+    }
+  ]
+}
+</script>
