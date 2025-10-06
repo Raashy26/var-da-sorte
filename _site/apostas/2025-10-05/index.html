@@ -84,20 +84,37 @@
       transform: scale(1.05);
     }
 
+  /* Dark Mode */
+
+  body.dark {
+  background: #111;
+  color: #eee;
+  }
+  body.dark header {
+  background: rgba(20, 80, 40, 0.85);
+  }
+  body.dark footer {
+  background: rgba(20, 80, 40, 0.85);
+  }
+
+
     /* Header */
-    header {
-      width: 100%;
-      background: linear-gradient(135deg, #2d9c6a, #55c57a);
-      color: #fff;
-      padding: 20px 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      overflow: hidden;
-      transition: all 0.3s;
-    }
+header {
+  width: 100%;
+  background-color: rgba(45, 156, 106, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 20px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transition: transform 0.4s ease, background-color 0.4s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
     header h1 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 2.2rem;
@@ -807,6 +824,40 @@ window.addEventListener('scroll', () => {
   const scrolled = (window.scrollY / docHeight) * 100;
   document.getElementById('progressBar').style.width = scrolled + '%';
 });
+</script>
+
+<script>
+const btn = document.getElementById("themeToggle");
+const bodyEl = document.body;
+const headerEl = document.querySelector("header"); // <== ESSE ERA O FALTANTE
+let lastScroll = 0;
+
+btn.addEventListener("click", () => {
+  bodyEl.classList.toggle("dark");
+  btn.textContent = bodyEl.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
+});
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+
+  // Mostrar/ocultar header
+  if (currentScroll > lastScroll && currentScroll > 50) {
+    headerEl.style.transform = "translateY(-100%)"; // esconder
+  } else {
+    headerEl.style.transform = "translateY(0)"; // mostrar
+  }
+
+  // Transparência extra quando se faz scroll
+  if (currentScroll > 20) {
+    headerEl.style.backgroundColor = "rgba(45,156,106,0.75)";
+  } else {
+    headerEl.style.backgroundColor = "rgba(45,156,106,0.95)";
+  }
+
+  lastScroll = currentScroll;
+});
+
+
 </script>
 
 
