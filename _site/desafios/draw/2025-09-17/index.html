@@ -134,6 +134,8 @@ header {
       opacity: 0;
     }
     header nav ul {
+      gap: 8px; /* menos espaço entre links */
+      font-size: 0.85rem; /* links menores */
       list-style: none;
       padding: 0;
       display: flex;
@@ -141,7 +143,7 @@ header {
       flex-wrap: wrap;
       gap: 15px;
       font-weight: bold;
-      margin-top: 25px;
+      margin-top: 10px;
       animation: fadeInUp 2s ease forwards;
       opacity: 0;
     }
@@ -171,6 +173,34 @@ header {
   background-color: rgba(45, 156, 106, 0.85);
 }
 
+/* Ajustes Mobile */
+@media (max-width: 768px) {
+  header {
+    padding: 15px 10px;
+  }
+
+  /* Botão Dark/Light em mobile */
+  #themeToggle {
+    top: auto; /* remove o top fixo */
+    bottom: 10px; /* coloca no canto inferior do header */
+    right: 10px;
+    position: absolute;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+  }
+
+  /* Menu mais compacto */
+  header nav ul {
+    gap: 8px; /* menos espaço entre links */
+    font-size: 0.85rem; /* links menores */
+    margin-top: 10px; /* menos altura no header */
+  }
+
+  header nav ul li {
+    flex: 1 1 auto; /* flex items menores para caber na largura */
+    text-align: center;
+  }
+}
 
     
 
