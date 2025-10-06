@@ -30,6 +30,7 @@
   <meta property="og:url" content="https://www.vardasorte.com/desafios/comeback/2025-09-22/">
   <meta property="og:image" content="/images/cover.png">
   <meta property="og:locale" content="pt-PT">
+  <meta property="og:site_name" content="VAR da Sorte">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -38,15 +39,18 @@
   <meta name="twitter:image" content="/images/cover.png">
   <meta name="twitter:site" content="">
 
+  <!-- Fonts & CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 
-  <!-- Google AdSense (necessário no head para validação) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2274264207496685"
-     crossorigin="anonymous"></script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2274264207496685" crossorigin="anonymous"></script>
 
   <style>
+    /* Cookie Banner */
     #cookie-banner {
       display: none;
       position: fixed;
@@ -74,28 +78,204 @@
       font-weight: bold;
       margin-left: 10px;
       cursor: pointer;
+      transition: all 0.3s;
+    }
+    #cookie-banner button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      background: linear-gradient(135deg, #2d9c6a, #55c57a);
+      color: #fff;
+      padding: 20px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 0 12px rgba(0,0,0,0.2);
+      animation: fadeInDown 1s ease forwards;
+      opacity: 0;
+    }
+    header p {
+      margin-top: 10px;
+     font-size: 1rem;
+      margin-top: 5px; /* menos espaço entre título e slogan */
+      font-weight: 500;
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+    }
+    header nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-weight: bold;
+      margin-top: 25px;
+      animation: fadeInUp 2s ease forwards;
+      opacity: 0;
+    }
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+    }
+    header nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0%;
+      background: #ffd700;
+      transition: width 0.3s;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+    }
+    header nav a:hover::after {
+      width: 100%;
+    }
+
+    header {
+  backdrop-filter: blur(10px);
+  background-color: rgba(45, 156, 106, 0.85);
+}
+
+
+    
+
+    /* Buttons */
+    #themeToggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #fff;
+      color: #2d9c6a;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    #themeToggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      background: linear-gradient(135deg, #2d9c6a, #55c57a);
+      color: #fff;
+      padding: 20px 20px;
+      text-align: center;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+    }
+    footer h2 {
+      font-family:'Bebas Neue', sans-serif;
+      font-size:1.6rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+    footer nav a {
+      color:#fff;
+      text-decoration:none;
+      margin:0 10px;
+      transition: color 0.3s, transform 0.3s;
+    }
+    footer nav a:hover {
+      color: #ffd700;
+      transform: scale(1.05);
+    }
+
+    /* Footer decorative line */
+    .footer-line {
+      width:80px;
+      height:3px;
+      background:rgba(255,255,255,0.4);
+      margin:25px auto 0;
+      border-radius:2px;
+      position:relative;
+      overflow:hidden;
+    }
+    .footer-line span {
+      display:block;
+      width:50%;
+      height:100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      animation: shine 3s infinite;
+    }
+
+    footer a:hover {
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
+
+
+    @keyframes shine {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    /* Main cards animation */
+    main .card {
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    main .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
   </style>
 
-<!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '761004826642052'); 
-  fbq('track', 'PageView');
-</script>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '761004826642052'); 
+    fbq('track', 'PageView');
+  </script>
 <noscript>
   <img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=761004826642052&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
-
 
 </head>
 
@@ -105,53 +285,20 @@
   <div id="cookie-banner">
     Este site usa cookies para análise e experiência personalizada.
     <button onclick="acceptCookies()">Aceitar Cookies</button>
-  </div>
+  </div>  
 
-<header style="
-  width:100%;
-  background: linear-gradient(135deg, #2d9c6a, #55c57a);
-  color:#fff;
-  padding: 40px 20px;
-  text-align:center;
-  position:relative;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  overflow:hidden;
-">
+<header>
+  <h1>☘ VAR da Sorte ☘</h1>
+  <p>Acompanha as apostas e desafios diários e maximiza a tua estratégia!</p>
 
-  <!-- Título com brilho minimalista -->
-  <h1 style="
-    font-family:'Bebas Neue', sans-serif;
-    font-size:3rem;
-    display:inline-block;
-    position:relative;
-    z-index:1;
-    text-shadow: 0 0 8px rgba(255,255,255,0.3);
-  ">
-    ⚽🍀 VAR da Sorte
-  </h1>
-
-  <!-- Pequeno slogan -->
-  <p style="margin-top:10px; font-size:1.2rem; font-weight:500;">
-    🎯 Acompanhe as apostas e desafios diários e maximize sua estratégia!
-  </p>
-
-  <!-- Navegação -->
-  <nav style="margin-top:25px;">
-    <ul style="
-      list-style:none;
-      padding:0;
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:20px;
-      font-weight:bold;
-    ">
-      <li><a href="/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Início</a></li>
-      <li><a href="/aposta/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Apostas Diárias</a></li>
-      <li><a href="/desafio/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Desafios</a></li>
-      <li><a href="/ebook/" style="color:#fff; text-decoration:none; transition: all 0.3s;">A Solução!</a></li>
-      <li><a href="/sobre/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Sobre</a></li>
-      <li><a href="/contacto/" style="color:#fff; text-decoration:none; transition: all 0.3s;">Contacto</a></li>
+  <nav>
+    <ul>
+      <li><a href="/">Início</a></li>
+      <li><a href="/aposta/">Apostas Diárias</a></li>
+      <li><a href="/desafio/">Desafios</a></li>
+      <li><a href="/ebook/">A Solução!</a></li>
+      <li><a href="/sobre/">Sobre</a></li>
+      <li><a href="/contacto/">Contacto</a></li>
     </ul>
   </nav>
 
@@ -170,7 +317,7 @@
     transition: all 0.3s;
   ">🌙 Dark</button>
 
-  <style>
+    <style>
     header nav a:hover {
       color: #ffd700;
       transform: scale(1.05);
@@ -187,11 +334,11 @@
       btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
     });
   </script>
-</header>
-    
 
-  <main>
-    <article class="post-desafio">
+</header>
+
+<main>
+  <article class="post-desafio">
   <header style="
     text-align:center;
     margin-bottom:30px;
@@ -528,30 +675,16 @@ main {
 }
 </style>
 
-  </main>
+</main>
 
-<footer style="
-  width:100%;
-  background: linear-gradient(135deg, #2d9c6a, #55c57a);
-  color:#fff;
-  padding:40px 20px;
-  text-align:center;
-  box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-">
-
-  <!-- Logo ou nome do site -->
-  <h2 style="font-family:'Bebas Neue', sans-serif; font-size:2rem; margin-bottom:15px;">
-    ⚽🍀 VAR da Sorte
-  </h2>
-
-  <!-- Links do footer -->
-  <nav style="margin-bottom:20px;">
-    <a href="/sobre/" style="color:#fff; text-decoration:none; margin:0 10px; transition: color 0.3s;">Sobre</a> |
-    <a href="/contacto/" style="color:#fff; text-decoration:none; margin:0 10px; transition: color 0.3s;">Contacto</a> |
-    <a href="/privacidade/" style="color:#fff; text-decoration:none; margin:0 10px; transition: color 0.3s;">Política & Termos</a>
+<footer>
+  <h2>☘ VAR da Sorte ☘</h2>
+  <nav>
+    <a href="/sobre/">Sobre</a> |
+    <a href="/contacto/">Contacto</a> |
+    <a href="/privacidade/">Política & Termos</a>
   </nav>
 
-  <!-- Mensagem de responsabilidade -->
   <p style="color:#d4af37; font-weight:bold; margin:15px 0 5px;">
     ⚠️ Jogue de forma responsável. Este site é apenas informativo e educativo, não oferece garantias de ganhos.
   </p>
@@ -562,44 +695,19 @@ main {
     O VAR da Sorte é um projeto de caráter informativo e educativo. Não garantimos ganhos financeiros. Aposte de forma responsável, apenas se tiver mais de 18 anos.
   </p>
 
-
-  <!-- Redes sociais ou ícones (opcional, para engajamento) -->
   <div style="margin-top:15px;">
-    <a href="https://t.me/VARdaSorte" target="_blank" style="color:#fff; margin:0 10px; font-size:1.2rem; text-decoration:none;">📱 Telegram</a>
-    <a href="https://www.instagram.com/VARdaSorte" target="_blank" style="color:#fff; margin:0 10px; font-size:1.2rem; text-decoration:none;">📸 Instagram</a>
-    <a href="https://www.facebook.com/VARdaSorte" target="_blank" style="color:#fff; margin:0 10px; font-size:1.2rem; text-decoration:none;">👍 Facebook</a>
+    <a href="https://t.me/VARdaSorte" target="_blank">📱 Telegram</a>
+    <a href="https://www.instagram.com/VARdaSorte" target="_blank">📸 Instagram</a>
+    <a href="https://www.facebook.com/VARdaSorte" target="_blank">👍 Facebook</a>
   </div>
 
-  <!-- Pequena linha decorativa -->
-  <div style="width:80px; height:3px; background:rgba(255,255,255,0.4); margin:25px auto 0; border-radius:2px; position:relative; overflow:hidden;">
-    <span style="
-      display:block;
-      width:50%;
-      height:100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
-      transform: skewX(-25deg);
-      animation: shine 3s infinite;
-    "></span>
+  <div class="footer-line">
+    <span></span>
   </div>
-
-  <!-- Animação CSS -->
-  <style>
-    @keyframes shine {
-      0% { left: -100%; }
-      100% { left: 200%; }
-    }
-
-    footer a:hover {
-      color:#ffd700;
-    }
-  </style>
-
 </footer>
-
 
 <!-- Scripts -->
 <script>
-  // Cookie Consent + Google Analytics + Google AdSense
   const banner = document.getElementById('cookie-banner');
   const accepted = localStorage.getItem('cookiesAccepted');
 
@@ -615,7 +723,7 @@ main {
     banner.classList.add('hidden');
     setTimeout(() => banner.style.display = 'none', 600);
     loadGA();
-    loadAds(); // Carrega AdSense após consentimento
+    loadAds();
   }
 
   function loadGA() {
@@ -636,8 +744,57 @@ main {
 
 </script>
 
-  </script>
+<script>
+  let lastScroll = 0;
+  const header = document.querySelector("header");
 
-  
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > lastScroll && currentScroll > 50) {
+      // Scroll down → esconder header
+      header.style.transform = "translateY(-100%)";
+      header.style.transition = "transform 0.4s ease";
+    } else {
+      // Scroll up → mostrar header
+      header.style.transform = "translateY(0)";
+      header.style.transition = "transform 0.4s ease";
+    }
+
+    lastScroll = currentScroll;
+  });
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+
+</script>
+
+
+<div id="progressBar" style="
+  position:fixed;
+  top:0;
+  left:0;
+  height:4px;
+  background:#55c57a;
+  width:0;
+  z-index:10000;
+"></div>
+
+<script>
+window.addEventListener('scroll', () => {
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const scrolled = (window.scrollY / docHeight) * 100;
+  document.getElementById('progressBar').style.width = scrolled + '%';
+});
+</script>
+
+
 </body>
 </html>
