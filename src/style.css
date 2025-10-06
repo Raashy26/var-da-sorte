@@ -437,17 +437,6 @@ footer p {
     font-size: 1.4rem;
   }
 
-  #themeToggle,
-  .theme-toggle {
-    position: absolute;
-    right: 12px;
-    bottom: 8px;
-    top: auto;
-    transform: none;
-    font-size: 0.85rem;
-    padding: 6px 10px;
-  }
-
   nav ul {
     gap: 8px;
     font-size: 0.9rem;
