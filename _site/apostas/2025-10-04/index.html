@@ -741,6 +741,7 @@ main {
 
 </main>
 
+
 <footer>
   <h2>☘ VAR da Sorte ☘</h2>
   <nav>
@@ -768,7 +769,22 @@ main {
   <div class="footer-line">
     <span></span>
   </div>
+  
 </footer>
+
+
+
+<!-- Oferta Extra Monetizada -->
+<section class="bonus-offer-footer" style="text-align:center; padding:40px 20px; background:linear-gradient(135deg,#2d9c6a,#55c57a); color:#fff; border-radius:12px; margin:50px auto; max-width:850px;">
+  <h3 style="font-size:1.6rem; margin-bottom:10px;">⚡ Oferta Especial para Apostadores Inteligentes</h3>
+  <p style="font-size:1.05rem; opacity:0.95;">Descobre o melhor bónus disponível agora — pode variar a cada visita!</p>
+  <a href="https://otieu.com/4/10000372" target="_blank" rel="nofollow noopener" class="btn btn-light" 
+     style="display:inline-block; margin-top:15px; background:#fff; color:#2d9c6a; font-weight:600; padding:12px 28px; border-radius:8px; text-decoration:none; transition:all 0.3s ease;">
+     🔍 Ver Oferta Secreta
+  </a>
+</section>
+
+
 
 <!-- Scripts -->
 <script>
@@ -893,6 +909,24 @@ window.addEventListener("scroll", () => {
 
 </script>
 
+<script>
+  // Detetar quando o utilizador chega ao fim da página e dar destaque ao botão
+  window.addEventListener("scroll", () => {
+    const footerOffer = document.querySelector(".bonus-offer-footer a");
+    if (!footerOffer) return;
+
+    const rect = footerOffer.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      footerOffer.style.transform = "scale(1.05)";
+      footerOffer.style.boxShadow = "0 0 15px rgba(255,255,255,0.7)";
+    } else {
+      footerOffer.style.transform = "scale(1)";
+      footerOffer.style.boxShadow = "none";
+    }
+  });
+</script>
 
 </body>
+
 </html>
+
