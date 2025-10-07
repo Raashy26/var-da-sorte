@@ -1,0 +1,111 @@
+---
+layout: layouts/base.njk
+title: "VAR da Sorte - Apostas Inteligentes"
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>Bem-vindo ao VAR da Sorte 🎲</h1>
+    <p>O teu guia diário para apostas desportivas mais inteligentes e seguras.</p>
+    <a href="/aposta/" class="btn btn-primary">Ver Prognósticos de Hoje</a>
+  </div>
+</section>
+
+
+
+<section class="partners">
+  <div class="container">
+    <h2>Principais casas de apostas em Portugal 🤝</h2>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <img src="/images/betano-logo.png" alt="Betano">
+        <p>Aguarde novidades!</p>
+        <a href="#" class="btn btn-secondary">Disponível em breve</a>
+      </div>
+      <div class="partner-card">
+        <img src="/images/solverde-logo.jpg" alt="Solverde">
+        <p>Aguarde novidades!</p>
+        <a href="#" class="btn btn-secondary">Disponível em breve</a>
+      </div>
+      <div class="partner-card">
+        <img src="/images/betclic-logo.png" alt="Betclic">
+        <p>Aguarde novidades!</p>
+        <a href="#" class="btn btn-secondary">Disponível em breve</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="daily-preview">
+  <div class="container">
+    <h2>Jogos do Dia</h2>
+
+    {% if jogosDoDia and jogosDoDia | length %}
+      <div class="games-scroll">
+        <div class="games-grid-scroll">
+          {% for jogo in jogosDoDia %}
+          <div class="game-card-small">
+            <div class="game-top">
+              <span class="club-name">{{ jogo.home }}</span>
+              <span class="vs">vs</span>
+              <span class="club-name">{{ jogo.away }}</span>
+            </div>
+            <p class="competition">{{ jogo.competition }}</p>
+            <p>Hora: {{ jogo.date | date("HH:mm") }}</p>
+            <div class="odds">
+              <span class="odd"><strong>1:</strong> {{ jogo.odds.home }}</span>
+              <span class="odd"><strong>X:</strong> {{ jogo.odds.draw }}</span>
+              <span class="odd"><strong>2:</strong> {{ jogo.odds.away }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+    <div style="text-align:center; margin-top:20px;">
+      <p>Aqui encontrarás uma análise mais detalhada das apostas!</p>
+        </div>
+    {% endif %}
+
+    <div style="text-align:center; margin-top:20px;">
+      <a href="/aposta/" class="btn btn-primary">Ver os melhores Planos de Hoje!</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="challenges">
+  <div class="container">
+    <h2>Os Meus Desafios ⚡</h2>
+    <p>Desafios diários que transformam pequenas quantias em grandes lucros. Acompanha a evolução dos desafios e aprende com cada jogada.</p>
+    <a href="/desafio/" class="btn btn-primary">Ver Desafios</a>
+  </div>
+</section>
+
+<section class="ebook-teaser">
+  <div class="container">
+    <h2>Queres aprender a NUNCA mais perderes uma banca?</h2>
+    <p>Em breve vou lançar o meu e-book exclusivo sobre gestão de banca, estratégias de aposta e como lucrar PARA SEMPRE com apostas desportivas. Fica atento e não percas!</p>
+  </div>
+</section>
+
+{# --- JSON-LD para a Home --- #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name }}",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}{{ site.logo }}"
+}
+</script>
