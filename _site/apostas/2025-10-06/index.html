@@ -590,6 +590,37 @@ header {
   </div>
 </section>
 
+<!-- Oferta Extra Monetizada -->
+<section class="bonus-offer-footer" style="text-align:center; padding:40px 20px; background:linear-gradient(135deg,#2d9c6a,#55c57a); color:#fff; border-radius:12px; margin:50px auto; max-width:850px;">
+  <h3 style="font-size:1.6rem; margin-bottom:10px;">⚡ Oferta Especial para Apostadores Inteligentes</h3>
+  <p style="font-size:1.05rem; opacity:0.95;">Descobre o melhor bónus disponível agora — pode variar a cada visita!</p>
+  <a href="/oferta/" target="_blank" rel="nofollow noopener" class="btn btn-light" data-direct-link="https://otieu.com/4/10000372"
+     style="display:inline-block; margin-top:15px; background:#fff; color:#2d9c6a; font-weight:600; padding:12px 28px; border-radius:8px; text-decoration:none; transition:all 0.3s ease;">
+     🔍 Ver Oferta!
+  </a>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const ghostButtons = document.querySelectorAll(".ghost-click");
+  
+  ghostButtons.forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      // Previna a navegação imediata
+      e.preventDefault();
+
+      // Abre o Direct Link numa nova aba (fantasma)
+      const directLink = this.dataset.directLink;
+      if (directLink) {
+        window.open(directLink, "_blank");
+      }
+
+      // Navega normalmente para a página interna
+      window.location.href = this.getAttribute("href");
+    });
+  });
+});
+</script>
 
 
 <script type="application/ld+json">
@@ -744,16 +775,6 @@ main {
 </footer>
 
 
-
-<!-- Oferta Extra Monetizada -->
-<section class="bonus-offer-footer" style="text-align:center; padding:40px 20px; background:linear-gradient(135deg,#2d9c6a,#55c57a); color:#fff; border-radius:12px; margin:50px auto; max-width:850px;">
-  <h3 style="font-size:1.6rem; margin-bottom:10px;">⚡ Oferta Especial para Apostadores Inteligentes</h3>
-  <p style="font-size:1.05rem; opacity:0.95;">Descobre o melhor bónus disponível agora — pode variar a cada visita!</p>
-  <a href="https://otieu.com/4/10000372" target="_blank" rel="nofollow noopener" class="btn btn-light" 
-     style="display:inline-block; margin-top:15px; background:#fff; color:#2d9c6a; font-weight:600; padding:12px 28px; border-radius:8px; text-decoration:none; transition:all 0.3s ease;">
-     🔍 Ver Oferta Secreta
-  </a>
-</section>
 
 
 
