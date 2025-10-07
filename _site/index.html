@@ -386,13 +386,15 @@ header {
 <main>
   
 <section class="hero">
-  <div class="container">
-    <h1>Bem-vindo ao VAR da Sorte 🎲</h1>
-    <p>O teu guia diário para apostas desportivas mais inteligentes e seguras.</p>
-    <a href="/aposta/" class="btn btn-primary">Ver Prognósticos de Hoje</a>
+  <div class="hero-container">
+    <!-- Texto Hero -->
+    <div class="hero-text">
+      <h1>Bem-vindo ao VAR da Sorte 🎲</h1>
+      <p>O teu guia diário para apostas desportivas mais inteligentes e seguras.</p>
+      <a href="/aposta/" class="btn btn-primary btn-hero">Ver Prognósticos de Hoje</a>
+    </div>
   </div>
 </section>
-
 
 
 <section class="partners">
@@ -470,8 +472,8 @@ header {
   "logo": "https://www.vardasorte.com/images/logo.png"
 }
 </script>
-
 </main>
+
 
 <footer>
   <h2>☘ VAR da Sorte ☘</h2>
@@ -500,7 +502,12 @@ header {
   <div class="footer-line">
     <span></span>
   </div>
+  
 </footer>
+
+
+
+
 
 <!-- Scripts -->
 <script>
@@ -625,6 +632,24 @@ window.addEventListener("scroll", () => {
 
 </script>
 
+<script>
+  // Detetar quando o utilizador chega ao fim da página e dar destaque ao botão
+  window.addEventListener("scroll", () => {
+    const footerOffer = document.querySelector(".bonus-offer-footer a");
+    if (!footerOffer) return;
+
+    const rect = footerOffer.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      footerOffer.style.transform = "scale(1.05)";
+      footerOffer.style.boxShadow = "0 0 15px rgba(255,255,255,0.7)";
+    } else {
+      footerOffer.style.transform = "scale(1)";
+      footerOffer.style.boxShadow = "none";
+    }
+  });
+</script>
 
 </body>
+
 </html>
+
