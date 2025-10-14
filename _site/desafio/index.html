@@ -410,21 +410,21 @@ header {
         <h3>Desafio do Comeback</h3>
         <p>Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.</p>
         <p><strong>Odd mínima:</strong> Variável</p>
-        <a href="/desafios/comeback/2025-10-07/" class="btn btn-primary btn-details">Ver Detalhes</a>
+        <a href="/desafios/comeback/2025-10-14/" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
     
       <div class="challenge-card" data-type="draw">
         <h3>Desafio dos Empates</h3>
         <p>Escolher jogos propensos a empate, individuais e múltiplas.</p>
         <p><strong>Odd mínima:</strong> Variável</p>
-        <a href="/desafios/draw/2025-10-07/" class="btn btn-primary btn-details">Ver Detalhes</a>
+        <a href="/desafios/draw/2025-10-14/" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
     
       <div class="challenge-card" data-type="over25">
         <h3>Desafio Ambas Marcam / +2.5</h3>
         <p>Criar múltipla com odd total ≥3.</p>
         <p><strong>Odd mínima:</strong> ≥3</p>
-        <a href="/desafios/over25/2025-10-07/" class="btn btn-primary btn-details">Ver Detalhes</a>
+        <a href="/desafios/over25/2025-10-14/" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
     
   </div>
@@ -720,6 +720,56 @@ window.addEventListener("scroll", () => {
     }
   });
 </script>
+
+<script>
+  // Fade-in suave do texto do hero
+  (function(){
+    const hero = document.querySelector('.hero');
+    if(!hero) return;
+    const text = hero.querySelector('.hero-text');
+    text.style.opacity = 0;
+    text.style.transform = 'translateY(8px)';
+    text.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    requestAnimationFrame(()=> {
+      setTimeout(()=> {
+        text.style.opacity = 1;
+        text.style.transform = 'translateY(0)';
+      }, 120);
+    });
+
+    // opcional: leve parallax no movimento do background ao mover o rato (desktop)
+    if(window.innerWidth > 900) {
+      hero.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 8; // ajusta intensidade
+        const y = (e.clientY / window.innerHeight - 0.5) * 6;
+        hero.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+      });
+      hero.addEventListener('mouseleave', ()=> {
+        hero.style.backgroundPosition = 'center';
+      });
+    }
+  })();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // anima só 1x
+      }
+    });
+  }, {
+    threshold: 0.15 // 15% visível já dispara
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+});
+</script>
+
 
 </body>
 

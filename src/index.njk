@@ -3,19 +3,27 @@ layout: layouts/base.njk
 title: "VAR da Sorte - Apostas Inteligentes"
 ---
 
-<section class="hero">
+
+<section class="hero reveal" aria-label="Hero - VAR da Sorte">
+  <div class="hero-overlay"></div>
+
   <div class="hero-container">
     <!-- Texto Hero -->
     <div class="hero-text">
+      <p class="hero-badge" aria-hidden="true">⚪ Hoje: prognósticos & desafios ⚪</p>
       <h1>♧ Bem-vindo ao VAR da Sorte ♧</h1>
-      <p>O teu guia diário para apostas desportivas mais inteligentes e seguras.</p>
-      <a href="/aposta/" class="btn btn-primary btn-hero">Ver Prognósticos de Hoje</a>
+      <p class="hero-sub">O teu guia diário para apostas desportivas mais inteligentes e seguras.</p>
+      <div class="hero-ctas">
+        <a href="/aposta/" class="btn btn-primary btn-hero">Ver Prognósticos de Hoje</a>
+        <a href="/desafio/" class="btn btn-secondary" style="margin-left:12px;">Ver Desafios</a>
+      </div>
     </div>
   </div>
 </section>
 
 
-<section class="partners">
+
+<section class="partners reveal">
   <div class="container">
     <h2>Principais casas de apostas em Portugal 🤝</h2>
     <div class="partners-grid">
@@ -39,7 +47,7 @@ title: "VAR da Sorte - Apostas Inteligentes"
 </section>
 
 
-<section class="daily-preview">
+<section class="daily-preview reveal">
   <div class="container">
     <h2>Jogos do Dia</h2>
 
@@ -77,7 +85,7 @@ title: "VAR da Sorte - Apostas Inteligentes"
   </div>
 </section>
 
-<section class="challenges">
+<section class="challenges reveal">
   <div class="container">
     <h2>Os Meus Desafios ⚡</h2>
     <p>Desafios diários que transformam pequenas quantias em grandes lucros. Acompanha a evolução dos desafios e aprende com cada jogada.</p>
@@ -85,7 +93,7 @@ title: "VAR da Sorte - Apostas Inteligentes"
   </div>
 </section>
 
-<section class="ebook-teaser">
+<section class="ebook-teaser reveal">
   <div class="container">
     <h2>Queres aprender a NUNCA mais perderes uma banca?</h2>
     <p>Em breve vou lançar o meu e-book exclusivo sobre gestão de banca, estratégias de aposta e como lucrar PARA SEMPRE com apostas desportivas. Fica atento e não percas!</p>
@@ -111,3 +119,4 @@ title: "VAR da Sorte - Apostas Inteligentes"
   "logo": "{{ site.url }}{{ site.logo }}"
 }
 </script>
+

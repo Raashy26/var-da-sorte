@@ -460,15 +460,15 @@ header {
     <h2>As Melhores Apostas do Dia, sempre com a melhor análise, confiança e procurando PRINCIPALMENTE VALOR!</h2>
 <h3>Apostas Duplas (1 unidade cada)</h3>
 <ul>
-<li><strong>Juventus F vs Benfica F</strong> → Benfica Handicap +3| Odd: 1.17 (Betano)</li>
-<li><strong>Arsenal F vs Lyon F</strong> → Ambas Marcam | Odd: 1.35 (Betano)</li>
+<li><strong>Juventus F vs Benfica F</strong> → Benfica Handicap +3| Odd: 1.17 (Betano) ✅</li>
+<li><strong>Arsenal F vs Lyon F</strong> → Ambas Marcam | Odd: 1.35 (Betano) ✅</li>
 </ul>
-<p><strong>Odd combinada estimada:</strong> 1.58</p>
+<p><strong>Odd combinada estimada:</strong> 1.58 ✅</p>
 <ul>
-<li><strong>Targu Mures vs Gloria Bistrita</strong> → Targu Mures Vence | Odd: 1.34  (Betano)</li>
-<li><strong>Barcelona F vs Bayern Munique F</strong> → Barcelona F Handicap -1 | Odd: 1.36 (Betano)</li>
+<li><strong>Targu Mures vs Gloria Bistrita</strong> → Targu Mures Vence | Odd: 1.34  (Betano) ✅</li>
+<li><strong>Barcelona F vs Bayern Munique F</strong> → Barcelona F Handicap -1 | Odd: 1.36 (Betano) ✅</li>
 </ul>
-<p><strong>Odd combinada estimada:</strong> 1.82</p>
+<p><strong>Odd combinada estimada:</strong> 1.82 ✅</p>
 
   </section>
 
@@ -918,6 +918,56 @@ window.addEventListener("scroll", () => {
     }
   });
 </script>
+
+<script>
+  // Fade-in suave do texto do hero
+  (function(){
+    const hero = document.querySelector('.hero');
+    if(!hero) return;
+    const text = hero.querySelector('.hero-text');
+    text.style.opacity = 0;
+    text.style.transform = 'translateY(8px)';
+    text.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    requestAnimationFrame(()=> {
+      setTimeout(()=> {
+        text.style.opacity = 1;
+        text.style.transform = 'translateY(0)';
+      }, 120);
+    });
+
+    // opcional: leve parallax no movimento do background ao mover o rato (desktop)
+    if(window.innerWidth > 900) {
+      hero.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 8; // ajusta intensidade
+        const y = (e.clientY / window.innerHeight - 0.5) * 6;
+        hero.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+      });
+      hero.addEventListener('mouseleave', ()=> {
+        hero.style.backgroundPosition = 'center';
+      });
+    }
+  })();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // anima só 1x
+      }
+    });
+  }, {
+    threshold: 0.15 // 15% visível já dispara
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+});
+</script>
+
 
 </body>
 
