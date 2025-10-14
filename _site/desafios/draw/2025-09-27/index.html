@@ -963,26 +963,40 @@ window.addEventListener("scroll", () => {
       });
     }
   })();
-</script>
 
-<script>
+
 document.addEventListener("DOMContentLoaded", () => {
-  const revealElements = document.querySelectorAll('.reveal');
+  const reveals = document.querySelectorAll(".reveal");
 
+  // IntersectionObserver que adiciona/remover a classe 'active'
+  // quando o elemento entra/sai do viewport.
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // anima só 1x
+      // usa intersectionRatio para evitar "flicker" em pequenas interseções
+      if (entry.intersectionRatio > 0.12) {
+        // entra no viewport -> anima
+        entry.target.classList.add("active");
+      } else {
+        // sai do viewport -> remove para permitir replay da animação
+        entry.target.classList.remove("active");
       }
     });
   }, {
-    threshold: 0.15 // 15% visível já dispara
+    threshold: [0, 0.12, 0.4], // triggers em vários pontos (ajusta se quiseres)
+    rootMargin: "0px 0px -8% 0px" // considera o elemento saído um pouco antes de chegar ao fundo
   });
 
-  revealElements.forEach(el => observer.observe(el));
+  // Observa todos os elementos .reveal
+  reveals.forEach(el => observer.observe(el));
+
+  // Opcional: acelera a renderização evitando reflows excessivos
+  window.addEventListener('scroll', () => {
+    // forçar repaint leve (não obrigatório) - remove se não quiseres
+    window.requestAnimationFrame(() => {});
+  }, { passive: true });
 });
 </script>
+
 
 
 </body>

@@ -316,18 +316,6 @@ nav ul li a:hover {
   transform: translateY(-2px);
 }
 
-/* === SCROLL REVEAL ANIMATIONS === */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 
 /* =======================
    Partners Section
@@ -1017,3 +1005,18 @@ header, .hero-ebook, nav ul li a {
 .game-card-small .btn-primary:hover {
   background-color: #218c5a !important; /* verde mais escuro */
 }
+
+
+/* === SCROLL REVEAL ANIMATIONS === */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
