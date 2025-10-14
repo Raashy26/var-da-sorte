@@ -364,6 +364,101 @@ nav ul li a:hover {
   margin-bottom: 10px;
 }
 
+/* ============================= */
+/* PARTNERS SECTION - Glass Style */
+/* ============================= */
+.partners {
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+}
+
+.partners h2 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+  background: linear-gradient(135deg, #2d9c6a, #55c57a);
+  background-clip: text;              /* ✅ versão padrão */
+  -webkit-background-clip: text;      /* ✅ compatibilidade Safari */
+  -webkit-text-fill-color: transparent;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.partner-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 25px;
+  width: 100%;
+  max-width: 280px;
+  backdrop-filter: blur(12px);
+  transition: all 0.35s ease;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+.partner-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  border-color: rgba(85, 197, 122, 0.6);
+}
+
+.partner-logo img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 15px;
+  filter: brightness(1.1);
+  transition: transform 0.3s ease;
+}
+
+.partner-card:hover .partner-logo img {
+  transform: scale(1.05);
+}
+
+.partner-card .status {
+  color: #ddd;
+  margin-bottom: 10px;
+}
+
+.partners .btn {
+  font-size: 0.9rem;
+  padding: 8px 14px;
+}
+
+.partners {
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+@media (max-width: 600px) {
+  .partners {
+    padding: 60px 0;
+  }
+
+  .partner-card {
+    max-width: 90%;
+  }
+
+  .partners h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
 /* =======================
    Daily Preview Section
    ======================= */
@@ -378,6 +473,157 @@ nav ul li a:hover {
   margin-bottom: 40px;
   font-size: 2rem;
 }
+
+/* ------------------------
+   Jogos do Dia (Daily Preview)
+   ------------------------ */
+
+/* Base: usa as variáveis de tema (light por defeito) */
+.daily-preview {
+  position: relative;
+  padding: 80px 0;
+  background: var(--bg);           /* fundo claro por defeito */
+  text-align: center;
+  overflow: hidden;
+  color: var(--text);
+}
+
+/* Título com destaque usando gradiente (texto recortado) */
+.daily-preview h2 {
+  font-size: 2.0rem;
+  margin-bottom: 36px;
+  background: linear-gradient(135deg, var(--primary), #00d39a);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(45,156,106,0.06);
+}
+
+/* Scroll horizontal (cards) */
+.games-scroll {
+  overflow-x: auto;
+  padding-bottom: 12px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Container flex para os cards */
+.games-grid-scroll {
+  display: flex;
+  gap: 18px;
+  min-width: max-content;
+  padding: 10px 6px;
+}
+
+/* Card - usa background de card (variável) */
+.game-card-small {
+  background: var(--card-bg);           /* claro por defeito, escuro em theme dark */
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 18px;
+  border-radius: 14px;
+  width: 240px;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  color: var(--text);
+}
+
+/* Hover leve */
+.game-card-small:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* Header do card */
+.game-top {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+/* VS com destaque */
+.vs {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* Competição / hora / odds */
+.competition { font-size: 0.9rem; color: #6b6b6b; margin-bottom: 8px; }
+.hora { font-size: 0.95rem; margin-bottom: 12px; color: #444; }
+
+.odds span {
+  display: inline-block;
+  background: rgba(0,0,0,0.03);
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin: 0 6px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* CTA central */
+.cta-center { margin-top: 34px; }
+
+/* Mensagem "no games" */
+.no-games {
+  color: var(--text);
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+/* Scrollbar (apenas melhora visual em browsers que suportam) */
+.games-scroll::-webkit-scrollbar { height: 8px; }
+.games-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.12);
+  border-radius: 8px;
+}
+
+/* ====== Dark mode adjustments ======
+   Quando o tema for dark (usa a convenção do teu CSS: data-theme="dark" / body.dark)
+   aplica fundo escuro / gradiente e ajusta cores dos cards.
+*/
+body[data-theme="dark"] .daily-preview,
+body.dark .daily-preview {
+  /* fundo escuro animado (sutil) */
+  background: #0b0b0b;
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+  color: #e9fef0;
+}
+
+body[data-theme="dark"] .daily-preview h2,
+body.dark .daily-preview h2 {
+  text-shadow: 0 0 18px rgba(0,255,170,0.12);
+}
+
+body[data-theme="dark"] .game-card-small,
+body.dark .game-card-small {
+  background: rgba(255,255,255,0.03); /* leve glass sobre escuro */
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  color: #e6fff6;
+}
+
+body[data-theme="dark"] .competition { color: #bfcacc; }
+body[data-theme="dark"] .hora { color: #cfeedd; }
+body[data-theme="dark"] .odds span { background: rgba(0,255,170,0.06); color: #bfffe1; }
+
+/* animação do gradiente (usada em dark mode) */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .daily-preview { padding: 60px 12px; }
+  .game-card-small { width: 200px; padding: 14px; border-radius: 12px; }
+  .daily-preview h2 { font-size: 1.6rem; margin-bottom: 24px; }
+}
+
+
 
 /* =======================
    Jogos do Dia - Scroll Horizontal
@@ -493,6 +739,138 @@ nav ul li a:hover {
   max-width: 700px;
   margin: 0 auto 20px auto;
 }
+
+/* =======================
+   SEÇÃO: DESAFIOS
+   ======================= */
+
+.challenges {
+  padding: 80px 0;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.challenges h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #00a86b, #00d68f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Cards base */
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+.challenge-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 40px 25px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  max-width: 340px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.challenge-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.challenge-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 153, 0.5));
+}
+
+.challenge-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: var(--text-main);
+}
+
+.challenge-card p {
+  font-size: 1rem;
+  color: var(--text-sub);
+}
+
+/* ===== Light Mode ===== */
+:root {
+  --bg-challenges: #ffffff;
+  --card-bg: #f8fff9;
+  --text-main: #0f3b29;
+  --text-sub: #3a6b55;
+  --accent-green: #00b377;
+}
+
+/* Gradiente no light mode */
+.light-mode .challenges {
+  background: linear-gradient(180deg, #ffffff 0%, #f2fdf7 100%);
+}
+
+.light-mode .challenge-card {
+  background: #f8fff9;
+  border: 1px solid rgba(0, 179, 119, 0.2);
+}
+
+.light-mode .challenge-card:hover {
+  background: #ebfff2;
+  box-shadow: 0 8px 20px rgba(0, 179, 119, 0.15);
+}
+
+/* ===== Dark Mode ===== */
+.dark-mode .challenge {
+  background: linear-gradient(180deg, #0a1a13 0%, #07110c 100%);
+}
+
+.dark-mode .challenge-card {
+  background: #0f231a;
+  border: 1px solid rgba(0, 255, 153, 0.12);
+}
+
+.dark-mode .challenge-card:hover {
+  background: #133124;
+  box-shadow: 0 8px 22px rgba(0, 255, 153, 0.1);
+}
+
+.dark-mode .challenge-card h3 {
+  color: #eafff5;
+}
+
+.dark-mode .challenge-card p {
+  color: #a4d9c2;
+}
+
+.dark-mode .challenges h2 {
+  background: linear-gradient(90deg, #00ff99, #00cc7a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+  .challenges {
+    padding: 60px 0;
+  }
+  .challenges h2 {
+    font-size: 2rem;
+  }
+  .challenge-card {
+    padding: 30px 20px;
+  }
+}
+
+
+
+
 
 /* =======================
    Ebook Teaser Section

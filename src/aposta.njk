@@ -3,14 +3,14 @@ layout: layouts/base.njk
 title: "Prognósticos Diários - VAR da Sorte"
 ---
 
-<section class="page-header">
+<section class="page-header reveal">
   <div class="container" style="text-align:center; margin-top:40px;">
     <h1>📅 Prognósticos Diários</h1>
     <p>As nossas apostas recomendadas para hoje, atualizadas diariamente com base em análises e estatísticas.</p>
   </div>
 </section>
 
-<section class="filters container">
+<section class="filters container reveal">
   <div class="filter-buttons">
     <button class="btn btn-secondary filter-btn" data-filter="all">Todas</button>
     <button class="btn btn-secondary filter-btn" data-filter="favorites">Favoritas ⭐</button>
@@ -18,7 +18,7 @@ title: "Prognósticos Diários - VAR da Sorte"
   </div>
 </section>
 
-<section class="daily-bets container">
+<section class="daily-bets container reveal">
   {# 👉 mostra sempre o post mais recente da coleção 'apostas' #}
   {% set apostaHoje = collections.apostas | first %}
 
@@ -41,7 +41,7 @@ title: "Prognósticos Diários - VAR da Sorte"
 </section>
 
 
-<section class="partners">
+<section class="partners reveal">
   <div class="container">
     <h2>Principais casas de apostas em Portugal 🤝</h2>
     <div class="partners-grid">
@@ -65,7 +65,7 @@ title: "Prognósticos Diários - VAR da Sorte"
 </section>
 
 
-<section class="historical-bets container" style="margin-top:50px;">
+<section class="historical-bets container reveal" style="margin-top:50px;">
   <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 30 dias</h2>
   <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; margin-top:20px;">
     {% for post in collections.apostas %}
@@ -81,7 +81,7 @@ title: "Prognósticos Diários - VAR da Sorte"
 
 
 
-<section class="cta container">
+<section class="cta container reveal">
   <div style="text-align:center; margin-top:40px;">
     <a href="/desafio/" class="btn btn-primary btn-lg">Participa nos Desafios Diários ⚡</a>
   </div>

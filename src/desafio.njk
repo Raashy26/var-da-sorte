@@ -3,14 +3,14 @@ layout: layouts/base.njk
 title: "Desafios de Apostas - VAR da Sorte"
 ---
 
-<section class="page-header">
+<section class="page-header reveal">
   <div class="container" style="text-align:center; margin-top:40px;">
     <h1>🔥 Desafios de Apostas</h1>
     <p>Três desafios especiais que podes acompanhar diariamente para testar estratégias e maximizar lucros.</p>
   </div>
 </section>
 
-<section class="filters container">
+<section class="filters container reveal">
   <div class="filter-buttons">
     <button class="btn btn-secondary filter-btn" data-filter="all">Todos</button>
     <button class="btn btn-secondary filter-btn" data-filter="comeback">Desafio do Comeback ⚡</button>
@@ -19,7 +19,7 @@ title: "Desafios de Apostas - VAR da Sorte"
   </div>
 </section>
 
-<section class="daily-challenges container">
+<section class="daily-challenges container reveal">
   {% set desafios = [
     {
       "type": "comeback",
@@ -44,7 +44,7 @@ title: "Desafios de Apostas - VAR da Sorte"
     }
   ] %}
 
-  <div class="challenges-grid">
+  <div class="challenges-grid reveal">
     {% for desafio in desafios %}
       <div class="challenge-card" data-type="{{ desafio.type }}">
         <h3>{{ desafio.title }}</h3>
@@ -56,14 +56,14 @@ title: "Desafios de Apostas - VAR da Sorte"
   </div>
 </section>
 
-<section class="cta container">
+<section class="cta container reveal">
   <div style="text-align:center; margin-top:40px;">
     <a href="/aposta/" class="btn btn-primary btn-lg">Ver Apostas Diárias 📅</a>
   </div>
 </section>
 
 
-<section class="partners">
+<section class="partners reveal">
   <div class="container">
     <h2>Principais casas de apostas em Portugal 🤝</h2>
     <div class="partners-grid">
