@@ -70,6 +70,18 @@ module.exports = function (eleventyConfig) {
   // =========================
   // Dados globais - Jogos do dia
   // =========================
+ 
+   eleventyConfig.addFilter("formatDate", function (value) {
+  if (!value) return "";
+  const date = new Date(value);
+  return date.toLocaleDateString("pt-PT", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+});
+
+ 
   eleventyConfig.addGlobalData("jogosDoDia", async () => {
     try {
       const jogos = await jogosDoDia();
@@ -83,6 +95,8 @@ module.exports = function (eleventyConfig) {
       return [];
     }
   });
+
+
 
   // =========================
   // Configurações do Eleventy

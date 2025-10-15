@@ -4,41 +4,32 @@ title: "Prognósticos Diários - VAR da Sorte"
 ---
 
 <section class="page-header reveal">
-  <div class="container" style="text-align:center; margin-top:40px;">
-    <h1>📅 Prognósticos Diários</h1>
-    <p>As nossas apostas recomendadas para hoje, atualizadas diariamente com base em análises e estatísticas.</p>
+  <div class="hero-content">
+    <h1>🍀 Prognósticos Diários</h1>
+    <p>As melhores apostas, atualizadas todos os dias com base nas tuas preferências ⚽</p>
   </div>
 </section>
 
-<section class="filters container reveal">
-  <div class="filter-buttons">
-    <button class="btn btn-secondary filter-btn" data-filter="all">Todas</button>
-    <button class="btn btn-secondary filter-btn" data-filter="favorites">Favoritas ⭐</button>
-    <button class="btn btn-secondary filter-btn" data-filter="high-odds">Odds Altas 🔥</button>
-  </div>
-</section>
 
-<section class="daily-bets container reveal">
-  {# 👉 mostra sempre o post mais recente da coleção 'apostas' #}
-  {% set apostaHoje = collections.apostas | first %}
+<section class="daily-bets reveal">
+  <div class="container">
+    {% set apostaHoje = collections.apostas | first %}
 
-  {% if apostaHoje %}
-    <div class="bets-grid">
-      <div class="bet-card" data-odds="{{ apostaHoje.data.odds | default(0) }}" data-favorite="{{ apostaHoje.data.favorite | default(false) }}">
-        <div class="bet-header">
-          <h3>Apostas - {{ apostaHoje.date | date("d 'de' LLLL 'de' yyyy") }}</h3>
-          <span class="competition">Apostas do dia</span>
+    {% if apostaHoje %}
+      <div class="bet-highlight">
+        <div class="bet-info">
+          <h2>🎯 Prognóstico do Dia</h2>
+          <p class="date"> {{ apostaHoje.date | date | safe | jsDate | formatDate }} </p>
+          <p class="desc">Descobre as apostas mais recomendadas de hoje, baseadas em análise e estatísticas exclusivas do VAR da Sorte.</p>
+          <a href="{{ apostaHoje.url }}" class="btn btn-primary">Ver Apostas de Hoje</a>
         </div>
-        <div class="bet-details">
-          <p>As melhores apostas para hoje, escolhidas com base em análises e estatísticas.</p>
-        </div>
-        <a href="{{ apostaHoje.url }}" class="btn btn-primary btn-details">Ver Detalhes</a>
       </div>
-    </div>
-  {% else %}
-    <p style="text-align:center; margin-top:20px;">⚠️ Em breve vais encontrar aqui os prognósticos do dia. Mantém-te atento!</p>
-  {% endif %}
+    {% else %}
+      <p class="no-bets">⚠️ Em breve vais encontrar aqui os prognósticos do dia. Mantém-te atento!</p>
+    {% endif %}
+  </div>
 </section>
+
 
 
 <section class="partners reveal">
@@ -86,49 +77,6 @@ title: "Prognósticos Diários - VAR da Sorte"
     <a href="/desafio/" class="btn btn-primary btn-lg">Participa nos Desafios Diários ⚡</a>
   </div>
 </section>
-
-<style>
-/* Cards e histórico */
-.bets-grid, .history-grid { margin-top: 20px; }
-
-.bet-card {
-  background-color: #eafaf1 !important;
-  color: #000000 !important;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.bet-card * { color: #000000 !important; }
-.bet-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-
-.bet-header h3 { color: #2d9c6a; margin-bottom:5px; }
-.competition { font-size:0.9rem; color:#217b53; }
-.bet-details p { font-size:0.9rem; margin:5px 0; }
-
-.btn-details, .history-grid .btn-secondary {
-  background-color: #2d9c6a !important;
-  color:#ffffff !important;
-  border:none;
-  border-radius:8px;
-  padding:8px 14px;
-  font-weight:bold;
-  text-align:center;
-  transition: background-color 0.3s;
-}
-.btn-details:hover, .history-grid .btn-secondary:hover {
-  background-color: #218c5a !important;
-}
-
-/* Filtros */
-.filters { margin:40px 0 20px; text-align:center; }
-.filter-buttons button { margin:0 10px 10px 0; }
-
-@media(max-width:768px){
-  .bets-grid{ grid-template-columns:1fr; }
-  .history-grid { grid-template-columns:1fr 1fr; }
-}
-</style>
 
 <script>
 /* Filtros simples */

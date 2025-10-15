@@ -1650,3 +1650,195 @@ footer h2::before {
   margin-left: 5px;
   display: inline-block;
 }
+
+/* =======================
+   aposta.njk - style das Apostas
+   ======================= */
+
+
+   /* === HERO / PAGE HEADER === */
+.page-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8rem 1.5rem 6rem;
+  background: linear-gradient(135deg, #2d9c6a, rgba(120, 196, 114, 0.8)), 
+              url("/assets/img/hero-bg-bets.jpg") center/cover no-repeat;
+  color: #fff;
+  overflow: hidden;
+}
+
+.page-header .hero-content {
+  max-width: 800px;
+  z-index: 2;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+}
+
+.page-header p {
+  font-size: 1.25rem;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+/* Hero background overlay */
+.page-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+/* === DARK MODE === */
+[data-theme="dark"] .page-header {
+  background: #000 !important; /* fundo preto puro */
+  color: #fff;
+}
+
+[data-theme="dark"] .page-header::before {
+  background: rgba(0, 0, 0, 0.7); /* camada leve preta */
+}
+
+/* Emojis seguem a cor do texto (iOS fix) */
+.page-header h1, .page-header p {
+  -webkit-text-fill-color: currentColor;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 1rem 4rem;
+  }
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+  .page-header p {
+    font-size: 1rem;
+  }
+}
+
+/* === DESTAQUE - APOSTA DO DIA === */
+.daily-bets {
+  padding: 5rem 1.5rem;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.bet-highlight {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  max-width: 700px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  border: 1px solid #e8e8e8;
+}
+
+.bet-highlight:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.bet-info h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.bet-info .date {
+  color: #2d9c6a;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.bet-info .desc {
+  font-size: 1rem;
+  color: #555;
+  max-width: 500px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.6;
+}
+
+.bet-info .btn {
+  background: #2d9c6a;
+  color: #fff;
+  padding: 0.8rem 1.8rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.bet-info .btn:hover {
+  background: #238f5b;
+}
+
+.no-bets {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  padding: 2rem;
+}
+
+
+/* Cards e histórico */
+.bets-grid, .history-grid { margin-top: 20px; }
+
+.bet-card {
+  background-color: #eafaf1 !important;
+  color: #000000 !important;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.bet-card * { color: #000000 !important; }
+.bet-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+
+.bet-header h3 { color: #2d9c6a; margin-bottom:5px; }
+.competition { font-size:0.9rem; color:#217b53; }
+.bet-details p { font-size:0.9rem; margin:5px 0; }
+
+.btn-details, .history-grid .btn-secondary {
+  background-color: #2d9c6a !important;
+  color:#ffffff !important;
+  border:none;
+  border-radius:8px;
+  padding:8px 14px;
+  font-weight:bold;
+  text-align:center;
+  transition: background-color 0.3s;
+}
+.btn-details:hover, .history-grid .btn-secondary:hover {
+  background-color: #218c5a !important;
+}
+
+/* Filtros */
+.filters { margin:40px 0 20px; text-align:center; }
+.filter-buttons button { margin:0 10px 10px 0; }
+
+@media(max-width:768px){
+  .bets-grid{ grid-template-columns:1fr; }
+  .history-grid { grid-template-columns:1fr 1fr; }
+}
