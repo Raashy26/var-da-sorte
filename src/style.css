@@ -1642,3 +1642,11 @@ footer h2::after {
   margin-left: 5px;
   display: inline-block;
 }
+
+header h1::before,
+footer h2::before {
+  content: "☘";
+  filter: brightness(0) invert(1); /* deixa o emoji branco */
+  margin-left: 5px;
+  display: inline-block;
+}
