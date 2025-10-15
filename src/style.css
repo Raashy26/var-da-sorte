@@ -1089,17 +1089,6 @@ body[data-theme="dark"] .odds span { background: rgba(0,255,170,0.06); color: #b
   transform: scale(1.05);
 }
 
-/* Faz com que emojis herdem a cor do texto */
-h1, h2, h3, h4, h5, h6, p, a, span, .logo {
-  color: inherit;
-}
-
-/* Correção específica para o emoji 🍀 */
-.logo, 
-.header h1, 
-.footer h2 {
-  color: var(--text-color);
-}
 
 /* =======================
    Footer
@@ -1637,3 +1626,17 @@ section p {
   line-height: 1.6;
 }
 
+
+
+/* Força os emojis a herdar a cor no WebKit (iPhones, iPads) */
+h1, h2 {
+  color: inherit;
+  -webkit-text-fill-color: currentColor; /* ⚡ isto é o truque para iOS */
+}
+
+/* Específico para dark mode */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2 {
+  color: #fff; /* texto branco */
+  -webkit-text-fill-color: #fff; /* ⚡ garante emoji branco no iOS */
+}
