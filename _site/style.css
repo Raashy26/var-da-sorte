@@ -1628,15 +1628,17 @@ section p {
 
 
 
-/* Força os emojis a herdar a cor no WebKit (iPhones, iPads) */
-h1, h2 {
-  color: inherit;
-  -webkit-text-fill-color: currentColor; /* ⚡ isto é o truque para iOS */
+/* Forçar cor branca no emoji ☘ do header e footer em iOS */
+header h1, 
+footer h2 {
+  color: #fff;
 }
 
-/* Específico para dark mode */
-[data-theme="dark"] h1,
-[data-theme="dark"] h2 {
-  color: #fff; /* texto branco */
-  -webkit-text-fill-color: #fff; /* ⚡ garante emoji branco no iOS */
+/* Específico para o emoji ☘ — iOS fix */
+header h1::after,
+footer h2::after {
+  content: "☘";
+  filter: brightness(0) invert(1); /* deixa o emoji branco */
+  margin-left: 5px;
+  display: inline-block;
 }
