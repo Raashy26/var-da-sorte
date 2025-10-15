@@ -1664,8 +1664,8 @@ footer h2::before {
   align-items: center;
   text-align: center;
   padding: 8rem 1.5rem 6rem;
-  background: linear-gradient(135deg, #2d9c6a, rgba(120, 196, 114, 0.8)), 
-              url("/assets/img/hero-bg-bets2.png") center/cover no-repeat;
+  background: linear-gradient(135deg, #2d9c6a, rgba(120, 196, 114, 0.6)), 
+              url("/src/images/hero-bg-bets2.png") center/cover no-repeat;
   color: #fff;
   overflow: hidden;
 }
