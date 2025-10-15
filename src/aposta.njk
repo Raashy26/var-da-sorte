@@ -19,7 +19,7 @@ title: "Prognósticos Diários - VAR da Sorte"
       <div class="bet-highlight">
         <div class="bet-info">
           <h2>🎯 Prognóstico do Dia</h2>
-          <p class="date"> {{ apostaHoje.date | date | safe | jsDate | formatDate }} </p>
+          <p class="date">{{ apostaHoje.date | formatDate }}</p>
           <p class="desc">Descobre as apostas mais recomendadas de hoje, baseadas em análise e estatísticas exclusivas do VAR da Sorte.</p>
           <a href="{{ apostaHoje.url }}" class="btn btn-primary">Ver Apostas de Hoje</a>
         </div>

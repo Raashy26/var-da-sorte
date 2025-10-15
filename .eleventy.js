@@ -13,6 +13,17 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
   eleventyConfig.addPassthroughCopy({ "public/google8efc3026f90f0fd0.html": "google8efc3026f90f0fd0.html" });
   eleventyConfig.addPassthroughCopy({"public/sw.js": "sw.js"});
+  eleventyConfig.addFilter("formatDate", function(value) {
+    if (!value) return "";
+    // Se value já for um Date object, usa-o; senão cria Date
+    const date = (value instanceof Date) ? value : new Date(value);
+    // Formato: 15 de outubro de 2025
+    return date.toLocaleDateString("pt-PT", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+  });
 
 
   // =========================
