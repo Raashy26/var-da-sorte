@@ -3,51 +3,57 @@ layout: layouts/base.njk
 title: "Desafios de Apostas - VAR da Sorte"
 ---
 
-<section class="page-header reveal">
-  <div class="container" style="text-align:center; margin-top:40px;">
-    <h1>🔥 Desafios de Apostas</h1>
-    <p>Três desafios especiais que podes acompanhar diariamente para testar estratégias e maximizar lucros.</p>
+<section class="page-header-df reveal">
+  <div class="page-header-df-bg"></div> <!-- fundo animado / gradiente -->
+  <div class="container page-header-df-content">
+    <h1>Os Desafios do VAR da Sorte</h1>
+    <p class="subtitle">Três desafios especiais que podes acompanhar diariamente para testar estratégias e maximizar lucros.</p>
   </div>
 </section>
+
+{# 🔒 Filtros temporariamente desativados — reativar quando o sistema de odds e favoritos estiver funcional #}
+{#
 
 <section class="filters container reveal">
   <div class="filter-buttons">
     <button class="btn btn-secondary filter-btn" data-filter="all">Todos</button>
-    <button class="btn btn-secondary filter-btn" data-filter="comeback">Desafio do Comeback ⚡</button>
-    <button class="btn btn-secondary filter-btn" data-filter="draw">Desafio dos Empates ⚡</button>
-    <button class="btn btn-secondary filter-btn" data-filter="over25">Ambas Marcam / +2.5 ⚡</button>
+    <button class="btn btn-secondary filter-btn" data-filter="comeback">Desafio do Comeback</button>
+    <button class="btn btn-secondary filter-btn" data-filter="draw">Desafio dos Empates</button>
+    <button class="btn btn-secondary filter-btn" data-filter="over25">Ambas Marcam / +2.5</button>
   </div>
 </section>
+#}
 
-<section class="daily-challenges container reveal">
+
+<section class="daily-challenges container reveal"; style="margin-top:40px;">
   {% set desafios = [
     {
       "type": "comeback",
       "title": "Desafio do Comeback",
-      "description": "Apostar em viradas: seleciona jogos para tentar ganhar depois de estar a perder.",
-      "odds": "Variável",
+      "description": "Apostar em viradas: Procurar jogos onde a equipa em desvantagem consegue virar o resultado, usando assim uma aposta dentro desse registo. ",
+      "odds": "≥ 10",
       "link": (collections.desafios_comeback[0].url if collections.desafios_comeback | length > 0 else "/desafios/comeback")
     },
     {
       "type": "draw",
       "title": "Desafio dos Empates",
-      "description": "Escolher jogos propensos a empate, individuais e múltiplas.",
-      "odds": "Variável",
+      "description": "Escolher jogos propensos a empate, aproveitando assim as odds elevadas que estes jogos oferecem.",
+      "odds": "≥ 30",
       "link": (collections.desafios_draw[0].url if collections.desafios_draw | length > 0 else "/desafios/draw")
     },
     {
       "type": "over25",
-      "title": "Desafio Ambas Marcam / +2.5",
-      "description": "Criar múltipla com odd total ≥3.",
-      "odds": "≥3",
+      "title": "Desafio Ambas Marcam OU +2.5",
+      "description": "Apostar em jogos onde ambas as equipas marcam ou onde o total de golos é superior a 2.5, maximizando assim as oportunidades de obter um green de valor.",
+      "odds": "≥ 3",
       "link": (collections.desafios_over25[0].url if collections.desafios_over25 | length > 0 else "/desafios/over25")
     }
   ] %}
 
-  <div class="challenges-grid reveal">
+  <div class="challenges-df-grid reveal">
     {% for desafio in desafios %}
-      <div class="challenge-card" data-type="{{ desafio.type }}">
-        <h3>{{ desafio.title }}</h3>
+      <div class="challenge-df-card" data-type="{{ desafio.type }}">
+        <h3 style="text-align: center;">{{ desafio.title }}</h3>
         <p>{{ desafio.description }}</p>
         <p><strong>Odd mínima:</strong> {{ desafio.odds }}</p>
         <a href="{{ desafio.link }}" class="btn btn-primary btn-details">Ver Detalhes</a>
@@ -57,10 +63,13 @@ title: "Desafios de Apostas - VAR da Sorte"
 </section>
 
 <section class="cta container reveal">
-  <div style="text-align:center; margin-top:40px;">
-    <a href="/aposta/" class="btn btn-primary btn-lg">Ver Apostas Diárias 📅</a>
+  <div class="cta-wrapper" style="text-align:center; ">
+    <h2>Não percas as MELHORES apostas do dia!</h2>
+    <p>Com a gestão de apostas do VAR da Sorte e a estratégia de apostas diárias, maximiza as tuas oportunidades de lucro!</p>
+    <a href="/aposta/" class="btn btn-primary btn-cta">Ver Apostas</a>
   </div>
 </section>
+
 
 
 <section class="partners reveal">

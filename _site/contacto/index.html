@@ -359,67 +359,99 @@ header {
 
 <main>
   
-<section class="page-header reveal">
-  <div class="container"><div style="text-align:center;">
-    <h1>📬 Contacta-nos</h1>
-    <p>Se tiveres dúvidas, sugestões ou feedback, envia-nos uma mensagem e responderemos o mais rápido possível.</p>
-  </div></div>
+<section class="page-header-ct reveal">
+  <div class="container">
+    <div class="header-content-ct" style="text-align:center; max-width:700px; margin:0 auto;">
+      <h1>📬 Contacta-nos</h1>
+      <p>Se tiveres dúvidas, sugestões ou feedback, envia-nos uma mensagem. A equipa do <strong>VAR da Sorte</strong> responde o mais rápido possível!</p>
+    </div>
+  </div>
 </section>
 
-<section class="content container reveal">
-  <form id="contact-form" action="https://formspree.io/f/xblaawjr" method="POST" style="max-width:600px; margin:0 auto;">
-    <div class="form-group" style="margin-bottom:15px;">
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="name" placeholder="O teu nome" required style="width:100%; padding:10px; border-radius:6px; border:1px solid #ccc;">
-    </div>
-    <div class="form-group" style="margin-bottom:15px;">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="O teu email" required style="width:100%; padding:10px; border-radius:6px; border:1px solid #ccc;">
-    </div>
-    <div class="form-group" style="margin-bottom:15px;">
-      <label for="message">Mensagem:</label>
-      <textarea id="message" name="message" rows="5" placeholder="Escreve aqui a tua mensagem" required style="width:100%; padding:10px; border-radius:6px; border:1px solid #ccc;"></textarea>
-    </div>
-    <div style="text-align:center;">
-      <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-    </div>
-    <p id="form-success" style="display:none; color:green; text-align:center; margin-top:15px;">✅ Mensagem enviada com sucesso!</p>
-    <p id="form-error" style="display:none; color:red; text-align:center; margin-top:15px;">❌ Ocorreu um erro. Tenta novamente.</p>
-  </form>
+<section class="contact-form-section reveal">
+  <div class="container">
+    <div class="form-wrapper">
+      <h2>💬 Envia-nos uma mensagem</h2>
+      <p>Preenche o formulário abaixo e entraremos em contacto contigo o mais breve possível.</p>
 
-  <p style="text-align:center; margin-top:20px; color:#555;">📧 Email direto: vardasorte@gmail.com</p>
+      <form id="contact-form" action="https://formspree.io/f/xblaawjr" method="POST">
+        <div class="form-group">
+          <label for="name">Nome</label>
+          <input type="text" id="name" name="name" placeholder="O teu nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="O teu email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" rows="5" placeholder="Escreve a tua mensagem aqui..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">📨 Enviar Mensagem</button>
+
+        <p id="form-success" class="form-feedback success">✅ Mensagem enviada com sucesso!</p>
+        <p id="form-error" class="form-feedback error">❌ Ocorreu um erro. Tenta novamente.</p>
+      </form>
+
+      <p class="direct-email">📧 Preferes email direto? <strong>vardasorte@gmail.com</strong></p>
+    </div>
+  </div>
 </section>
+
+<section class="contact-social reveal">
+  <div class="container">
+    <h2>🌐 Outros Canais de Contacto</h2>
+    <p>Podes também falar connosco diretamente através das nossas redes:</p>
+
+    <div class="social-links">
+      <a href="https://t.me/vardasorte" target="_blank" class="social-btn telegram">
+        <i class="fab fa-telegram-plane"></i>
+        <span>Entrar no Telegram</span>
+      </a>
+
+      <a href="https://instagram.com/vardasorte" target="_blank" class="social-btn instagram">
+        <i class="fab fa-instagram"></i>
+        <span>Seguir no Instagram</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/4d9e66f1cc.js" crossorigin="anonymous"></script>
+
 
 <script>
-  const form = document.getElementById("contact-form");
-  const successMsg = document.getElementById("form-success");
-  const errorMsg = document.getElementById("form-error");
+const form = document.getElementById("contact-form");
+const successMsg = document.getElementById("form-success");
+const errorMsg = document.getElementById("form-error");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      headers: { 'Accept': 'application/json' },
+      body: formData
+    });
 
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        headers: { 'Accept': 'application/json' },
-        body: formData
-      });
-
-      if (response.ok) {
-        successMsg.style.display = "block";
-        errorMsg.style.display = "none";
-        form.reset();
-      } else {
-        throw new Error("Erro no envio");
-      }
-    } catch (err) {
-      errorMsg.style.display = "block";
-      successMsg.style.display = "none";
+    if (response.ok) {
+      successMsg.style.display = "block";
+      errorMsg.style.display = "none";
+      form.reset();
+    } else {
+      throw new Error("Erro no envio");
     }
-  });
+  } catch (err) {
+    errorMsg.style.display = "block";
+    successMsg.style.display = "none";
+  }
+});
 </script>
 
 </main>

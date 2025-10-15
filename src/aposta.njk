@@ -3,12 +3,24 @@ layout: layouts/base.njk
 title: "Prognósticos Diários - VAR da Sorte"
 ---
 
+<!-- TODO: Reativar sistema de filtros quando a secção de apostas for dinâmica -->
+
+
 <section class="page-header reveal">
   <div class="hero-content">
-    <h1>🍀 Prognósticos Diários</h1>
-    <p>As melhores apostas, atualizadas todos os dias com base nas tuas preferências ⚽</p>
+    <h1>Prognósticos Diários</h1>
+    <p>As melhores apostas, atualizadas todos os dias com base nas tuas preferências!</p>
   </div>
 </section>
+
+{# 🔒 Filtros temporariamente desativados — reativar quando o sistema de odds e favoritos estiver funcional #}
+{#
+<div class="filter-buttons">
+  <button class="filter-btn active" data-filter="all">Todas</button>
+  <button class="filter-btn" data-filter="favorites">⭐ Favoritas</button>
+  <button class="filter-btn" data-filter="high-odds">🔥 Odds Altas</button>
+</div>
+#}
 
 
 <section class="daily-bets reveal">
@@ -18,7 +30,7 @@ title: "Prognósticos Diários - VAR da Sorte"
     {% if apostaHoje %}
       <div class="bet-highlight">
         <div class="bet-info">
-          <h2>🎯 Prognóstico do Dia</h2>
+          <h2>🎯 Prognósticos do Dia</h2>
           <p class="date">{{ apostaHoje.date | formatDate }}</p>
           <p class="desc">Descobre as apostas mais recomendadas de hoje, baseadas em análise e estatísticas exclusivas do VAR da Sorte.</p>
           <a href="{{ apostaHoje.url }}" class="btn btn-primary">Ver Apostas de Hoje</a>
@@ -56,13 +68,13 @@ title: "Prognósticos Diários - VAR da Sorte"
 </section>
 
 
-<section class="historical-bets container reveal" style="margin-top:50px;">
-  <h2 style="color:#2d9c6a; text-align:center;">📖 Histórico - Últimos 30 dias</h2>
-  <div class="history-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:15px; margin-top:20px;">
+<section class="historical-bets container reveal">
+  <h2 class="section-title">📖 Histórico - Últimos 30 dias</h2>
+  <div class="history-grid">
     {% for post in collections.apostas %}
       {% set diffDays = ((collections.apostas[0].date - post.date) / (1000*60*60*24)) | round %}
       {% if diffDays > 0 and diffDays < 30 %}
-        <a href="{{ post.url }}" class="btn btn-secondary" style="display:block; text-align:center;">
+        <a href="{{ post.url }}" class="history-card">
           {{ post.date | date("dd/MM") }}
         </a>
       {% endif %}
@@ -71,29 +83,51 @@ title: "Prognósticos Diários - VAR da Sorte"
 </section>
 
 
-
 <section class="cta container reveal">
-  <div style="text-align:center; margin-top:40px;">
-    <a href="/desafio/" class="btn btn-primary btn-lg">Participa nos Desafios Diários ⚡</a>
+  <div class="cta-wrapper" style="text-align:center; ">
+    <h2>⚡ Participa nos Desafios Diários!</h2>
+    <p>Transforma pequenas apostas em grandes lucros com os nossos desafios exclusivos. Acompanha a evolução e aprende com cada jogada.</p>
+    <a href="/desafio/" class="btn btn-primary btn-cta">Ver Desafios</a>
   </div>
 </section>
 
 <script>
-/* Filtros simples */
-const filterButtons = document.querySelectorAll(".filter-btn");
-const betCards = document.querySelectorAll(".bet-card");
 
-filterButtons.forEach(btn => {
+// 🔒 Sistema de filtros temporariamente desativado
+/*
+
+/* --- Filtro de apostas melhorado --- */
+document.querySelectorAll(".filter-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const filter = btn.dataset.filter;
-    betCards.forEach(card => {
-      card.style.display = "block";
-      if(filter === "favorites" && !card.dataset.favorite) card.style.display = "none";
-      if(filter === "high-odds" && parseFloat(card.dataset.odds) < 2.0) card.style.display = "none";
+
+    // Atualiza botão ativo
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // Filtra cards
+    document.querySelectorAll(".bet-card").forEach(card => {
+      const odds = parseFloat(card.dataset.odds) || 0;
+      const fav = card.dataset.favorite === "true";
+      let show = false;
+
+      if (filter === "all") show = true;
+      if (filter === "favorites" && fav) show = true;
+      if (filter === "high-odds" && odds >= 2.0) show = true;
+
+      // animação suave ao mostrar/ocultar
+      card.style.opacity = show ? "1" : "0";
+      card.style.pointerEvents = show ? "auto" : "none";
+      card.style.transform = show ? "translateY(0)" : "translateY(10px)";
+      setTimeout(() => { card.style.display = show ? "block" : "none"; }, show ? 0 : 200);
     });
   });
 });
+
+*/
+
 </script>
+
 
 {# --- JSON-LD para Aposta --- #}
 <script type="application/ld+json">
