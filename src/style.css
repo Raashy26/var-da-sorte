@@ -2428,3 +2428,53 @@ footer h2::before {
     justify-content: center;
   }
 }
+
+/* =======================
+   privacidade.njk - style da página Privacidade e termos
+   ======================= */
+
+.page-header-pv .hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero-title-pv {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2d9c6a;
+  margin-bottom: 15px;
+}
+
+.hero-title-pv .emoji {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.hero-subtitle-pv {
+  font-size: 1.1rem;
+  color: #000000;
+  max-width: 700px;
+}
+
+.background-hero-pv {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: linear-gradient(135deg, #2d9c6a, #66c593, #1e7b52);
+  background-size: 600% 600%;
+  filter: brightness(0.7);
+  animation: gradientMove 15s ease infinite;
+  z-index:1;
+}
+
+@keyframes gradientMove {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
