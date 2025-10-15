@@ -317,6 +317,8 @@ nav ul li a:hover {
 }
 
 
+
+
 /* =======================
    Partners Section
    ======================= */
@@ -868,7 +870,16 @@ body[data-theme="dark"] .odds span { background: rgba(0,255,170,0.06); color: #b
   }
 }
 
+/* =======================
+   Cards floating animation 
+   ======================= */
 
+.partner-card:hover,
+.game-card-small:hover,
+.challenge-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
 
 
 
@@ -882,7 +893,7 @@ body[data-theme="dark"] .odds span { background: rgba(0,255,170,0.06); color: #b
 }
 
 .ebook-teaser h2 {
-  color: #2d9c6a;
+  color: #0f3b29;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -891,6 +902,203 @@ body[data-theme="dark"] .odds span { background: rgba(0,255,170,0.06); color: #b
   max-width: 700px;
   margin: 0 auto;
   font-size: 1.1rem;
+}
+
+/* --- EBOOK TEASER --- */
+.ebook-teaser {
+  position: relative;
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 80px auto;
+  background: linear-gradient(135deg, #f4fdf9 0%, #e9f9f2 100%);
+  color: #1a1a1a;
+  transition: background 0.4s ease, color 0.4s ease;
+  border: 1px solid #d5efe2;
+  box-shadow: 0 4px 16px rgba(0, 168, 107, 0.08);
+}
+
+.ebook-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.ebook-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  background: linear-gradient(90deg, #00a86b, #00d68f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ebook-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.ebook-text .btn-primary {
+  background: #00a86b;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.ebook-text .btn-primary:hover {
+  background: #00955f;
+  transform: scale(1.05);
+}
+
+/* --- DARK MODE --- */
+[data-theme="dark"] .ebook-teaser {
+  background: #07110c;
+  border: 1px solid #313131;
+  color: #e0e0e0;
+  box-shadow: 0 0 20px rgba(0, 255, 150, 0.05);
+}
+
+[data-theme="dark"] .ebook-text h2 {
+  color: #4af596;
+}
+
+[data-theme="dark"] .ebook-text p {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .ebook-text .btn-primary {
+  background: #00a86b;
+  color: #fff;
+}
+
+[data-theme="dark"] .ebook-text .btn-primary:hover {
+  background: #00955f;
+  transform: scale(1.05);
+}
+
+/* === HERO ESCURECIDO COM PRETO TRANSPARENTE === */
+
+/* === HERO: remover imagem e usar fundo preto === */
+[data-theme="dark"] .hero {
+  background: #000 !important; /* fundo preto sólido */
+  background-image: none !important; /* remove imagem */
+}
+
+/* HERO - Dark Mode (versão final limpa) */
+[data-theme="dark"] .hero {
+  background-color: #131313 !important;
+  background-image: none !important;
+}
+
+[data-theme="dark"] .hero .container,
+[data-theme="dark"] .hero .hero-content {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* garante que o conteúdo continua legível */
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .hero h2,
+[data-theme="dark"] .hero h3,
+[data-theme="dark"] .hero p {
+  color: #fff;
+}
+
+[data-theme="dark"] .hero::before {
+  background: none !important;
+  backdrop-filter: none !important;
+}
+
+
+
+/* === TEXTO “HOJE: PROGNÓSTICOS E DESAFIOS” === */
+[data-theme="dark"] .hero h3 span,
+[data-theme="dark"] .hero-badge {
+  background-color: #000; /* fundo preto */
+  color: #00955f; /* texto verde */
+}
+
+/* === PARTNER CARDS IGUAL AOS DESAFIOS (CINZA ESCURO) === */
+[data-theme="dark"] .partner-card { 
+  background: linear-gradient(145deg, #161616 0%, #161616 100%);
+  border: 1px solid #333;
+  color: #e0e0e0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .partner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+/* texto e botão dentro dos partner cards */
+[data-theme="dark"] .partner-card p {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .partner-card .btn-secondary {
+  background: #444;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .partner-card .btn-secondary:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+/* === DAILY PREVIEW CARDS — mesmo estilo dos desafios === */
+[data-theme="dark"] .daily-preview .apostas-card {
+  background: linear-gradient(145deg, #1b1b1b 0%, #2a2a2a 100%);
+  border: 1px solid #333;
+  color: #e0e0e0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .daily-preview .apostas-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+/* textos dentro dos cards */
+[data-theme="dark"] .daily-preview .apostas-card h3,
+[data-theme="dark"] .daily-preview .apostas-card p {
+  color: #f1f1f1;
+}
+
+/* botões dentro dos cards (se existirem) */
+[data-theme="dark"] .daily-preview .apostas-card .btn {
+  background: #444;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .daily-preview .apostas-card .btn:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+/* Faz com que emojis herdem a cor do texto */
+h1, h2, h3, h4, h5, h6, p, a, span, .logo {
+  color: inherit;
+}
+
+/* Correção específica para o emoji 🍀 */
+.logo, 
+.header h1, 
+.footer h2 {
+  color: var(--text-color);
 }
 
 /* =======================
@@ -1396,5 +1604,36 @@ header, .hero-ebook, nav ul li a {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Transições suaves globais */
+* {
+  transition: all 0.3s ease-in-out;
+  scroll-behavior: smooth;
+}
+
+body {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+section p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.6;
 }
 
