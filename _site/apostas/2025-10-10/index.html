@@ -348,38 +348,12 @@ header {
     </ul>
   </nav>
 
-  <!-- Botão Dark/Light -->
-  <button id="themeToggle" style="
-    position:absolute;
-    top:20px;
-    right:20px;
-    background:#fff;
-    color:#2d9c6a;
-    border:none;
-    border-radius:5px;
-    padding:6px 12px;
-    font-weight:bold;
-    cursor:pointer;
-    transition: all 0.3s;
-  ">🌙 Dark</button>
-
     <style>
     header nav a:hover {
       color: #ffd700;
       transform: scale(1.05);
     }
   </style>
-
-  <script>
-    const btn = document.getElementById("themeToggle");
-    const body = document.body;
-    btn.addEventListener("click", () => {
-      const currentTheme = body.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      body.setAttribute("data-theme", newTheme);
-      btn.textContent = newTheme === "dark" ? "☀️ Light" : "🌙 Dark";
-    });
-  </script>
 
 </header>
 
