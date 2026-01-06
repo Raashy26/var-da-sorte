@@ -29,23 +29,23 @@ title: "Desafios de Apostas - VAR da Sorte"
   {% set desafios = [
     {
       "type": "comeback",
-      "title": "Desafio do Comeback",
-      "description": "Apostar em viradas: Procurar jogos onde a equipa em desvantagem consegue virar o resultado, usando assim uma aposta dentro desse registo. ",
-      "odds": "≥ 10",
+      "title": "Odd do Dia ⭐",
+      "description": "Uma aposta especial por dia, com odd acima da média e alto potencial de retorno. Escolhida apenas quando existe valor real.",
+      "odds": "≥ 3",
       "link": (collections.desafios_comeback[0].url if collections.desafios_comeback | length > 0 else "/desafios/comeback")
     },
     {
       "type": "draw",
-      "title": "Desafio dos Empates",
-      "description": "Escolher jogos propensos a empate, aproveitando assim as odds elevadas que estes jogos oferecem.",
-      "odds": "≥ 30",
+      "title": "Favorito Seguro 🔒",
+      "description": "Apostar em favoritos reais, mas sempre com proteção inteligente. O foco é consistência e proteção da banca.",
+      "odds": "≥ 5",
       "link": (collections.desafios_draw[0].url if collections.desafios_draw | length > 0 else "/desafios/draw")
     },
     {
       "type": "over25",
-      "title": "Desafio Ambas Marcam OU +2.5",
-      "description": "Apostar em jogos onde ambas as equipas marcam ou onde o total de golos é superior a 2.5, maximizando assim as oportunidades de obter um green de valor.",
-      "odds": "≥ 3",
+      "title": "Busca dos Golos ⚽",
+      "description": "Escolha inteligente entre 'Ambas Marcam' ou '+2.5 golos', dependendo do jogo. A decisão é feita caso a caso para maximizar valor e reduzir risco.",
+      "odds": "≥ 5",
       "link": (collections.desafios_over25[0].url if collections.desafios_over25 | length > 0 else "/desafios/over25")
     }
   ] %}
