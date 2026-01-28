@@ -4,8 +4,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./node_modules/@11ty/eleventy/cmd.js --serve",
-    "build": "node ./node_modules/@11ty/eleventy/cmd.js"
+    "build": "eleventy"
   },
   "keywords": [],
   "author": "",
