@@ -3,17 +3,15 @@
   "version": "1.0.0",
   "main": ".eleventy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "eleventy"
+    "build": "npx eleventy",
+    "start": "npx eleventy --serve"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
-    "@11ty/eleventy": "^3.1.2"
-  },
   "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
     "dotenv": "^17.2.1",
     "luxon": "^3.7.1",
     "markdown-it": "^14.1.0",
