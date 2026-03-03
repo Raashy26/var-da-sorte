@@ -4,7 +4,11 @@
   "main": ".eleventy.js",
   "scripts": {
     "build": "npx eleventy",
-    "start": "npx eleventy --serve"
+    "start": "npx eleventy --serve",
+    "daily": "node scripts/daily.mjs",
+    "daily:dry": "node scripts/daily.mjs --dry-run",
+    "daily:nocopy": "node scripts/daily.mjs --no-copy-balance",
+    "daily:dry:nocopy": "node scripts/daily.mjs --dry-run --no-copy-balance"
   },
   "keywords": [],
   "author": "",
