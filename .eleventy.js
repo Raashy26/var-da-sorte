@@ -94,11 +94,16 @@ module.exports = function (eleventyConfig) {
 
  
   eleventyConfig.addGlobalData("jogosDoDia", async () => {
+    const useFootballApi = String(process.env.USE_FOOTBALL_API ?? "true").toLowerCase() !== "false";
+    if (!useFootballApi) {
+      return [];
+    }
+
     try {
       const jogos = await jogosDoDia();
       const jogosComData = jogos.map(jogo => ({
         ...jogo,
-        date: new Date(jogo.utcDate)
+        date: new Date(jogo.date)
       }));
       return jogosComData.slice(0, 10);
     } catch (err) {

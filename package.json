@@ -8,7 +8,10 @@
     "daily": "node scripts/daily.mjs",
     "daily:dry": "node scripts/daily.mjs --dry-run",
     "daily:nocopy": "node scripts/daily.mjs --no-copy-balance",
-    "daily:dry:nocopy": "node scripts/daily.mjs --dry-run --no-copy-balance"
+    "daily:dry:nocopy": "node scripts/daily.mjs --dry-run --no-copy-balance",
+    "check:encoding": "node scripts/check-encoding.mjs",
+    "check:encoding:fix": "node scripts/check-encoding.mjs --fix",
+    "check:encoding:fix:dry": "node scripts/check-encoding.mjs --fix --dry-run"
   },
   "keywords": [],
   "author": "",

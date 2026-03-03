@@ -87,20 +87,6 @@
       transform: scale(1.05);
     }
 
-  /* Dark Mode */
-
-  body.dark {
-  background: #111;
-  color: #eee;
-  }
-  body.dark header {
-  background: rgba(20, 80, 40, 0.85);
-  }
-  body.dark footer {
-  background: rgba(20, 80, 40, 0.85);
-  }
-
-
     /* Header */
 header {
   width: 100%;
@@ -182,15 +168,6 @@ header {
     padding: 15px 10px;
   }
 
-  /* Botão Dark/Light em mobile */
-  #themeToggle {
-    top: 5px
-    right: 5px;
-    position: absolute;
-    font-size: 0.4rem;
-    padding: 3px 6px;
-  }
-
   /* Menu mais compacto */
   header nav ul {
     gap: 8px; /* menos espaço entre links */
@@ -205,25 +182,6 @@ header {
 }
 
     
-
-    /* Buttons */
-    #themeToggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: #fff;
-      color: #2d9c6a;
-      border: none;
-      border-radius: 5px;
-      padding: 6px 12px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    #themeToggle:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
 
     /* Animations */
     @keyframes fadeInDown {
@@ -468,20 +426,17 @@ form.addEventListener("submit", async (e) => {
     <a href="/privacidade/">Política & Termos</a>
   </nav>
 
-  <p style="color:#d4af37; font-weight:bold; margin:15px 0 5px;">
-    ⚠️ Jogue de forma responsável. Este site é apenas informativo e educativo, não oferece garantias de ganhos.
+  <p style="color:#d4af37; font-weight:bold; margin:15px 0 5px;">    Jogue de forma responsável. Este site é apenas informativo e educativo, não oferece garantias de ganhos.
   </p>
-  <p style="font-weight:bold; margin-bottom:20px;">
-    Se conhecer alguém com problemas de jogo, procure ajuda profissional.
+  <p style="font-weight:bold; margin-bottom:20px;">    Se conhecer alguém com problemas de jogo, procure ajuda profissional.
   </p>
-  <p style="font-weight:bold; margin-bottom:20px;">
-    O VAR da Sorte é um projeto de caráter informativo e educativo. Não garantimos ganhos financeiros. Aposte de forma responsável, apenas se tiver mais de 18 anos.
+  <p style="font-weight:bold; margin-bottom:20px;">    O VAR da Sorte é um projeto de caráter informativo e educativo. Não garantimos ganhos financeiros. Aposte de forma responsável, apenas se tiver mais de 18 anos.
   </p>
 
   <div style="margin-top:15px;">
-    <a href="https://t.me/VARdaSorte" target="_blank">📱 Telegram</a>
-    <a href="https://www.instagram.com/VARdaSorte" target="_blank">📸 Instagram</a>
-    <a href="https://www.facebook.com/VARdaSorte" target="_blank">👍 Facebook</a>
+    <a href="https://t.me/VARdaSorte" target="_blank">Telegram</a>
+    <a href="https://www.instagram.com/VARdaSorte" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/VARdaSorte" target="_blank">Facebook</a>
   </div>
 
   <div class="footer-line">
@@ -530,6 +485,10 @@ form.addEventListener("submit", async (e) => {
     document.head.appendChild(script2);
   }
 
+  function loadAds() {
+    // Placeholder para evitar erro JS quando chamado pelo fluxo de consentimento.
+  }
+
 </script>
 
 <script>
@@ -540,11 +499,11 @@ form.addEventListener("submit", async (e) => {
     const currentScroll = window.pageYOffset;
 
     if (currentScroll > lastScroll && currentScroll > 50) {
-      // Scroll down → esconder header
+      // Scroll down ? esconder header
       header.style.transform = "translateY(-100%)";
       header.style.transition = "transform 0.4s ease";
     } else {
-      // Scroll up → mostrar header
+      // Scroll up ? mostrar header
       header.style.transform = "translateY(0)";
       header.style.transition = "transform 0.4s ease";
     }
@@ -581,40 +540,6 @@ window.addEventListener('scroll', () => {
   const scrolled = (window.scrollY / docHeight) * 100;
   document.getElementById('progressBar').style.width = scrolled + '%';
 });
-</script>
-
-<script>
-const btn = document.getElementById("themeToggle");
-const bodyEl = document.body;
-const headerEl = document.querySelector("header"); // <== ESSE ERA O FALTANTE
-let lastScroll = 0;
-
-btn.addEventListener("click", () => {
-  bodyEl.classList.toggle("dark");
-  btn.textContent = bodyEl.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
-});
-
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-
-  // Mostrar/ocultar header
-  if (currentScroll > lastScroll && currentScroll > 50) {
-    headerEl.style.transform = "translateY(-100%)"; // esconder
-  } else {
-    headerEl.style.transform = "translateY(0)"; // mostrar
-  }
-
-  // Transparência extra quando se faz scroll
-  if (currentScroll > 20) {
-    headerEl.style.backgroundColor = "rgba(45,156,106,0.75)";
-  } else {
-    headerEl.style.backgroundColor = "rgba(45,156,106,0.95)";
-  }
-
-  lastScroll = currentScroll;
-});
-
-
 </script>
 
 <script>

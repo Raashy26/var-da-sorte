@@ -2,6 +2,11 @@ const fetch = require("node-fetch");
 require("dotenv").config();
 
 module.exports = async function () {
+  const useFootballApi = String(process.env.USE_FOOTBALL_API ?? "true").toLowerCase() !== "false";
+  if (!useFootballApi) {
+    return [];
+  }
+
   const API_KEY = process.env.FOOTBALL_API_KEY;
   if (!API_KEY) {
     console.error("⚠️ Nenhuma API_KEY encontrada no .env");
