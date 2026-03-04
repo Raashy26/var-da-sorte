@@ -80,3 +80,8 @@ Se quiseres desativar temporariamente a API:
 USE_FOOTBALL_API=false
 ```
 
+## Social Templates e UTM
+
+Os templates curtos para Telegram/Instagram e o mini gerador de links UTM estao agora em:
+
+`templates/posts-social.md`
