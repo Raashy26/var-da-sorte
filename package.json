@@ -11,7 +11,9 @@
     "daily:dry:nocopy": "node scripts/daily.mjs --dry-run --no-copy-balance",
     "check:encoding": "node scripts/check-encoding.mjs",
     "check:encoding:fix": "node scripts/check-encoding.mjs --fix",
-    "check:encoding:fix:dry": "node scripts/check-encoding.mjs --fix --dry-run"
+    "check:encoding:fix:dry": "node scripts/check-encoding.mjs --fix --dry-run",
+    "social:daily": "node scripts/social-snippets.mjs",
+    "social:daily:write": "node scripts/social-snippets.mjs --write"
   },
   "keywords": [],
   "author": "",

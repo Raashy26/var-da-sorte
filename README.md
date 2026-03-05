@@ -50,10 +50,69 @@ O script [`scripts/check-encoding.mjs`](scripts/check-encoding.mjs) verifica car
 Modo auditoria: apenas reporta problemas de encoding. Falha com exit code `1` se encontrar problemas.
 
 `npm run check:encoding:fix`  
-Corrige automaticamente os padrões conhecidos de mojibake e volta a validar no final.
+Corrige automaticamente os padroes conhecidos de mojibake e volta a validar no final.
 
 `npm run check:encoding:fix:dry`  
-Simula as correções (não escreve ficheiros), mostrando o que seria alterado.
+Simula as correcoes (nao escreve ficheiros), mostrando o que seria alterado.
+
+## Script disponivel: `social-snippets.mjs`
+
+O script [`scripts/social-snippets.mjs`](scripts/social-snippets.mjs) gera snippets prontos para Telegram/Instagram a partir dos ficheiros diarios em `src/apostas` e `src/desafios/*`, com links UTM da campanha `daily_post`.
+Inclui automaticamente linguagem sem promessa de lucro, linha de transparencia e referencia de jogo responsavel (+18).
+
+### Comandos npm do script social
+
+`npm run social:daily`  
+Gera snippets para o dia atual (timezone `Europe/Lisbon`) e imprime no terminal para os dois canais (`telegram` e `instagram`).
+Nao grava ficheiro.
+
+`npm run social:daily -- --date YYYY-MM-DD`  
+Gera snippets para uma data especifica e imprime no terminal para os dois canais.
+Usa quando queres publicar retroativamente ou preparar um dia futuro.
+
+`npm run social:daily -- --source telegram`  
+Gera snippets apenas para um canal.
+Valores aceites em `--source`: `telegram`, `instagram`, `all`.
+
+`npm run social:daily:write`  
+Gera snippets do dia atual, imprime no terminal e grava ficheiro em `templates/social-output/YYYY-MM-DD.md`.
+
+`npm run social:daily:write -- --date YYYY-MM-DD`  
+Mesmo comportamento do comando anterior, mas para uma data especifica.
+
+### Comandos diretos (node)
+
+`node scripts/social-snippets.mjs --date YYYY-MM-DD --source telegram`  
+Executa o script sem npm, para uma data e canal especificos, com output no terminal.
+
+`node scripts/social-snippets.mjs --write --date YYYY-MM-DD`  
+Imprime snippets e grava ficheiro em `templates/social-output/YYYY-MM-DD.md`.
+
+`node scripts/social-snippets.mjs --write --date YYYY-MM-DD --out-dir templates/social-output-custom`  
+Permite gravar os snippets noutra pasta de destino.
+
+### Parametros suportados
+
+- `--date YYYY-MM-DD`: define a data alvo.
+- `--source telegram|instagram|all`: define o canal alvo (`all` por defeito).
+- `--write`: ativa escrita em ficheiro.
+- `--out-dir caminho`: muda a pasta de output quando usas `--write`.
+
+### Integracao com o fluxo diario existente
+
+`npm run daily` mantem exatamente o comportamento atual: criar os 4 ficheiros `.md` do dia.
+Nao foi alterada a logica de criacao dos ficheiros diarios.
+
+Novo fluxo recomendado (simples e repetivel):
+
+1. `npm run daily`
+2. Preencher os picks reais nos ficheiros `.md` do dia.
+3. `npm run social:daily`
+4. Publicar os textos gerados em Telegram/Instagram.
+
+Opcional:
+
+- Se quiseres guardar uma copia dos snippets em ficheiro, usa `npm run social:daily:write`.
 
 ## Variaveis de ambiente (API)
 
@@ -82,6 +141,7 @@ USE_FOOTBALL_API=false
 
 ## Social Templates e UTM
 
-Os templates curtos para Telegram/Instagram e o mini gerador de links UTM estao agora em:
-
-`templates/posts-social.md`
+- `templates/daily-social-template.md` (template unico diario para Telegram/Instagram)
+- `templates/links-for-social.md` (convencao UTM oficial + links prontos)
+- `templates/editorial-checklist.md` (rotina operacional: post diario, reminder noturno e resumo semanal)
+- `templates/weekly-growth-log.md` (registo semanal de metricas: utm_source, utm_content e CTR por tipo de post)
