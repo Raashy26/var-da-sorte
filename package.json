@@ -12,6 +12,9 @@
     "check:encoding": "node scripts/check-encoding.mjs",
     "check:encoding:fix": "node scripts/check-encoding.mjs --fix",
     "check:encoding:fix:dry": "node scripts/check-encoding.mjs --fix --dry-run",
+    "check:links": "node scripts/check-links.mjs",
+    "check:assets": "node scripts/check-assets.mjs",
+    "check:prepublish": "node scripts/prepublish-check.mjs",
     "social:daily": "node scripts/social-snippets.mjs",
     "social:daily:write": "node scripts/social-snippets.mjs --write"
   },

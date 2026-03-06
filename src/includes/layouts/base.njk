@@ -5,12 +5,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  {# --- Defaults din?micos --- #}
+  {# --- SEO defaults --- #}
   {% set siteUrl = site.url or "https://www.vardasorte.com" %}
+  {% set pagePath = page.url or "/" %}
   {% set pageTitle = title or site.name %}
   {% set pageDesc = description or site.description %}
-  {% set pageOgImage = ogImage or site.ogImage or "/images/cover.png" %}
-  {% set canonicalUrl = siteUrl + page.url %}
+  {% set inferredOgType = "website" %}
+  {% if pagePath.indexOf("/apostas/") == 0 or pagePath.indexOf("/desafios/comeback/") == 0 or pagePath.indexOf("/desafios/draw/") == 0 or pagePath.indexOf("/desafios/over25/") == 0 %}
+    {% set inferredOgType = "article" %}
+  {% endif %}
+  {% set pageOgImagePath = ogImage or site.ogImage or "/images/cover.jpg" %}
+  {% if pageOgImagePath[0] == "/" %}
+    {% set pageOgImage = siteUrl + pageOgImagePath %}
+  {% else %}
+    {% set pageOgImage = pageOgImagePath %}
+  {% endif %}
+  {% set canonicalUrl = siteUrl + pagePath %}
   {% if noindex %}{% set robotsMeta = "noindex,nofollow" %}{% else %}{% set robotsMeta = "index,follow" %}{% endif %}
 
   <title>{{ pageTitle }}</title>
@@ -23,9 +33,11 @@
   <!-- Open Graph -->
   <meta property="og:title" content="{{ pageTitle }}">
   <meta property="og:description" content="{{ pageDesc }}">
-  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:type" content="{{ ogType or inferredOgType }}">
   <meta property="og:url" content="{{ canonicalUrl }}">
   <meta property="og:image" content="{{ pageOgImage }}">
+  <meta property="og:image:secure_url" content="{{ pageOgImage }}">
+  <meta property="og:image:alt" content="{{ pageTitle }}">
   <meta property="og:locale" content="{{ site.lang or 'pt_PT' }}">
   <meta property="og:site_name" content="{{ site.name }}">
 
@@ -34,7 +46,12 @@
   <meta name="twitter:title" content="{{ pageTitle }}">
   <meta name="twitter:description" content="{{ pageDesc }}">
   <meta name="twitter:image" content="{{ pageOgImage }}">
-  <meta name="twitter:site" content="{{ site.twitter }}">
+  <meta name="twitter:url" content="{{ canonicalUrl }}">
+  {% if site.twitter %}<meta name="twitter:site" content="{{ site.twitter }}">{% endif %}
+
+  {% if pagePath == "/" %}
+  <link rel="preload" as="image" href="/images/hero-illustration.jpg" fetchpriority="high">
+  {% endif %}
 
   <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,6 +59,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.png" type="image/png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}",
+    "logo": "{{ site.url }}{{ site.logo }}",
+    "sameAs": [
+      "{{ site.telegram }}",
+      "{{ site.instagram }}"
+    ]
+  }
+  </script>
 
   <style>
     /* Cookie Banner */

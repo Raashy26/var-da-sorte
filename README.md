@@ -55,6 +55,28 @@ Corrige automaticamente os padroes conhecidos de mojibake e volta a validar no f
 `npm run check:encoding:fix:dry`  
 Simula as correcoes (nao escreve ficheiros), mostrando o que seria alterado.
 
+## QA pre-publicacao (Fase 5)
+
+Scripts de verificacao automatica para qualidade tecnica antes de publicar.
+
+`npm run check:links`  
+Valida links internos no output `_site` e falha se existir destino em falta.
+
+`npm run check:assets`  
+Valida assets referenciados em HTML/CSS no `_site` e falha se faltar ficheiro.
+Tambem emite warning para assets de imagem acima do threshold de peso.
+
+`npm run check:prepublish`  
+Pipeline completo (ordem fixa):
+1. `npm run check:encoding`
+2. `npm run build`
+3. `npm run check:links`
+4. `npm run check:assets`
+
+Politica atual:
+- Falha: encoding invalido, build com erro, link interno quebrado, asset inexistente.
+- Warning: asset pesado acima do budget inicial.
+
 ## Script disponivel: `social-snippets.mjs`
 
 O script [`scripts/social-snippets.mjs`](scripts/social-snippets.mjs) gera snippets prontos para Telegram/Instagram a partir dos ficheiros diarios em `src/apostas` e `src/desafios/*`, com links UTM da campanha `daily_post`.

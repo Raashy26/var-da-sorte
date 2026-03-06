@@ -80,17 +80,8 @@ title: "VAR da Sorte - Apostas Inteligentes"
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "{{ site.name }}",
-  "url": "{{ site.url }}"
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "{{ site.name }}",
   "url": "{{ site.url }}",
-  "logo": "{{ site.url }}{{ site.logo }}"
+  "description": "{{ description or site.description }}"
 }
 </script>
 

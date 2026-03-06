@@ -97,7 +97,7 @@ nav ul li a:hover {
   overflow: hidden;
   color: var(--primary, #2d9c6a);
   /* background image (definir tua imagem) */
-  background-image: url('/images/hero-illustration.png');
+  background-image: url('/images/hero-illustration.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -199,53 +199,7 @@ nav ul li a:hover {
 
 
 
-/* Hero com background cobrindo desde o topo */
-.hero {
-  position: relative;
-  background-image: url('/images/hero-bg.jpg'); /* tua imagem */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 80vh; /* ajustar conforme quiseres */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 1;
-}
-
-
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 20px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(212,240,224,0.6)),
-              url('/images/hero-illustration.png') no-repeat center center;
-  background-size: cover;
-  border-radius: 16px;
-  margin-bottom: 60px;
-  text-align: center;
-  color: #2d9c6a;
-}
-
-.hero-container {
-  position: relative;
-  z-index: 3;
-  max-width: 800px;
-}
-
-.hero-text h1 {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-}
-
-.hero-text p {
-  font-size: 1.2rem;
-  margin-bottom: 25px;
-}
-
+/* Consolidated hero styles are defined above to avoid cascade conflicts. */
 .btn-hero {
   padding: 15px 35px;
   font-size: 1.2rem;
@@ -255,36 +209,6 @@ nav ul li a:hover {
 .btn-hero:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-/* ===== Responsivo ===== */
-@media (max-width: 768px) {
-  .hero {
-    padding: 60px 20px;
-  }
-  .hero-text h1 {
-    font-size: 2rem;
-  }
-  .hero-text p {
-    font-size: 1rem;
-  }
-}
-   
-.hero {
-  background-color: #eafaf1;
-  padding: 80px 0;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #2d9c6a;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
 }
 
 .btn {
@@ -1665,7 +1589,7 @@ footer h2::before {
   text-align: center;
   padding: 8rem 1.5rem 6rem;
   background: linear-gradient(135deg, #2d9c6a, rgba(120, 196, 114, 0.6)), 
-              url("/images/hero-bg-bets1.png") center/cover no-repeat;
+              url("/images/hero-bg-bets1.jpg") center/cover no-repeat;
   color: #fff;
   overflow: hidden;
 }
@@ -2005,7 +1929,7 @@ footer h2::before {
   height: 100%;
   /* Gradiente animado leve */
   background: linear-gradient(135deg, #2d9c6a, rgba(120, 196, 114, 0.6)), 
-              url("/images/hero-bg-bets2.png") center/cover no-repeat;
+              url("/images/hero-bg-bets2.jpg") center/cover no-repeat;
   background-size: 200% 200%;
   animation: gradientAnimation 8s ease infinite;
   z-index: 0;

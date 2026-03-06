@@ -239,8 +239,12 @@ document.addEventListener("DOMContentLoaded", function() {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "{{ title }}",
+  "description": "{{ description or site.description }}",
+  "url": "{{ site.url }}{{ page.url }}",
+  "image": "{{ site.url }}{{ ogImage or site.ogImage }}",
   "datePublished": "{{ date | date('yyyy-LL-dd') }}",
   "dateModified": "{{ date | date('yyyy-LL-dd') }}",
+  "inLanguage": "{{ site.lang }}",
   "author": { "@type": "Organization", "name": "{{ site.name }}" },
   "publisher": {
     "@type": "Organization",

@@ -3,14 +3,12 @@
   "name": "VAR da Sorte",
   "brand": "VAR da Sorte",
   "telegram": "https://t.me/vardasorte",
-  "instagram": "@vardasorte",
-
-  "description": "Prognósticos, apostas desportivas e análises diárias de futebol.",
-  "ogImage": "/images/cover.png",
+  "instagram": "https://www.instagram.com/vardasorte",
+  "twitter": "@vardasorte",
+  "description": "Prognosticos, apostas desportivas e analises diarias de futebol.",
+  "ogImage": "/images/cover.jpg",
   "logo": "/images/logo.png",
-
   "author": "VAR da Sorte",
   "lang": "pt-PT",
-  "keywords": "apostas desportivas, prognósticos, futebol, análises, tips, apostas online"
+  "keywords": "apostas desportivas, prognosticos, futebol, analises, tips, apostas online"
 }
-

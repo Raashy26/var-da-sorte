@@ -139,8 +139,15 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "{{ title or 'VAR da Sorte' }}",
-  "url": "{{ site.url }}{{ page.url }}"
+  "name": "{{ title or site.name }}",
+  "description": "{{ description or site.description }}",
+  "url": "{{ site.url }}{{ page.url }}",
+  "inLanguage": "{{ site.lang }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}"
+  }
 }
 </script>
 
