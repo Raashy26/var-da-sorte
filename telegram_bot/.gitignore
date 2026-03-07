@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+telegram_bot.db
+.uvicorn.log
+.ngrok.log
